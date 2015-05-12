@@ -1,0 +1,39 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta charset="UTF-8">
+<title>{%block head_title %}{% endblock %}</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+<link rel="stylesheet" href="{% static 'style.css' %}">
+</head>
+<body>
+<div class="container-fluid logo_bar">
+  <img src="{% static 'images/logo_web.png' %}"></img>
+</div>
+
+
+<div class="container">
+  <nav class="menu">
+    <ul>
+      <li class="menu-link">DOM</li>
+      <li class="menu-link">HASICI</li>
+      <li class="menu-link">ZACHRANKA</li>
+    </ul>
+  </nav>
+</div>
+
+
+<div class="container text_part">
+  {%block body %} {% endblock %}
+</div>
+<footer class="footer">
+  <div class="container">
+    {%block footer %}
+    <p class="text-muted">Place sticky footer content here.</p>
+    {% endblock %}
+  </div>
+</footer>
+</body>
+</html>
