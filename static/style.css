@@ -1,29 +1,3 @@
-.menu ul {
-    padding: 0;
-    margin: 0;
-    list-style-type: none;
-}    
-
-.menu li {
-   border-style: solid none none none;
-   border-color: #F5E900;
-}
-
-.menu-link {
-    font-color: black;
-    font-weight: bold;
-    font-size: 15px;
-    display: block;
-    height: 30px;
-    width: 33.3333333%;
-    float: left;
-    text-align: center;
-    background-color: #E6E6E6
- }
-
-.menu-link:hover {
-    background: #a1897d;
-}
 
 body {
     background: #2e2e2e;

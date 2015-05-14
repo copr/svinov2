@@ -7,22 +7,41 @@
 <title>{%block head_title %}{% endblock %}</title>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
 <link rel="stylesheet" href="{% static 'style.css' %}">
+<link rel="stylesheet" href="{% static 'css/menu.css' %}">
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+<script src="http://cdn.jsdelivr.net/modernizr/2.8.3/modernizr.min.js"></script>
+<script src="{% static 'js/scripts.js' %}"></script>
 </head>
 <body>
 <div class="container-fluid logo_bar">
-  <img src="{% static 'images/logo_web.png' %}"></img>
+<img class="col-xs-12 col-md-offset-4 col-md-4" src="{% static 'images/logo_web.png' %}"></img>
 </div>
 
 
 <div class="container">
-  <nav class="menu">
-    <ul>
-      <li class="menu-link">DOM</li>
-      <li class="menu-link">HASICI</li>
-      <li class="menu-link">ZACHRANKA</li>
+  <nav>
+    <a id="resp-menu" class="responsive-menu" href="#"> Menu</a>
+    <ul class="menu">
+      {% for section in sections %}
+      <li><a class="homer" href="#">{{ section.name }}</a>
+	<ul class="">
+	  {% for subsection in section.subsections %}
+	  <li>
+	    <a href="#">{{ subsection.name }}</a>
+	  </li>
+      	  {% endfor %}
+        </ul> 
+      </li>
+      {% endfor %}
     </ul>
   </nav>
 </div>
+
+
+
+
+
 
 
 <div class="container text_part">

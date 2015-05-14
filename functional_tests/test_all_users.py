@@ -17,7 +17,3 @@ class HomeNewVisitorTest(StaticLiveServerTestCase):
     def test_home_title(self):
         self.browser.get(self.get_full_url("home"))
         self.assertIn("SDH Svinov", self.browser.title)
-
-
-if __name__ == "__main__":
-    unittest.main(warnings='ignore')

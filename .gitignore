@@ -3,3 +3,6 @@ __pycache__
 *~
 *#*
 static_files
+runcoverage
+.coverage
+htmlcov*
