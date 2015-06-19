@@ -6,11 +6,26 @@
 <meta charset="UTF-8">
 <title>{%block head_title %}{% endblock %}</title>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
-<link rel="stylesheet" href="{% static 'style.css' %}">
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
 <link rel="stylesheet" href="{% static 'css/menu.css' %}">
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
 
+<style>
+@media (min-width: 979px) {
+.menu-width {
+    width: {{ size }}%;
+}
+}
+@media (max-width: 979px) {
+.menu-width {
+    width: 100%;
+}
+}
+</style>
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 <script src="http://cdn.jsdelivr.net/modernizr/2.8.3/modernizr.min.js"></script>
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+<script src="https://raw.githubusercontent.com/micjamking/succinct/master/jQuery.succinct.min.js"></script>
 <script src="{% static 'js/scripts.js' %}"></script>
 </head>
 <body>
@@ -20,29 +35,39 @@
 
 
 <div class="container">
-  <nav>
+  <div class="row">
+  <nav class="">
     <a id="resp-menu" class="responsive-menu" href="#"> Menu</a>
-    <ul class="menu">
+    <ul class="menu col-md-12 shadow">
+      <li class="li-ikona">
+	<a class="homer" href="/index"><i class="fa fa-home ikona"></i></a>
+      </li>
+      {% if current_section.name %}
+      <li class="li-current">
+	<a class="homer current" href="/{{ current_section.name }}">{{ current_section.name|upper }} </a>
+      </li>
+      {% endif %}
+      <div id="menu-right">
       {% for section in sections %}
-      <li><a class="homer" href="#">{{ section.name }}</a>
+      <li class="menu-width"><a class="homer" href="/{{section.url}}">{{ section.name|upper }}</a>
 	<ul class="">
 	  {% for subsection in section.subsections %}
 	  <li>
-	    <a href="#">{{ subsection.name }}</a>
+	    <a href="/{{ subsection.url }}">{{ subsection.name }}</a>
+	    <ul> 
+	      <li><a href="#">cauky</a></li>
+	      <li><a href="#">ahoj</a></li>
+	    </ul>
 	  </li>
       	  {% endfor %}
         </ul> 
       </li>
       {% endfor %}
+      </div> 
     </ul>
   </nav>
+  </div>
 </div>
-
-
-
-
-
-
 
 <div class="container text_part">
   {%block body %} {% endblock %}
@@ -50,7 +75,8 @@
 <footer class="footer">
   <div class="container">
     {%block footer %}
-    <p class="text-muted">Place sticky footer content here.</p>
+    <p class="text-muted"><img width="50px" height="50px" src="{% static 'images/logo_web.png' %}"></img>
+    copr a v pravo kontakty rychle</p>
     {% endblock %}
   </div>
 </footer>

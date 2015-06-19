@@ -1,40 +1,92 @@
 /* MENU */
 nav {
-    height: 100%
-    display: block;
+    height: 100%;
     background: #e6e6e6;
+    padding-left: 5px;
+    padding-right: 5px;
 }
 
 .menu { 
     height: 100%;
-
     padding: 0;
+
  }
 
+ul {
+}
 .menu li {
-    height: 100%;
-    width: 33.333333%;
     display: block;
+    height: 100%;
     position: relative;
     z-index: 100;
     float: left;
+ }
+
+
+.li-ikona a.homer{
+    color: white;
+  /*  width: 5%;*/
+
+}
+
+#menu-right {
+    overflow: hidden;
+}
+
+.li-current {
+    
+}
+
+.li-ikona {
+
+}
+
+.li-current a.homer {
+    text-shadow: 1px 1px 1px black;
+    padding-right: 5px;
+    padding-left: 5px;
+    color: white;
+    background: #b8b8b8; 
+}
+
+.li-current a.homer:hover {
+    color: black;
+    background: #b8b8b8; 
+    }
+
+.li-ikona a.homer:hover {
+    color: black;
+    background: #b8b8b8; 
+    }
+
+.li-ikona a.homer {
+    padding-right: 5px;
+    padding-left: 5px;
+    background: #b8b8b8; 
+}
+.ikona {
+    text-shadow: 1px 1px 1px black;
+    display: inline-block;
+    padding-left: 5px;
+    padding-right: 5px;
 }
 
 
 .menu li a {
+  color: #060606;
   font-weight: 600;
+  font-size: 1.3em;
   text-decoration: none;
-  padding: 20px 15px;
   display: block;
-  color: #fff;
   transition: all 0.2s ease-in-out 0s;
   text-align: center;
+  border-top-style: solid;
+  border-top-color: #FFEA03;
 }
 
 .menu li a:hover,
 .menu li:hover>a {
-  color: #fff;
-  background: #FC6D58;
+  background: #FFEA03; 
 }
 
 
@@ -50,6 +102,10 @@ nav {
     transform: translate(0, 20px);
     transition: all 0.2s ease-out;
     width: 100%;
+}
+
+.menu li i {
+    font-size: 1.3em;
 }
 /*n
 .menu ul:after {
@@ -67,25 +123,20 @@ nav {
 }*/
 
 .menu ul li {
-    display: block;
     float: none;
     background: none;
     margin: 0;
-    padding: 0;
 }
 
 .menu ul li a {
-    font-size: 12px;
+    font-size: 20px;
     font-weight: normal;
     display: block;
-    color: #797979;
     background: #fff;
 }
 
 .menu ul li a:hover,
 .menu ul li:hover>a {
-    background: #FC6D58;
-    color: #fff;
 }
 
 .menu li:hover>ul {
@@ -95,6 +146,7 @@ nav {
 }
 
 .menu ul ul {
+    left: 100%;
     top: 0px;
     visibility: hidden;
     opacity: 0;
@@ -117,18 +169,17 @@ nav {
   width: 100%;
   padding: 20px 15px;
   background: #E95546;
-  color: #fff;
   text-transform: uppercase;
   font-weight: 600;
 }
 
 .responsive-menu:hover {
-  background: #E95546;
-  color: #fff;
   text-decoration: none;
 }
 
-a.homer { background: #FC6D58; }
+a.homer {
+  background: #e6e6e4;
+}
 
 @media (min-width: 768px) and (max-width: 979px) {
 
@@ -136,9 +187,9 @@ a.homer { background: #FC6D58; }
 
 .menu ul { top: 37px; }
 
-.menu li a { font-size: 12px; }
+.menu li a { font-size: 20px; }
 
-a.homer { background: #E95546; }
+a.homer { background: #e6e6e4; }
 
 }
 
@@ -158,21 +209,10 @@ nav {
   background: none;
 }
 
-.menu li {
-    width: 100%;
-  display: inline-block;
-  margin: 0;
-}
-
-.menu li a {
-  background: #fff;
-  color: #797979;
-}
-
 .menu li a:hover,
 .menu li:hover>a {
   background: #FC6D58;
-  color: #fff;
+
 }
 
 .menu ul {
@@ -183,6 +223,7 @@ nav {
   width: 100%;
   transform: initial;
 }
+
 
 .menu li:hover>ul {
   visibility: visible;
@@ -199,3 +240,4 @@ nav {
 .menu li>ul ul:hover { transform: initial; }
 
 }
+

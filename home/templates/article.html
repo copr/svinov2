@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block body %}
+<div class="article">
+  <div class="row">
+    <div class="col-xs-4 article-title">
+      {{ article.name }}
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-12 article-text">
+      {% autoescape off %}
+        {{ article.text }}
+      {% endautoescape %}
+    </div>
+  </div>
+</div>
+{% endblock %}

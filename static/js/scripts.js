@@ -15,7 +15,10 @@ $(document).ready(function(){
       menu.removeAttr('style');
     }
   });
-  
+
+  $('.article').succinct({
+      size:450
+  });
 });
 
 
