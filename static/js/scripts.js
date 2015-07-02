@@ -16,9 +16,18 @@ $(document).ready(function(){
     }
   });
 
-  $('.article').succinct({
+  $('.to-clamp').succinct({
       size:450
   });
 });
 
+function handleCalendar() {
+    var calendar = new Calendar();
+    document.googleIds.forEach(function(id) {
+	calendar.loadEvents(id);
+    });
+}
 
+function redirect(url) {
+    window.location.href = url;
+}

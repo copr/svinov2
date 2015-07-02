@@ -7,3 +7,5 @@ runcoverage
 .coverage
 htmlcov*
 activate_virtual
+media_files
+static/user_uploads

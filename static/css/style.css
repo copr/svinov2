@@ -1,9 +1,18 @@
+html {overflow-y: scroll;}
+
 body {
-    background: #2E2E2E none repeat scroll 0% 0%;
+    background: black;
+
+/*    background: #2E2E2E none repeat scroll 0% 0%;  */
+ /*   background: linear-gradient(to bottom, #222, black); */
+}
+
+.back {
+    background: linear-gradient(to bottom, rgb(46,46,46), black);
 }
 
 .logo_bar {
-    background-color: #222;
+    background-color: black;
     text-align: center;
 }
 
@@ -16,42 +25,190 @@ body {
 }
 
 .article {
-    padding: 0px 4px;
     background: #404040;
     color: white;
     height: 210px;
+    margin-bottom: 10px;
+    transition: background 1s;
+/*    line-height: 130%; */
+    overflow: hidden;
+    display: block;
+}
+
+.carousel-title {
+    position: absolute;
+    background: linear-gradient(to right, rgb(100,100,100), rgb(0,0,0));
+    bottom: 0;
+    width:100%;
+    opacity: 0.8;
+}
+
+.carousel-img {
+    width: 100%;
+}
+
+.carousel-inner {
+    height: 268px;
+}
+
+.article h6 {
+    margin-top: 2px;
+    margin-bottom: 5px;
+}
+
+.article:hover {
+    background: #333333;
+}
+
+.dimmer {
+    margin: 0;
+    padding: 0;
+    top: 0;
+    left: 0;
+    position: absolute;
+    visibility: hidden;
+    width: 100%;
+    height: 100%;
+    background: #404040;
+    transition: background 1s;
+    opacity: 0.3;
+}
+
+.article:hover > .dimmer {
+    visibility: visible;
+    background: #333333;
 }
 
 .calendar {
-    padding: 0px 4px;
+    padding: 0;
     background: #404040;
-    height: 100%;
+    height: 268px;
     color: white;
+    margin-bottom: 10px;
+    overflow: hidden;
+}
+
+.rehor-title  {
+    text-transform: uppercase;
+    padding-top: 20px;
+    padding-left: 20px;
+    margin: 0;
+    width: 100%;
+    background: rgb(47,47,47);
+    height: 60px;
+
+}
+
+.rehor-title-date {
+    padding-top: 10px;
+}
+
+.rehor-title h4, .rehor-title h6, a {
+    font-size: 1.1em;
+    font-weight: 600;
+    color: #eeeeee;
+}
+
+.rehor-title h6 {
+    padding-bottom: 10px;
+}
+
+.visible {
+    font-size: 1.2em;
+}
+
+.calendar ul {
+    list-style-type: none;
 }
 
 .footer {
   position: fixed;
   bottom: 0;
   width: 100%;
-  height: 20px;
   background-color: #2A2A2A;
+  height: 40px;
+  opacity: 0.8;
 }
 
-h4 a {
-  color: #eeea5f;
+.footer-text {
+    color: #999;
+}    
+
+.contact {
+    padding: 5px 10px;
+    float: right;
+}
+
+.static-footer {
+    color: white;
+    width: 100%;
+    background-color: black;
+    height: 80px;
+}
+
+.h4, .h5, .h6, h4, h5, h6 { /*bootstrap override */
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
+
+.article-title {
+    color: #eeea5f;
+}
+
+.all_articles {
+    text-align: center;    
+    background-color: #000;
+    margin-bottom: 5px;
+    border-bottom-style: solid;
+    border-bottom-color: rgb(105, 105, 105);
+    border-bottom-width: 1px;
+}
+
+.article-text {
+    padding: 10px;
+}
+
+.article-text, .article h6, .calendar {
+    color: #eee;
 }
 
 .shadow {
-    -webkit-box-shadow: 1px 1px 2px 1px rgb(20,20,20);
-    -moz-box-shadow: 1px 1px 2px 1px rgb(20,20,20);
-    box-shadow: 1px 1px 2px 1px rgb(20,20,20);
+    -webkit-box-shadow: 1px 1px 2px 1px rgb(0, 0, 0);
+    -moz-box-shadow: 1px 1px 2px 1px rgb(0, 0, 0);
+    box-shadow: 1px 1px 2px 1px rgb(0, 0, 0);
 }
 
 #myCarousel {
+    margin-bottom: 10px;
+}
 
+.main-article {
+    height: 268px;
+}
+
+.sponsor {
+    float: left;
+}
+
+.sponsor img {
+    max-width: 100px;
+    max-height: 50px;
 }
 
 .col-lg-1, .col-lg-10, .col-lg-11, .col-lg-12, .col-lg-2, .col-lg-3, .col-lg-4, .col-lg-5, .col-lg-6, .col-lg-7, .col-lg-8, .col-lg-9, .col-md-1, .col-md-10, .col-md-11, .col-md-12, .col-md-2, .col-md-3, .col-md-4, .col-md-5, .col-md-6, .col-md-7, .col-md-8, .col-md-9, .col-sm-1, .col-sm-10, .col-sm-11, .col-sm-12, .col-sm-2, .col-sm-3, .col-sm-4, .col-sm-5, .col-sm-6, .col-sm-7, .col-sm-8, .col-sm-9, .col-xs-1, .col-xs-10, .col-xs-11, .col-xs-12, .col-xs-2, .col-xs-3, .col-xs-4, .col-xs-5, .col-xs-6, .col-xs-7, .col-xs-8, .col-xs-9 { 
     padding-left: 5px;
     padding-right: 5px;
+}
+
+@media (min-width: 768px) and (max-width: 979px) {
+
+    .carousel-inner {
+	height: 100%;
+    }
+}
+
+@media (max-width: 767px) {
+    .carousel-inner {
+	height: 100%;
+    }
 }

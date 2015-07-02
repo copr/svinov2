@@ -1,25 +1,55 @@
 {% extends 'base.html' %}
+{% block head %}
+  <script defer="defer">
+    document.googleIds = Array();
+    {% for calendar in calendars %}
+      document.googleIds.push('{{ calendar.googleId }}');
+    {% endfor %}
+  </script>
+{% endblock %}
 {% block body %}
 <div class="row">
-  <div class="article col-md-8">
-    articles.1.text
+  {% if posts.0 %}
+  <div class="col-md-6">
+    <div class="article main-article shadow to-clamp-big">
+      {% include 'sub_article.html' with post=posts.0 %}
+    </div>
   </div>
-  <div class="article col-md-4">
-    10.8 jedeme na konex
+  {% endif %}
+  <div class="col-md-6">
+    <div class="calendar shadow">
+      <h4>Kalendář</h4>
+    </div>
   </div>
 </div>
 <div class="row">
-  <div class="article col-md-3">
-    articles.2.text
+  {% if posts.1 %}
+  <div class="col-md-3">
+    <div class="article shadow to-clamp">
+      {% include 'sub_article.html' with post=posts.1 %}
+    </div>
   </div>
-  <div class="article col-md-3">
-    articles.3.text
+  {% endif %}
+  {% if posts.2 %}
+  <div class="col-md-3">
+    <div class="article shadow to-clamp">
+      {% include 'sub_article.html' with post=posts.2 %}
+    </div>
   </div>
-  <div class="article col-md-3">
-    articles.4.text
+  {% endif %}
+  {% if posts.3 %}
+  <div class="col-md-3">
+    <div class="article shadow to-clamp">
+      {% include 'sub_article.html' with post=posts.3 %}
+    </div>
   </div>
-  <div class="article col-md-3">
-    articles.5.text
+  {% endif %}
+  {% if posts.4 %}
+  <div class="col-md-3">
+    <div class="article shadow to-clamp">
+      {% include 'sub_article.html' with post=posts.4 %}
+    </div>
   </div>
+  {% endif %}
 </div>
 {% endblock %}

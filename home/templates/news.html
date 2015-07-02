@@ -2,10 +2,16 @@
 {% block body %}
 {% for post in posts %}
 <div class="row">
-  <div class="col-xs-12 article">
-    {% autoescape off %}
-      {{ post.text }}
-    {% endautoescape %}
+  <div class="col-xs-12">
+    <div class="article shadow">
+      <h4><a class="article-title" href="/aktuality/{{post.id}}">{{ post.name }}</a></h1>
+      <h6>{{ post.date.date.day }}.{{ post.date.date.month }}.{{ post.date.date.year }}</h6>
+      <div class="article-text">
+	{% autoescape off %}
+          {{ post.text }}
+	{% endautoescape %}
+      </div>
+    </div>
   </div>
 </div>
 {% endfor %}

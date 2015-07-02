@@ -1,7 +1,9 @@
+
 from django.conf.urls import include, url
 from home import views
 
 urlpatterns = [
+    url(r'^test/$', views.test),
     url(r'^$', views.index),
     url(r'^index/$', views.index),
     url(r'^aktuality/$', views.news_from_front),
