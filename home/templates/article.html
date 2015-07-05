@@ -3,13 +3,7 @@
 <div class="row">
   <div class="col-xs-12">
     <div class="article shadow">
-      <h4 class="article-title">{{ article.name }}</h4>
-      <h6>{{ article.date.date.day }}.{{ article.date.date.month }}.{{ article.date.date.year }}</h6>
-      <div class="article-text">
-	{% autoescape off %}
-          {{ article.text }}
-	{% endautoescape %}
-      </div>
+      {% include "sub_article.html" with post=article %}
     </div>
   </div>
 </div>

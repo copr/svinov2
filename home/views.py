@@ -38,7 +38,7 @@ def static(request, section, static):
     cur_section = get_current_section(section)
     sponsors = get_sponsors()
     contacts = get_contacts()
-    return render(request, 'static.html', {'sections': sections, 'article': static, 'size': 1/len(sections)*PERCENT,
+    return render(request, 'article.html', {'sections': sections, 'article': static, 'size': 1/len(sections)*PERCENT,
                                            'current_section': cur_section, 'sponsors': sponsors, 'contacts': contacts})
 
 def news_from_front(request):

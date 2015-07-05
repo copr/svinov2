@@ -1,6 +1,6 @@
 $(document).ready(function(){ 
-  var touch   = $('#resp-menu');
-  var menu  = $('.menu');
+  var touch = $('#resp-menu');
+  var menu = $('.menu');
  
   $(touch).on('click', function(e) {
     e.preventDefault();
@@ -19,6 +19,9 @@ $(document).ready(function(){
   $('.to-clamp').succinct({
       size:450
   });
+
+//  $('.border').css('width', '100%').css('width', '+=1px'); // pokud nefunguje css calc 
+
 });
 
 function handleCalendar() {
@@ -26,6 +29,9 @@ function handleCalendar() {
     document.googleIds.forEach(function(id) {
 	calendar.loadEvents(id);
     });
+    if (!document.googleIds.length) {
+	$('.calendar img').remove();
+    }
 }
 
 function redirect(url) {

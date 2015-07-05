@@ -58,43 +58,36 @@ document.googleIds.push('{{ calendar.googleId }}');
   </div>
 </div>
 <div class="col-md-6">
-  <div class="calendar shadow" >
-    <div class="rehor-title">
-      <h4>Kalendář</h4>
-    </div>
-    {% autoescape off %}
-      <ul>
-      </ul>
-    {% endautoescape %}
-  </div>
+  {% include "calendar.html" %}  
 </div>
 
 </div>
 <div class="row">
+
   {% if posts.0 %}
       <div class="col-md-3" onclick="redirect('/aktuality/{{ posts.0.id }}')" >
-	<div class="article to-clamp shadow">
+	<div class="article article-hover to-clamp shadow">
 	  {% include "sub_article.html" with post=posts.0 %}
 	</div>
      </div>
   {% endif %}
   {% if posts.1 %}
       <div class="col-md-3" onclick="redirect('/aktuality/{{ posts.1.id }}')">
-	<div class="article to-clamp shadow">
+	<div class="article article-hover to-clamp shadow">
 	  {% include "sub_article.html" with post=posts.1 %}
 	</div>
       </div>
   {% endif %}
   {% if posts.2 %}
     <div class="col-md-3" onclick="redirect('/aktuality/{{ posts.2.id }}')">
-      <div class="article to-clamp shadow">
+      <div class="article article-hover to-clamp shadow">
 	{% include "sub_article.html" with post=posts.2 %}
       </div>
   </div>
   {% endif %}
   {% if posts.3 %}
   <div class="col-md-3" onclick="redirect('/aktuality/{{ posts.3.id }}')">
-    <div class="article to-clamp shadow">
+    <div class="article article-hover to-clamp shadow">
       {% include "sub_article.html" with post=posts.3 %}
     </div>
   </div>

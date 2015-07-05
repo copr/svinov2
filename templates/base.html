@@ -31,6 +31,7 @@
 }
 </style>
 
+<link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Open+Sans" />
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 <script src="http://cdn.jsdelivr.net/modernizr/2.8.3/modernizr.min.js"></script>
 <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
@@ -46,8 +47,8 @@
 {% endblock %}
 </head>
 <body>
-<div class="container-fluid logo_bar">
-<a href="/"><img class="col-xs-12 col-md-offset-4 col-md-4" src="{% static 'images/logo_web.png' %}" /></a>
+<div class="container logo_bar">
+<a href="/"><img class="logo" src="{% static 'images/logo_web.png' %}" /></a>
 </div>
 
 <div class="back">
@@ -63,27 +64,29 @@
     </a>
     <ul class="menu col-md-12 shadow">
       <li class="li-ikona">
-	<a class="homer" href="/index"><i class="fa fa-home ikona"></i></a>
+	<div class="border ikona-border"></div>
+	<a class="homer" href="/index"><i class="fa fa-home  ikona"></i></a>
+	<div class="side-border">&nbsp</div>
       </li>
-      {% if current_section.name and current_section.name != "index" %}
-      <li class="li-current">
-	<a class="homer current" href="/{{ current_section.url }}">{{ current_section.name|upper }} </a>
-      </li>
-      {% endif %}
-      <div id="menu-right">
       {% for section in sections %}
-      <li class="menu-width" >
+      <li class="" >
+	<div class="border"></div>
 	<a class="homer" href="/{{section.url}}">{{ section.name|upper }}</a>
+	<div class="side-border">&nbsp</div>
 	<ul class="">
 	  {% for subsection in section.subsections %}
-	  <li class="visible">
+	  <li class="visible shadow">
 	    <a href="/{{ subsection.url }}">{{ subsection.name|upper }}</a>
 	  </li>
       	  {% endfor %}
         </ul> 
       </li>
       {% endfor %}
-      </div> 
+      {% if current_section.name and current_section.name != "index" %}
+      <li class="li-current">
+	<a class="homer current" href="/{{ current_section.url }}">{{ current_section.name|upper }} </a>
+      </li>
+      {% endif %}
     </ul>
   </nav>
   </div>
@@ -118,6 +121,6 @@
     {% endfor %}
   </div>
 </footer>
-<!-- <script src="https://apis.google.com/js/client.js?onload=handleCalendar" ></script>  -->
+<script src="https://apis.google.com/js/client.js?onload=handleCalendar" ></script> 
 </body>
 </html>

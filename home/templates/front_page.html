@@ -10,43 +10,41 @@
 {% block body %}
 <div class="row">
   {% if posts.0 %}
-  <div class="col-md-6">
-    <div class="article main-article shadow to-clamp-big">
+  <div class="col-md-6" onclick="redirect('/aktuality/{{ posts.0.id }}')">
+    <div class="article article-hover main-article shadow to-clamp-big">
       {% include 'sub_article.html' with post=posts.0 %}
     </div>
   </div>
   {% endif %}
   <div class="col-md-6">
-    <div class="calendar shadow">
-      <h4>Kalendář</h4>
-    </div>
+    {% include "calendar.html" %}  
   </div>
 </div>
 <div class="row">
   {% if posts.1 %}
-  <div class="col-md-3">
-    <div class="article shadow to-clamp">
+  <div class="col-md-3" onclick="redirect('/aktuality/{{ posts.1.id }}')">
+    <div class="article article-hover shadow to-clamp">
       {% include 'sub_article.html' with post=posts.1 %}
     </div>
   </div>
   {% endif %}
   {% if posts.2 %}
-  <div class="col-md-3">
-    <div class="article shadow to-clamp">
+  <div class="col-md-3" onclick="redirect('/aktuality/{{ posts.2.id }}')">
+    <div class="article article-hover shadow to-clamp">
       {% include 'sub_article.html' with post=posts.2 %}
     </div>
   </div>
   {% endif %}
   {% if posts.3 %}
-  <div class="col-md-3">
-    <div class="article shadow to-clamp">
+  <div class="col-md-3" onclick="redirect('/aktuality/{{ posts.3.id }}')">
+    <div class="article article-hover shadow to-clamp">
       {% include 'sub_article.html' with post=posts.3 %}
     </div>
   </div>
   {% endif %}
   {% if posts.4 %}
-  <div class="col-md-3">
-    <div class="article shadow to-clamp">
+  <div class="col-md-3" onclick="redirect('/aktuality/{{ posts.4.id }}')">
+    <div class="article article-hover shadow to-clamp">
       {% include 'sub_article.html' with post=posts.4 %}
     </div>
   </div>

@@ -1,8 +1,18 @@
+/* @font-face { */
+/*   font-family: MyriadPro; */
+/*   src: url("fonts/MYRIADPRO-REGULAR.OTF") format("opentype"); */
+/* } */
+
+@font-face {
+  font-family: OpenSans;
+  src: url("fonts/OpenSans-Regular.ttf");
+}
+
 html {overflow-y: scroll;}
 
 body {
     background: black;
-
+    font-family: OpenSans, Arial !important;
 /*    background: #2E2E2E none repeat scroll 0% 0%;  */
  /*   background: linear-gradient(to bottom, #222, black); */
 }
@@ -14,6 +24,12 @@ body {
 .logo_bar {
     background-color: black;
     text-align: center;
+}
+
+.logo {
+    width: 30%;
+    padding-bottom: 20px;
+    padding-top: 20px;
 }
 
 .menu-link {
@@ -56,8 +72,12 @@ body {
     margin-bottom: 5px;
 }
 
-.article:hover {
+.article-hover:hover {
     background: #333333;
+}
+
+.article-hover:hover > .rehor-title h4 a {
+    color: rgb(255, 232, 0);
 }
 
 .dimmer {
@@ -88,6 +108,58 @@ body {
     overflow: hidden;
 }
 
+.calendar ul {
+    padding-top: 15px;
+    padding-right: 15px;
+    padding-left: 15px;
+    list-style-type: none;
+}
+
+.calendar li {
+    border-bottom-style: solid;
+    border-bottom-color: rgb(105, 105, 105);
+    border-bottom-width: 1px;
+    padding-top: 2px;
+    padding-bottom: 2px;
+    padding-left: 5px;
+    transition: background 0.5s;
+}
+
+.calendar img {
+    width: 100px;
+    height: 100px;
+    position: absolute;
+    top: 40%;
+    left: 41%;
+}
+
+a {
+    text-decoration: none !important;
+}
+
+a:hover {
+    color: rgb(255, 232, 0);
+}
+
+a:focus {
+    color: rgb(255, 232, 0);
+}
+
+.calendar li:hover {
+    background: rgb(128, 128, 128) !important;
+}
+
+.calendar li:nth-child(odd) {
+    background: rgb(92, 89, 56);
+    
+}
+
+.calendar ul li a {
+    font-size: 1em;
+    font-weight: normal;
+    float: right;
+}
+
 .rehor-title  {
     text-transform: uppercase;
     padding-top: 20px;
@@ -103,8 +175,12 @@ body {
     padding-top: 10px;
 }
 
-.rehor-title h4, .rehor-title h6, a {
-    font-size: 1.1em;
+.rehor-title h6, a {
+    font-weight: 600;
+    color: #eeeeee;
+}
+
+.rehor-title h4 {
     font-weight: 600;
     color: #eeeeee;
 }
@@ -115,10 +191,6 @@ body {
 
 .visible {
     font-size: 1.2em;
-}
-
-.calendar ul {
-    list-style-type: none;
 }
 
 .footer {
@@ -205,10 +277,18 @@ body {
     .carousel-inner {
 	height: 100%;
     }
+
+    .logo {
+	width: 100%;
+    }
 }
 
 @media (max-width: 767px) {
     .carousel-inner {
 	height: 100%;
+    }
+
+    .logo {
+	width: 100%;
     }
 }

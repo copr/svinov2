@@ -12,6 +12,8 @@ def get_posts(section):
         posts = Article.objects.all().filter(news = news)
     else:
         posts = []
+    for post in posts:
+        post.section = section
     return posts
 
 def get_current_section(section):

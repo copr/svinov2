@@ -1,6 +1,8 @@
-<div class="rehor-title rehor-title-date">
-  <h4><a href="/aktuality/{{ post.id }}">{{ post.name }}</a></h4>
-  <h6>{{ post.date.date.day }}.{{ post.date.date.month }}.{{ post.date.date.year }}</h6>
+<div class="rehor-title {% if post.date %} rehor-title-date {% endif %}">
+  <h4><a href="/{{ post.section }}/aktuality/{{ post.id }}">{{ post.name }}</a></h4>
+  {% if post.date %}
+    <h6>{{ post.date.date.day }}.{{ post.date.date.month }}.{{ post.date.date.year }}</h6>
+  {% endif %}
 </div>
 <div class="article-text">
 {% autoescape off %}

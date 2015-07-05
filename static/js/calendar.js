@@ -7,7 +7,7 @@ Calendar.prototype.loadEvents = function(calendarId, maxResults) {
     var request = gapi.client.request({
 	'path': 'calendar/v3/calendars/' + calendarId + '/events',
 	'params': {
-	    'maxResults': 12,
+	    'maxResults': 7,
 	    'orderBy': 'startTime',
 	    'singleEvents': true,
 	    'timeMin': (new Date()).toISOString(),
@@ -21,7 +21,9 @@ Calendar.prototype.loadEvents = function(calendarId, maxResults) {
 	    } else {
 		var date = new Date(i.start.date);
 	    }
-	    $('.calendar ul').append('<li>' + date.getDate() + '.' + (parseInt(date.getMonth()) + 1) + '. ' + i.summary + '<a href=' + i.htmlLink + " target='_blank'> link</a>" + '</li>');
+	    $('.calendar img').remove();
+	    $('.calendar ul').append('<li>' + date.getDate() + '. ' + (parseInt(date.getMonth()) + 1) + '. ' + (parseInt(date.getFullYear())) + 
+				     ' | ' + i.summary + /*' | ' + i.location + */ '<a href=' + i.htmlLink + " target='_blank'> info ></a>" + '</li>');
 	});
     });
 };
