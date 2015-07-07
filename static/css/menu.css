@@ -2,7 +2,6 @@
 /* MENU */
 nav {
     height: 100%;
-
     padding-left: 5px;
     padding-right: 5px;
 }
@@ -15,6 +14,12 @@ nav {
  }
 
 .menu li {
+    box-sizing: border-box;
+/*    box-sizing: content-box;
+    box-sizing: content-box; */
+    border-width: 1px;
+    border-right-style: none;
+    border-right-color: rgb(121, 121, 121);
     position: relative; 
     display: block;
     height: 100%;
@@ -48,6 +53,9 @@ li.li-ikona a.homer {
 }
 
 .side-border {
+/*    display: none; */
+    padding-top: 2px;
+    padding-bottom: 2px;
     position: absolute;
     width: 1px;
     height: 100%;
@@ -57,8 +65,7 @@ li.li-ikona a.homer {
 }
 
 .border {
-    left: -1px;
-    width: calc(1px + 100%); 
+    width: 100%;
     background: rgb(64, 64 64) !important; /*rgb(184, 170, 56);*/
     position: absolute;
     top: -8px;
@@ -110,8 +117,8 @@ li.li-ikona a.homer {
 }
 
 .menu ul ul {
+    width: 100%;
     position: absolute;
-    left: 100%;
     top: 0px;
     visibility: visible;
     opacity: 0;
@@ -120,13 +127,16 @@ li.li-ikona a.homer {
 }
 
 
+
 .menu li ul li {
     width: 100%;
     background: rgb(121, 121, 121);
     margin-top: 2px;
     padding: 0;
-    border-color: rgb(121, 121, 121);
-    border-left-width: 2px;
+}
+
+.menu li ul li a {
+    width: 100%;
 }
 
 .menu li>ul ul:hover {
@@ -136,7 +146,7 @@ li.li-ikona a.homer {
 }
 
 .responsive-menu {
-  font-size: 1.35em;
+
   display: none;
   width: 100%;
   padding: 10px 0px;
@@ -182,7 +192,7 @@ a.homer {
 
 a.homer { background: #e6e6e4; }
 
-#menu-right { display: block; }
+menu-right { display: block; }
 
 .li-ikona { display: none !important; }
 

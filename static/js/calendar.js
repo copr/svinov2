@@ -22,8 +22,9 @@ Calendar.prototype.loadEvents = function(calendarId, maxResults) {
 		var date = new Date(i.start.date);
 	    }
 	    $('.calendar img').remove();
-	    $('.calendar ul').append('<li>' + date.getDate() + '. ' + (parseInt(date.getMonth()) + 1) + '. ' + (parseInt(date.getFullYear())) + 
-				     ' | ' + i.summary + /*' | ' + i.location + */ '<a href=' + i.htmlLink + " target='_blank'> info ></a>" + '</li>');
+	    $('.calendar ul').append('<li>' + date.getDate() + '. ' + (parseInt(date.getMonth()) + 1) + '. ' + 
+				     (parseInt(date.getFullYear())) + ' | ' + i.summary + /*' | ' + i.location + */ 
+				     '<a href=' + i.htmlLink + " target='_blank'> info ></a>" + '</li>');
 	});
     });
 };

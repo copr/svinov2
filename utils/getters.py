@@ -46,7 +46,6 @@ def get_columns(section):
         for s in  StaticArticle.objects.all().filter(column = column):
             statics.append({'name': s.name, 'url': main_section.url + '/' + s.url})
         subsections = list(sections) + list(statics)
-        print(subsections)
         columns.append({'name': column.name, 'url': '#', 'subsections': subsections})
     return columns
 

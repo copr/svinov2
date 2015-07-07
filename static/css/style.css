@@ -143,6 +143,7 @@ a:hover {
 
 a:focus {
     color: rgb(255, 232, 0);
+    outline-style: none;
 }
 
 .calendar li:hover {
@@ -155,7 +156,7 @@ a:focus {
 }
 
 .calendar ul li a {
-    font-size: 1em;
+
     font-weight: normal;
     float: right;
 }
@@ -190,7 +191,6 @@ a:focus {
 }
 
 .visible {
-    font-size: 1.2em;
 }
 
 .footer {
