@@ -10,13 +10,13 @@
 {% block body %}
 <div class="row">
   {% if posts.0 %}
-  <div class="col-md-6" onclick="redirect('/aktuality/{{ posts.0.id }}')">
+  <div class="col-md-{% if calendars %}6{% else %}12{% endif%}" onclick="redirect('/aktuality/{{ posts.0.id }}')">
     <div class="article article-hover main-article shadow to-clamp-big">
       {% include 'sub_article.html' with post=posts.0 %}
     </div>
   </div>
   {% endif %}
-  <div class="col-md-6">
+  <div class="{% if calendars %}col-md-6{% else %}none{% endif %}" >
     {% include "calendar.html" %}  
   </div>
 </div>

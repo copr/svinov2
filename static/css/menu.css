@@ -184,19 +184,28 @@ a.homer {
 
 }
 
+.active-menu {
+    margin-top: 0px;
+    visibility: visible;
+    display: inline-block !important;
+    width: 100%;
+}
+
 @media (min-width: 768px) and (max-width: 979px) {
 
-.respo { margin-bottom: 5px; }
+.menu li {
+    width: 100%;
+}
 
 .mainWrap { width: 768px; }
 
-.menu ul { top: 37px; }
+.respo nav {
+    height: 100%;
+}
 
-.menu li a { font-size: 20px; }
+
 
 a.homer { background: #e6e6e4; }
-
-menu-right { display: block; }
 
 .li-ikona { display: none !important; }
 
@@ -216,6 +225,15 @@ menu-right { display: block; }
   padding: 50px 20px;
 }
 
+.menu li {
+    width: 100%;
+}
+
+.border, .menu li.li-border {
+    display: none;
+}
+
+
 .respo { margin-bottom: 5px; }
 
 .menu { display: none; }
@@ -233,13 +251,11 @@ nav {
 }
 
 .menu ul {
-    
   visibility: hidden;
   opacity: 0;
   top: 0;
   left: 0;
   width: 100%;
-  transform: initial;
 }
 
 

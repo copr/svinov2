@@ -1,10 +1,14 @@
 $(document).ready(function(){ 
   var touch = $('#resp-menu');
-  var menu = $('.menu');
+  var menu = $('ul.menu');
  
   $(touch).on('click', function(e) {
     e.preventDefault();
-    menu.slideToggle();
+    if (!menu.hasClass('active-menu')) {
+      menu.addClass('active-menu');
+    } else {
+      menu.removeClass('active-menu');
+    }
   });
   
   $(window).resize(function(){

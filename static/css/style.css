@@ -190,6 +190,9 @@ a:focus {
     line-height: inherit;
 }
 
+.none {
+    display: none;
+}
 .rehor-header {
 }
 
