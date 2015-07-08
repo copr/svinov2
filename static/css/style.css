@@ -53,10 +53,8 @@ body {
 
 .carousel-title {
     position: absolute;
-    background: linear-gradient(to right, rgb(100,100,100), rgb(0,0,0));
-    bottom: 0;
-    width:100%;
-    opacity: 0.8;
+    top: 0;
+    opacity: 0.9;
 }
 
 .carousel-img {
@@ -73,7 +71,11 @@ body {
 }
 
 .article-hover:hover {
-    background: #333333;
+    background: #222222;
+}
+
+.article_hover:hover > .rehor-title {
+    background: #222222;
 }
 
 .article-hover:hover > .rehor-title h4 a {
@@ -92,11 +94,6 @@ body {
     background: #404040;
     transition: background 1s;
     opacity: 0.3;
-}
-
-.article:hover > .dimmer {
-    visibility: visible;
-    background: #333333;
 }
 
 .calendar {
@@ -156,23 +153,21 @@ a:focus {
 }
 
 .calendar ul li a {
-
     font-weight: normal;
     float: right;
+    padding-right: 10px;
 }
 
 .rehor-title  {
-    padding-top: 20px;
-    padding-left: 20px;
+    padding: 20px;
     margin: 0;
     width: 100%;
     background: rgb(47,47,47);
-    height: 60px;
-    
+    z-index: 90;
 }
 
 .rehor-title-date {
-    padding-top: 10px;
+    padding-bottom: 10px;
 }
 
 .rehor-title h6, a {
@@ -193,6 +188,11 @@ a:focus {
 .none {
     display: none;
 }
+
+.hiden {
+    visibility: hidden;
+}
+
 .rehor-header {
 }
 

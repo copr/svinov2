@@ -24,7 +24,15 @@ $(document).ready(function(){
       size:450
   });
 
-//  $('.border').css('width', '100%').css('width', '+=1px'); // pokud nefunguje css calc 
+
+  $('.menu li.section').hover(function() {
+      $(this).next().addClass("hiden");
+      $(this).prev().addClass("hiden");
+  }, function() {
+      $(this).next().removeClass("hiden");
+      $(this).prev().removeClass("hiden");
+  });
+
 
 });
 

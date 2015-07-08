@@ -1,4 +1,6 @@
-
+p {
+    margin: 0 10px 10px;
+}
 /* MENU */
 nav {
     height: 100%;
@@ -25,6 +27,7 @@ nav {
     display: block;
     height: 100%;
     float: left;
+    transition: background-color 0.5s ease;
  }
 
 li.li-ikona a.homer {
@@ -41,9 +44,8 @@ li.li-ikona a.homer {
   font-weight: 600;
   text-decoration: none;
   display: block;
-  transition: all 0.2s ease-in-out 0s;
   text-align: center;
-  padding: 5px 5px;
+  padding: 5px 10px;
 /*  border-top-style: solid;
 /*  border-top-color: rgb(255, 232, 0); /*#FFEA03; */
 }
@@ -64,17 +66,17 @@ li.li-ikona a.homer {
     padding:0;
     background: rgb(121, 121, 121);
     width: 1px;
-
     margin-top: 5px;
     margin-bottom: 5px;
 }
 
 .border {
     width: 100%;
-    background: rgb(64, 64 64) !important; /*rgb(184, 170, 56);*/
+    background-color: rgb(64, 64 64) !important; /*rgb(184, 170, 56);*/
     position: absolute;
     top: -8px;
     height: 6px;
+    transition: background-color 0.5s ease;
 }
 
 .ikona-border {
@@ -88,7 +90,6 @@ li.li-ikona a.homer {
 }
 
 .menu li:hover > .border {
-    border-color: rgb(184, 170, 56);
     background: rgb(184, 170, 56);
 }
 
@@ -110,10 +111,14 @@ li.li-ikona a.homer {
     visibility: visible;
 }
 
-.menu li:hover>ul {
+.menu li:hover > ul {
     visibility: visible;
     opacity: 1;
     transform: translate(0, 0);
+}
+
+.menu li:hover {
+    background: rgb(121, 121, 121);
 }
 
 .menu li.li-current {
@@ -121,7 +126,7 @@ li.li-ikona a.homer {
     margin-right: 10px;
 }
 
-.menu ul ul {
+/*.menu ul ul {
     width: 100%;
     position: absolute;
     top: 0px;
@@ -129,7 +134,7 @@ li.li-ikona a.homer {
     opacity: 0;
     transform: translate(20px, 20px);
     transition: all 0.2s ease-out;
-}
+}*/
 
 
 
@@ -216,6 +221,8 @@ a.homer {
 
 }
 
+
+
 @media (max-width: 767px) {
 
 .li-ikona { display: none !important; }
@@ -263,6 +270,7 @@ nav {
   top: 0;
   left: 0;
   width: 100%;
+  z-index: 100;
 }
 
 

@@ -16,15 +16,15 @@ document.googleIds.push('{{ calendar.googleId }}');
 <div class="col-md-6">
   <div id="myCarousel" class="carousel slide shadow" data-ride="carousel">
     <!-- Indicators -->
-    <ol class="carousel-indicators">
-      {% for invitation in invitations %}
-        {% if forloop.first %}
-          <li data-target="#myCarousel" data-slide-to="{{ forloop.counter }}" class="active"></li>
-	{% else %}
-        <li data-target="#myCarousel" data-slide-to="{{ forloop.counter }}" class=""></li>
-	{% endif %}
-      {% endfor %}
-    </ol>
+    <!-- <ol class="carousel-indicators"> -->
+    <!--   {% for invitation in invitations %} -->
+    <!--     {% if forloop.first %} -->
+    <!--       <li data-target="#myCarousel" data-slide-to="{{ forloop.counter }}" class="active"></li> -->
+    <!-- 	{% else %} -->
+    <!--     <li data-target="#myCarousel" data-slide-to="{{ forloop.counter }}" class=""></li> -->
+    <!-- 	{% endif %} -->
+    <!--   {% endfor %} -->
+    <!-- </ol> -->
 
     <!-- Wrapper for slides -->
     <div class="carousel-inner" role="listbox">
@@ -37,7 +37,7 @@ document.googleIds.push('{{ calendar.googleId }}');
 	{% if invitation.article %}
           <a href="/aktuality/{{ invitation.article.id }}">
 	    <img src="{% cropped_thumbnail invitation 'cropping' %}"  class="carousel-img" >
-	    <div class="carousel-title">{{ invitation.name }}</div> 
+	    <div class="rehor-title carousel-title"><h4>{{ invitation.name|upper }}</h4></div> 
 	  </a>
 	{% else %}
 	  <a href="/#"><img src="{% cropped_thumbnail invitation 'cropping' %}" class="carousel-img" ></a>
