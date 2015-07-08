@@ -11,6 +11,7 @@ nav {
     height: 100%;
     padding: 0;
     margin-top: 8px;
+    display: inline-block;
  }
 
 .menu li {
@@ -194,6 +195,10 @@ a.homer {
 @media (min-width: 768px) and (max-width: 979px) {
 
 .menu li {
+
+}
+
+.menu {
     width: 100%;
 }
 
@@ -203,13 +208,12 @@ a.homer {
     height: 100%;
 }
 
+.border, .menu li.li-border {
 
+}
 
-a.homer { background: #e6e6e4; }
+/*a.homer { background: #e6e6e4; }*/
 
-.li-ikona { display: none !important; }
-
-.li-current { display: none !important; }
 }
 
 @media (max-width: 767px) {
@@ -236,7 +240,10 @@ a.homer { background: #e6e6e4; }
 
 .respo { margin-bottom: 5px; }
 
-.menu { display: none; }
+.menu {
+    width: 100% !important;
+    display: none;
+ }
 
 .responsive-menu { display: block; }
 
