@@ -70,6 +70,10 @@ body {
     margin-bottom: 5px;
 }
 
+.article-hover {
+    cursor: pointer;
+}
+
 .article-hover:hover {
     background: #555555;
 }
