@@ -162,14 +162,13 @@ a:focus {
 }
 
 .rehor-title  {
-    text-transform: uppercase;
     padding-top: 20px;
     padding-left: 20px;
     margin: 0;
     width: 100%;
     background: rgb(47,47,47);
     height: 60px;
-
+    
 }
 
 .rehor-title-date {
@@ -181,9 +180,17 @@ a:focus {
     color: #eeeeee;
 }
 
-.rehor-title h4 {
+.rehor-title h4, .menu li h4 {
+    font-size: 14px;
     font-weight: 600;
     color: #eeeeee;
+}
+
+.menu li h4 {
+    line-height: inherit;
+}
+
+.rehor-header {
 }
 
 .rehor-title h6 {

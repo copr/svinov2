@@ -35,11 +35,6 @@ li.li-ikona a.homer {
     font-size: 1.27em;
 }
 
-.menu li {
-
-
-}
-
 .menu li a {
 /*  color: #060606; */
   font-weight: 600;
@@ -53,7 +48,7 @@ li.li-ikona a.homer {
 }
 
 .side-border {
-/*    display: none; */
+    display: none; 
     padding-top: 2px;
     padding-bottom: 2px;
     position: absolute;
@@ -62,6 +57,15 @@ li.li-ikona a.homer {
     right: 0;
     top: 0;
     background: rgb(121, 121, 121);
+}
+
+.menu li.li-border {
+    padding:0;
+    background: rgb(121, 121, 121);
+    width: 1px;
+
+    margin-top: 5px;
+    margin-bottom: 5px;
 }
 
 .border {
