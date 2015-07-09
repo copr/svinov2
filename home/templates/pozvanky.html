@@ -67,28 +67,28 @@ document.googleIds.push('{{ calendar.googleId }}');
   {% if posts.0 %}
       <div class="col-md-3" onclick="redirect('/aktuality/{{ posts.0.id }}')" >
 	<div class="article article-hover to-clamp shadow">
-	  {% include "sub_article.html" with post=posts.0 %}
+	  {% include "sub_article.html" with post=posts.0  current_section=current_section %}
 	</div>
      </div>
   {% endif %}
   {% if posts.1 %}
       <div class="col-md-3" onclick="redirect('/aktuality/{{ posts.1.id }}')">
 	<div class="article article-hover to-clamp shadow">
-	  {% include "sub_article.html" with post=posts.1 %}
+	  {% include "sub_article.html" with post=posts.1  current_section=current_section %}
 	</div>
       </div>
   {% endif %}
-  {% if posts.2 %}
+  {% if posts.2 %}pp
     <div class="col-md-3" onclick="redirect('/aktuality/{{ posts.2.id }}')">
       <div class="article article-hover to-clamp shadow">
-	{% include "sub_article.html" with post=posts.2 %}
+	{% include "sub_article.html" with post=posts.2  current_section=current_section %}
       </div>
   </div>
   {% endif %}
   {% if posts.3 %}
   <div class="col-md-3" onclick="redirect('/aktuality/{{ posts.3.id }}')">
     <div class="article article-hover to-clamp shadow">
-      {% include "sub_article.html" with post=posts.3 %}
+      {% include "sub_article.html" with post=posts.3  current_section=current_section %}
     </div>
   </div>
   {% endif %}

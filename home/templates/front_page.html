@@ -12,7 +12,7 @@
   {% if posts.0 %}
   <div class="col-md-{% if calendars %}6{% else %}12{% endif%}" onclick="redirect('/aktuality/{{ posts.0.id }}')">
     <div class="article article-hover main-article shadow to-clamp-big">
-      {% include 'sub_article.html' with post=posts.0 %}
+      {% include 'sub_article.html' with post=posts.0 current_section=current_section %}
     </div>
   </div>
   {% endif %}
@@ -24,28 +24,28 @@
   {% if posts.1 %}
   <div class="col-md-3" onclick="redirect('/aktuality/{{ posts.1.id }}')">
     <div class="article article-hover shadow to-clamp">
-      {% include 'sub_article.html' with post=posts.1 %}
+      {% include 'sub_article.html' with post=posts.1 current_section=current_section %}
     </div>
   </div>
   {% endif %}
   {% if posts.2 %}
   <div class="col-md-3" onclick="redirect('/aktuality/{{ posts.2.id }}')">
     <div class="article article-hover shadow to-clamp">
-      {% include 'sub_article.html' with post=posts.2 %}
+      {% include 'sub_article.html' with post=posts.2 current_section=current_section %}
     </div>
   </div>
   {% endif %}
   {% if posts.3 %}
   <div class="col-md-3" onclick="redirect('/aktuality/{{ posts.3.id }}')">
     <div class="article article-hover shadow to-clamp">
-      {% include 'sub_article.html' with post=posts.3 %}
+      {% include 'sub_article.html' with post=posts.3 current_section=current_section %}
     </div>
   </div>
   {% endif %}
   {% if posts.4 %}
   <div class="col-md-3" onclick="redirect('/aktuality/{{ posts.4.id }}')">
     <div class="article article-hover shadow to-clamp">
-      {% include 'sub_article.html' with post=posts.4 %}
+      {% include 'sub_article.html' with post=posts.4 current_section=current_section %}
     </div>
   </div>
   {% endif %}

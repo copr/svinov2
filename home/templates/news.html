@@ -4,7 +4,7 @@
 <div class="row">
   <div class="col-xs-12" onclick="redirect('/{{ post.section }}/aktuality/{{ post.id }}')">
     <div class="article article-hover shadow">
-      {% include "sub_article.html" with post=post %}
+      {% include "sub_article.html" with post=post current_section=current_section %}
     </div>
   </div>
 </div>
