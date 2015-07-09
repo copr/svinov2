@@ -22,8 +22,9 @@ from django.conf import settings
 from home import urls as home_urls
 
 urlpatterns = [
+    url(r'^ckeditor/', include('ckeditor.urls')),
     url(r'^admin/', include(admin.site.urls)),
     url(r'^', include(home_urls)),
-    url(r'^ckeditor/', include('ckeditor.urls')),
+
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
