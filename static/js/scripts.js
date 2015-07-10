@@ -49,3 +49,17 @@ function handleCalendar() {
 function redirect(url) {
     window.location.href = url;
 }
+
+function getTime(event) {
+    if (typeof event.start.dateTime === 'undefined') {
+	console.log('undef');
+	return '';
+    }
+    date = new Date(event.start.dateTime);
+    hours = date.getHours();
+    minutes = date.getMinutes();
+    if (parseInt(minutes) < 10) {
+	minutes = "0" + minutes;
+    }
+    return hours + ":" + minutes;
+}

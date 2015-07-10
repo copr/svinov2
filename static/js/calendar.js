@@ -14,16 +14,18 @@ Calendar.prototype.loadEvents = function(calendarId, maxResults) {
 	    'showDeleted': false
 	}
     });
+
     request.then(function(resp) {
 	resp.result.items.forEach(function(i) {
+	    console.log(i);
 	    if (typeof i.start.date === 'undefined') {
 		var date = new Date(i.start.dateTime);
 	    } else {
 		var date = new Date(i.start.date);
 	    }
 	    $('.calendar img').remove();
-	    var li = $('<li></li>').text(date.getDate() + '. ' + (parseInt(date.getMonth()) + 1) + '. ' + (parseInt(date.getFullYear())) +
-				' | ' + i.summary)
+	    var li = $('<li></li>').text(date.getDate() + '. ' + (parseInt(date.getMonth()) + 1) + '. ' + date.getFullYear()
+					 + ' ' + getTime(i) + ' | ' + i.summary)
 		          .click(function() {window.open(i.htmlLink);})
                           .appendTo('.calendar ul');
 	    var a = $("<a></a>", {'href': i.htmlLink, 'target': '_blank'}).appendTo(li);
@@ -34,6 +36,8 @@ Calendar.prototype.loadEvents = function(calendarId, maxResults) {
 	});
     });
 };
+
+
 
 
 Calendar.prototype.getEvents = function() {
