@@ -22,9 +22,15 @@ Calendar.prototype.loadEvents = function(calendarId, maxResults) {
 		var date = new Date(i.start.date);
 	    }
 	    $('.calendar img').remove();
-	    $('.calendar ul').append('<li>' + date.getDate() + '. ' + (parseInt(date.getMonth()) + 1) + '. ' + 
-				     (parseInt(date.getFullYear())) + ' | ' + i.summary + /*' | ' + i.location + */ 
-				     '<a href=' + i.htmlLink + " target='_blank'><i class='fa fa-info'</a>" + '</li>');
+	    var li = $('<li></li>').text(date.getDate() + '. ' + (parseInt(date.getMonth()) + 1) + '. ' + (parseInt(date.getFullYear())) +
+				' | ' + i.summary)
+		          .click(function() {window.open(i.htmlLink);})
+                          .appendTo('.calendar ul');
+	    var a = $("<a></a>", {'href': i.htmlLink, 'target': '_blank'}).appendTo(li);
+	    $('<i></i>', {'class': 'fa fa-info'}).appendTo(a);
+	    // $('.calendar ul').append("<li>" + date.getDate() + '. ' + (parseInt(date.getMonth()) + 1) + '. ' + 
+	    // 			     (parseInt(date.getFullYear())) + ' | ' + i.summary + /*' | ' + i.location + */ 
+	    // 			     '<a href=' + i.htmlLink + " target='_blank'><i class='fa fa-info'</a>" + '</li>');
 	});
     });
 };
