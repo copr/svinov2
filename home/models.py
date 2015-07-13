@@ -24,7 +24,7 @@ class Column(models.Model):
 
 class Section(models.Model):
     name = models.CharField(max_length = 100, verbose_name="Název sekce")
-    url = models.CharField(max_length = 100, help_text=HELP_TEXT[1], blank=True)
+    url = models.CharField(max_length = 100, help_text=HELP_TEXT[1], blank=True, unique=True)
     parent_section = models.ForeignKey('self', null = True, blank = True, verbose_name="Název rodičovské sekce", help_text = HELP_TEXT[0])
     #picaty nazev, vymyslet lepsi
     roll_column = models.ForeignKey(Column, null = True, blank = True, verbose_name="Sloupec", help_text = HELP_TEXT[2])
@@ -33,12 +33,14 @@ class Section(models.Model):
         return self.name
 
     def clean(self):
-        if self.roll_column != None and self.parent_section != None:
+        if self.roll_column != None and self.parent_section != None :
             raise ValidationError("Sloupec a rodicovska sekce nemuzou byt obe nenulove") 
+        if exists_url(self.url, 0):
+            raise ValidationError("Zadané url už existuje, zvolte prosím jiné")
 
     def save(self, *args, **kwargs):
         if self.url == '':
-            self.url = unidecode(self.name).replace(' ', '_')
+            self.url = create_unique_url(unidecode(self.name).replace(' ', '_'))
         super(Section, self).save(*args, **kwargs)
 
     class Meta:
@@ -48,20 +50,22 @@ class Section(models.Model):
 
 class News(models.Model):
     name = models.CharField(max_length = 100)
-    url = models.CharField(max_length = 100, help_text=HELP_TEXT[1], blank=True)
+    url = models.CharField(max_length = 100, help_text=HELP_TEXT[1], blank=True, unique=True)
     section = models.ForeignKey(Section, null = True, blank = True, verbose_name="Název rodičovské sekce")
     column = models.ForeignKey(Column, null = True, blank = True, verbose_name="Sloupec", help_text = HELP_TEXT[2])
 
     def clean(self):
         if self.column == None and self.section == None:
             raise ValidationError("Sloupec a rodicovska sekce nemuzou byt obe nulove") 
+        if exists_url(self.url, 1):
+            raise ValidationError("Zadané url už existuje, zvolte prosím jiné")
 
     def __str__(self):
         return self.name
 
     def save(self, *args, **kwargs):
         if self.url == '':
-            self.url = unidecode(self.name).replace(' ', '_')
+            self.url = create_unique_url(unidecode(self.name).replace(' ', '_'))
         super(News, self).save(*args, **kwargs)
 
     class Meta:
@@ -70,7 +74,7 @@ class News(models.Model):
 
 class StaticArticle(models.Model):
     name = models.CharField(max_length = 100, verbose_name="Název statického článku")
-    url = models.CharField(max_length = 100, help_text=HELP_TEXT[1], blank=True)
+    url = models.CharField(max_length = 100, help_text=HELP_TEXT[1], blank=True, unique=True)
     text = RichTextField()
     section = models.ForeignKey(Section, null = True, blank = True, verbose_name="Název rodičovské sekce")
     column = models.ForeignKey(Column, null = True, blank = True, verbose_name="Sloupec", help_text = HELP_TEXT[2])
@@ -78,13 +82,15 @@ class StaticArticle(models.Model):
     def clean(self):
         if self.column == None and self.section == None:
             raise ValidationError("Sloupec a rodicovska sekce nemuzou byt obe nulove") 
+        if exists_url(self.url, 2):
+            raise ValidationError("Zadané url už existuje, zvolte prosím jiné")
 
     def __str__(self):
         return self.name
 
     def save(self, *args, **kwargs):
         if self.url == '':
-            self.url = unidecode(self.name).replace(' ', '_')
+            self.url = create_unique_url(unidecode(self.name).replace(' ', '_'))
         super(StaticArticle, self).save(*args, **kwargs)
 
     class Meta:
@@ -163,3 +169,20 @@ class Calendar(models.Model):
     class Meta:
         verbose_name = "Kalendář"
         verbose_name_plural = "Kalendáře"
+
+def exists_url(url, model):
+    if model == 0:
+        return Section.objects.exclude(url=url).filter(url=url).exists() or StaticArticle.objects.filter(url=url).exists() or News.objects.filter(url=url).exists()
+    elif model == 1:
+        return Section.objects.filter(url=url).exists() or StaticArticle.objects.exclude(url=url).filter(url=url).exists() or News.objects.filter(url=url).exists()
+    elif model == 2:
+        return Section.objects.filter(url=url).exists() or StaticArticle.objects.filter(url=url).exists() or News.objects.exclude(url=url).filter(url=url).exists()
+    elif model == 3:
+        return Section.objects.filter(url=url).exists() or StaticArticle.objects.filter(url=url).exists() or News.objects.filter(url=url).exists()
+    else:
+        raise Exception('Chyba v programovani')
+    
+def create_unique_url(url):
+    if exists_url(url, 3):
+        return create_unique_url(url + '1')
+    return url

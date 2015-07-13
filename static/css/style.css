@@ -43,11 +43,10 @@ body {
 .article {
     background: #404040;
     color: white;
-    height: 210px;
     margin-bottom: 10px;
     transition: background 1s;
 /*    line-height: 130%; */
-    overflow: hidden;
+
     display: block;
 }
 
@@ -71,6 +70,8 @@ body {
 }
 
 .article-hover {
+    height: 210px;
+    overflow: hidden;
     cursor: pointer;
 }
 

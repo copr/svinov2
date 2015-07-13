@@ -20,9 +20,9 @@ $(document).ready(function(){
     }
   });
 
-  $('.to-clamp').succinct({
-      size:450
-  });
+    $('.to-clamp').succinct({
+	size:350
+    });
 
 
   $('.menu li.section').hover(function() {

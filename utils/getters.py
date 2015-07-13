@@ -22,9 +22,6 @@ def get_current_section(section):
 def get_all_posts():
     return Article.objects.all()
 
-def get_all_posts():
-    return Article.objects.all()
-
 def get_sections(section):
     #main_section je objekt ktery reprezentuje sekci identifikovanou stringem section
     main_section = get_object_or_404(Section, url = section)
@@ -80,3 +77,4 @@ def get_sponsors():
 
 def get_contacts():
     return Contact.objects.all()
+
