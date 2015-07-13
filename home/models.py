@@ -34,9 +34,11 @@ class Section(models.Model):
 
     def clean(self):
         if self.roll_column != None and self.parent_section != None :
-            raise ValidationError("Sloupec a rodicovska sekce nemuzou byt obe nenulove") 
+            raise ValidationError("Sloupec a rodicovska sekce nemuzou byt obe nenulove")
         if exists_url(self.url, 0):
             raise ValidationError("Zadané url už existuje, zvolte prosím jiné")
+        if self.roll_column == None and self.parent_section == None and self.name != 'index':
+            raise ValidationError("Sekce musí mít definovanou nadsekci nebo sloupec")
 
     def save(self, *args, **kwargs):
         if self.url == '':
@@ -55,6 +57,8 @@ class News(models.Model):
     column = models.ForeignKey(Column, null = True, blank = True, verbose_name="Sloupec", help_text = HELP_TEXT[2])
 
     def clean(self):
+        if self.roll_column != None and self.parent_section != None :
+            raise ValidationError("Sloupec a rodicovska sekce nemuzou byt obe nenulove")
         if self.column == None and self.section == None:
             raise ValidationError("Sloupec a rodicovska sekce nemuzou byt obe nulove") 
         if exists_url(self.url, 1):
@@ -80,6 +84,8 @@ class StaticArticle(models.Model):
     column = models.ForeignKey(Column, null = True, blank = True, verbose_name="Sloupec", help_text = HELP_TEXT[2])
 
     def clean(self):
+        if self.roll_column != None and self.parent_section != None :
+            raise ValidationError("Sloupec a rodicovska sekce nemuzou byt obe nenulove")
         if self.column == None and self.section == None:
             raise ValidationError("Sloupec a rodicovska sekce nemuzou byt obe nulove") 
         if exists_url(self.url, 2):
@@ -177,6 +183,7 @@ def exists_url(url, model):
         return Section.objects.filter(url=url).exists() or StaticArticle.objects.filter(url=url).exists() or News.objects.exclude(url=url).filter(url=url).exists()
     elif model == 2:
         return Section.objects.filter(url=url).exists() or StaticArticle.objects.exclude(url=url).filter(url=url).exists() or News.objects.filter(url=url).exists()
+
     elif model == 3:
         return Section.objects.filter(url=url).exists() or StaticArticle.objects.filter(url=url).exists() or News.objects.filter(url=url).exists()
     else:
