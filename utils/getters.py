@@ -32,7 +32,7 @@ def get_sections(section):
     other_sections = []
     for s in Section.objects.all().filter(parent_section = main_section):
         other_sections.append({'name': s.name, 'url': s.url})
-    sections = get_news(main_section) + other_sections + get_statics(section) + get_columns(section)
+    sections = get_news(main_section) + other_sections + get_columns(section) + get_statics(section)
     return sections
 
 # Tady to chce poradne promyslet a predelat
