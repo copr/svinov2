@@ -101,6 +101,10 @@ body {
     opacity: 0.3;
 }
 
+.static-foooter .container {
+    margin-bottom: 20px;
+}
+
 .calendar {
     padding: 0;
     background: #404040;
