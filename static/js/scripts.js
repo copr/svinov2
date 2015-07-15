@@ -52,7 +52,6 @@ function redirect(url) {
 
 function getTime(event) {
     if (typeof event.start.dateTime === 'undefined') {
-	console.log('undef');
 	return '';
     }
     date = new Date(event.start.dateTime);

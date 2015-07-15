@@ -17,7 +17,6 @@ Calendar.prototype.loadEvents = function(calendarId, maxResults) {
 
     request.then(function(resp) {
 	resp.result.items.forEach(function(i) {
-	    console.log(i);
 	    if (typeof i.start.date === 'undefined') {
 		var date = new Date(i.start.dateTime);
 	    } else {

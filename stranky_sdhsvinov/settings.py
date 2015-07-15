@@ -123,7 +123,7 @@ ALLOWED_HOSTS = (
     'localhost',
 )
 
-CKEDITOR_UPLOAD_PATH = "uploads/"
+CKEDITOR_UPLOAD_PATH = "user_uploads/"
 
 
 THUMBNAIL_PROCESSORS = (

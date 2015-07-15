@@ -57,7 +57,7 @@ class News(models.Model):
     column = models.ForeignKey(Column, null = True, blank = True, verbose_name="Sloupec", help_text = HELP_TEXT[2])
 
     def clean(self):
-        if self.roll_column != None and self.parent_section != None :
+        if self.column != None and self.parent_section != None :
             raise ValidationError("Sloupec a rodicovska sekce nemuzou byt obe nenulove")
         if self.column == None and self.section == None:
             raise ValidationError("Sloupec a rodicovska sekce nemuzou byt obe nulove") 
@@ -84,7 +84,7 @@ class StaticArticle(models.Model):
     column = models.ForeignKey(Column, null = True, blank = True, verbose_name="Sloupec", help_text = HELP_TEXT[2])
 
     def clean(self):
-        if self.roll_column != None and self.parent_section != None :
+        if self.column != None and self.parent_section != None :
             raise ValidationError("Sloupec a rodicovska sekce nemuzou byt obe nenulove")
         if self.column == None and self.section == None:
             raise ValidationError("Sloupec a rodicovska sekce nemuzou byt obe nulove") 
