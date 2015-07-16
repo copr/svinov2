@@ -9,6 +9,7 @@ HELP_TEXT = (
     "Jméno sekce, ve které bude prvek součástí menu",
     "Nechcete-li specifikovat url, nechte prázdné",
     "Vyjíždecí sloupec, ve kterém se objeví link na tuto sekci",
+    "Články s vyšší vahou se zobrazí dříve než články s nižší vahou",
 )
 
 class Column(models.Model):
@@ -108,6 +109,7 @@ class Article(models.Model):
     text = RichTextField()
     news = models.ForeignKey(News, verbose_name="Aktuality")
     date = models.DateTimeField(auto_now_add=True)
+    weight = models.IntegerField(default=0, verbose_name="Váha", help_text=HELP_TEXT[3])
 
     def __str__(self):
         return self.name
