@@ -17,7 +17,7 @@ def index(request):
     calendars = get_calendars('index')
     sponsors = get_sponsors()
     contacts = get_contacts()
-    return render(request, 'pozvanky.html', {'sections': sections, 'posts': posts, 'size': 1/len(sections)*PERCENT,
+    return render(request, 'pozvanky.html', {'sections': sections, 'posts': posts,
                                              'current_section': '', 'invitations': invitations, 'calendars': calendars,
                                              'sponsors': sponsors, 'contacts': contacts})
 
@@ -28,7 +28,7 @@ def section(request, section):
     calendars = get_calendars(section)
     sponsors = get_sponsors()
     contacts = get_contacts()
-    return render(request, 'front_page.html', {'sections': sections, 'posts': posts, 'size': 1/len(sections)*PERCENT,
+    return render(request, 'front_page.html', {'sections': sections, 'posts': posts,
                                                'current_section': cur_section, 'calendars': calendars, 'sponsors': sponsors,
                                                'contacts': contacts})
 
@@ -38,7 +38,7 @@ def static(request, section, static):
     cur_section = get_current_section(section)
     sponsors = get_sponsors()
     contacts = get_contacts()
-    return render(request, 'article.html', {'sections': sections, 'article': static, 'size': 1/len(sections)*PERCENT,
+    return render(request, 'article.html', {'sections': sections, 'article': static,
                                            'current_section': cur_section, 'sponsors': sponsors, 'contacts': contacts})
 
 def news_from_front(request):
@@ -47,7 +47,7 @@ def news_from_front(request):
     cur_section = get_current_section('index')
     sponsors = get_sponsors()
     contacts = get_contacts()
-    return render(request, 'news.html', {'sections': sections, 'posts': posts, 'size': 1/len(sections)*PERCENT, 
+    return render(request, 'news.html', {'sections': sections, 'posts': posts,
                                          'current_section': cur_section, 'sponsors': sponsors, 'contacts': contacts})
 
 def news(request, section):
@@ -56,8 +56,8 @@ def news(request, section):
     cur_section = get_current_section(section)
     sponsors = get_sponsors()
     contacts = get_contacts()
-    return render(request, 'news.html', {'sections': sections, 'posts': posts, 'size': 1/len(sections)*PERCENT,
-                                         'current_section': cur_section, 'sponsors': sponsors, 'contacts': contacts})
+    return render(request, 'news.html', {'sections': sections, 'posts': posts, 'current_section': cur_section,
+                                         'sponsors': sponsors, 'contacts': contacts})
 
 def article(request, section, article_id):
     sections = get_sections(section)
@@ -65,9 +65,21 @@ def article(request, section, article_id):
     cur_section = get_current_section(section) 
     sponsors = get_sponsors()
     contacts = get_contacts()
-    return render(request, 'article.html', {'sections': sections, 'article': article, 'size': 1/len(sections)*PERCENT,
-                                            'current_section': cur_section, 'sponsors': sponsors, 'contacts': contacts})
+    return render(request, 'article.html', {'sections': sections, 'article': article, 'current_section': cur_section, 
+                                            'sponsors': sponsors, 'contacts': contacts})
 
+def article_range(request, section, start, end):
+    sections = get_sections(section)
+    posts = get_posts(section)[int(start):int(end)]
+    cur_section = get_current_section(section)
+    sponsors = get_sponsors()
+    contacts = get_contacts()
+    return render(request, 'news.html', {'sections': sections, 'posts': posts, 'current_section': cur_section,
+                                         'sponsors': sponsors, 'contacts': contacts})
+
+def article_range_from_front(request, start, end):
+    return article_range(request, 'index', start, end)
+    
 def article_from_front(request, article_id): 
     return article(request, 'index', article_id)
 

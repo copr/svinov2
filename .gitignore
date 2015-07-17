@@ -10,3 +10,4 @@ activate_virtual
 media_files
 static/user_uploads
 stranky_sdhsvinov/settings.py
+migrations

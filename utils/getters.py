@@ -6,6 +6,8 @@ def get_article(article_id):
     return Article.objects.get(id = article_id)
 
 def get_posts(section):
+    if section == 'index':
+        return get_all_posts()
     main_section = Section.objects.get(url = section)
     if News.objects.all().filter(section = main_section).exists():
         news = News.objects.get(section = main_section)
