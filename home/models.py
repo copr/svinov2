@@ -9,6 +9,7 @@ HELP_TEXT = (
     "Jméno sekce, ve které bude prvek součástí menu",
     "Nechcete-li specifikovat url, nechte prázdné",
     "Vyjíždecí sloupec, ve kterém se objeví link na tuto sekci",
+    "Články s vyšší vahou se zobrazí dříve než články s nižší vahou",
 )
 
 class Column(models.Model):
@@ -52,25 +53,10 @@ class Section(models.Model):
 
 class News(models.Model):
     name = models.CharField(max_length = 100)
-    url = models.CharField(max_length = 100, help_text=HELP_TEXT[1], blank=True, unique=True)
-    section = models.ForeignKey(Section, null = True, blank = True, verbose_name="Název rodičovské sekce")
-    column = models.ForeignKey(Column, null = True, blank = True, verbose_name="Sloupec", help_text = HELP_TEXT[2])
-
-    def clean(self):
-        if self.column != None and self.parent_section != None :
-            raise ValidationError("Sloupec a rodicovska sekce nemuzou byt obe nenulove")
-        if self.column == None and self.section == None:
-            raise ValidationError("Sloupec a rodicovska sekce nemuzou byt obe nulove") 
-        if exists_url(self.url, 1):
-            raise ValidationError("Zadané url už existuje, zvolte prosím jiné")
+    section = models.ForeignKey(Section, verbose_name="Název rodičovské sekce", default=1)
 
     def __str__(self):
         return self.name
-
-    def save(self, *args, **kwargs):
-        if self.url == '':
-            self.url = create_unique_url(unidecode(self.name).replace(' ', '_'))
-        super(News, self).save(*args, **kwargs)
 
     class Meta:
         verbose_name = "Aktuality"
@@ -108,6 +94,7 @@ class Article(models.Model):
     text = RichTextField()
     news = models.ForeignKey(News, verbose_name="Aktuality")
     date = models.DateTimeField(auto_now_add=True)
+    weight = models.IntegerField(default=0, verbose_name="Váha", help_text=HELP_TEXT[3])
 
     def __str__(self):
         return self.name
@@ -183,7 +170,6 @@ def exists_url(url, model):
         return Section.objects.filter(url=url).exists() or StaticArticle.objects.filter(url=url).exists() or News.objects.exclude(url=url).filter(url=url).exists()
     elif model == 2:
         return Section.objects.filter(url=url).exists() or StaticArticle.objects.exclude(url=url).filter(url=url).exists() or News.objects.filter(url=url).exists()
-
     elif model == 3:
         return Section.objects.filter(url=url).exists() or StaticArticle.objects.filter(url=url).exists() or News.objects.filter(url=url).exists()
     else:

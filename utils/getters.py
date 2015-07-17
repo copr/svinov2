@@ -6,10 +6,12 @@ def get_article(article_id):
     return Article.objects.get(id = article_id)
 
 def get_posts(section):
+    if section == 'index':
+        return get_all_posts()
     main_section = Section.objects.get(url = section)
     if News.objects.all().filter(section = main_section).exists():
         news = News.objects.get(section = main_section)
-        posts = Article.objects.all().filter(news = news)
+        posts = Article.objects.all().filter(news = news).order_by('-weight', '-date')
     else:
         posts = []
     for post in posts:
@@ -20,7 +22,7 @@ def get_current_section(section):
     return Section.objects.get(url = section)
 
 def get_all_posts():
-    return Article.objects.all()
+    return Article.objects.all().order_by('-weight', '-date')
 
 def get_sections(section):
     #main_section je objekt ktery reprezentuje sekci identifikovanou stringem section
