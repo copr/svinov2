@@ -165,13 +165,14 @@ class Calendar(models.Model):
 
 def exists_url(url, model):
     if model == 0:
-        return Section.objects.exclude(url=url).filter(url=url).exists() or StaticArticle.objects.filter(url=url).exists() or News.objects.filter(url=url).exists()
+        return Section.objects.exclude(url=url).filter(url=url).exists() or StaticArticle.objects.filter(url=url).exists() 
     elif model == 1:
-        return Section.objects.filter(url=url).exists() or StaticArticle.objects.filter(url=url).exists() or News.objects.exclude(url=url).filter(url=url).exists()
+        raise Exception('tohle uz by se nemlo zavolat')
+        return Section.objects.filter(url=url).exists() or StaticArticle.objects.filter(url=url).exists()
     elif model == 2:
-        return Section.objects.filter(url=url).exists() or StaticArticle.objects.exclude(url=url).filter(url=url).exists() or News.objects.filter(url=url).exists()
+        return Section.objects.filter(url=url).exists() or StaticArticle.objects.exclude(url=url).filter(url=url).exists() 
     elif model == 3:
-        return Section.objects.filter(url=url).exists() or StaticArticle.objects.filter(url=url).exists() or News.objects.filter(url=url).exists()
+        return Section.objects.filter(url=url).exists() or StaticArticle.objects.filter(url=url).exists() 
     else:
         raise Exception('Chyba v programovani')
     
