@@ -38,9 +38,7 @@ $(document).ready(function(){
 
 function handleCalendar() {
     var calendar = new Calendar();
-    document.googleIds.forEach(function(id) {
-	calendar.loadEvents(id);
-    });
+    calendar.loadEvents(document.googleIds, 7);
     if (!document.googleIds.length) {
 	$('.calendar img').remove();
     }
