@@ -64,10 +64,13 @@ function addEventsToDom(events, numOfResults) {
 	} else {
 	    var date = new Date(ev.start.date);
 	}
-	var li = $('<li></li>').text(date.getDate() + '. ' + (parseInt(date.getMonth()) + 1) + '. ' + date.getFullYear()
+	var rectangle = $('<div></div>').addClass('rectangle');
+	var li = $('<li></li>')
+	    .text(date.getDate() + '. ' + (parseInt(date.getMonth()) + 1) + '. ' + date.getFullYear()
 				     + ' ' + getTime(ev) + ' | ' + ev.summary)
 	    .click(function() {window.open(ev.htmlLink);})
 	    .appendTo('.calendar ul');
+	rectangle.appendTo(li);
 	var a = $("<a></a>", {'href': ev.htmlLink, 'target': '_blank'}).appendTo(li);
 	$('<i></i>', {'class': 'fa fa-info'}).appendTo(a);
     });
