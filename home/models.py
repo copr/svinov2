@@ -9,12 +9,13 @@ HELP_TEXT = (
     "Jméno sekce, ve které bude prvek součástí menu",
     "Nechcete-li specifikovat url, nechte prázdné",
     "Vyjíždecí sloupec, ve kterém se objeví link na tuto sekci",
-    "Články s vyšší vahou se zobrazí dříve než články s nižší vahou",
+    "Sekce s vyšší vahou se zobrazí dříve než sekce s nižší vahou",
 )
 
 class Column(models.Model):
     name = models.CharField(max_length = 100, verbose_name="Název")
     parent_section = models.ForeignKey('Section', null = False, verbose_name="Název rodičovské sekce", help_text = HELP_TEXT[0])
+    weight = models.IntegerField(default=0, verbose_name="Váha", help_text=HELP_TEXT[3])
 
     def __str__(self):
         return self.name
@@ -29,6 +30,7 @@ class Section(models.Model):
     parent_section = models.ForeignKey('self', null = True, blank = True, verbose_name="Název rodičovské sekce", help_text = HELP_TEXT[0])
     #picaty nazev, vymyslet lepsi
     roll_column = models.ForeignKey(Column, null = True, blank = True, verbose_name="Sloupec", help_text = HELP_TEXT[2])
+    weight = models.IntegerField(default=0, verbose_name="Váha", help_text=HELP_TEXT[3])
 
     def __str__(self):
         return self.name
@@ -68,6 +70,7 @@ class StaticArticle(models.Model):
     text = RichTextField()
     section = models.ForeignKey(Section, null = True, blank = True, verbose_name="Název rodičovské sekce")
     column = models.ForeignKey(Column, null = True, blank = True, verbose_name="Sloupec", help_text = HELP_TEXT[2])
+    weight = models.IntegerField(default=0, verbose_name="Váha", help_text=HELP_TEXT[3])
 
     def clean(self):
         if self.column != None and self.section != None :

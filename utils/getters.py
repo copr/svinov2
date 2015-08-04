@@ -30,8 +30,9 @@ def get_sections(section):
 #    main_section = Section.objects.get(url=section)
     other_sections = []
     for s in Section.objects.all().filter(parent_section = main_section):
-        other_sections.append({'name': s.name, 'url': s.url})
+        other_sections.append({'name': s.name, 'url': s.url, 'weight': s.weight})
     sections = get_news(main_section) + other_sections + get_columns(section) + get_statics(section)
+    sections = sorted(sections, key=lambda section: -section['weight'])
     return sections
 
 # Tady to chce poradne promyslet a predelat
@@ -45,7 +46,7 @@ def get_columns(section):
         for s in  StaticArticle.objects.all().filter(column = column):
             statics.append({'name': s.name, 'url': main_section.url + '/' + s.url})
         subsections = list(sections) + list(statics)
-        columns.append({'name': column.name, 'url': '#', 'subsections': subsections})
+        columns.append({'name': column.name, 'url': '#', 'subsections': subsections, 'weight': column.weight})
     return columns
 
 def get_statics(section):
@@ -53,7 +54,7 @@ def get_statics(section):
 #    main_section = Section.objects.get(url=section)
     statics = []
     for s in StaticArticle.objects.all().filter(section = main_section):
-        statics.append({'name': s.name, 'url': main_section.url + '/' + s.url})
+        statics.append({'name': s.name, 'url': main_section.url + '/' + s.url, 'weight': s.weight})
     return statics
 
 def get_static(static):
