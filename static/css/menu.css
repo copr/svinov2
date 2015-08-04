@@ -30,6 +30,24 @@ nav {
     transition: background-color 0.5s ease;
  }
 
+.menu li.li-current:hover {
+    background: rgb(64, 64, 64);
+}
+
+.menu li.li-current:hover>a {
+    background: rgb(64, 64, 64);
+
+}
+
+a.current:hover {
+    color: #eee;
+}
+
+a:current:focus {
+    color: #eee;
+}
+
+
 li.li-ikona a.homer {
     padding: 5px 10px;
 }
@@ -84,10 +102,10 @@ li.li-ikona a.homer {
     width: 100%;
 }
 
-.menu li a:hover,
-.menu li:hover>a {
-  background: rgb(121, 121, 121); /*#FFEA03; */
-}
+/* .menu li a:hover, */
+/* .menu li:hover>a { */
+/*   background: rgb(121, 121, 121); /\*#FFEA03; *\/ */
+/* } */
 
 .menu li:hover > .border {
     background: rgb(184, 170, 56);

@@ -8,6 +8,12 @@
   src: url("fonts/OpenSans-Regular.ttf");
 }
 
+.rectangle {
+    width: 10px;
+    height: 10px;
+    background: black;
+}
+
 html {overflow-y: scroll;}
 
 body {
