@@ -1,4 +1,5 @@
 
+
 function Calendar() {
     gapi.client.setApiKey('AIzaSyDZVBv9Ralzvv-bbdEuWbMQCcrr4B-cYwM');
     this.events = Array();
@@ -65,12 +66,13 @@ function addEventsToDom(events, numOfResults) {
 	    var date = new Date(ev.start.date);
 	}
 	var rectangle = $('<div></div>').addClass('rectangle');
+	var span = $('<span></span>').text(date.getDate() + '. ' + (parseInt(date.getMonth()) + 1) + '. ' + date.getFullYear()
+				     + ' ' + getTime(ev) + ' | ' + ev.summary);
 	var li = $('<li></li>')
-	    .text(date.getDate() + '. ' + (parseInt(date.getMonth()) + 1) + '. ' + date.getFullYear()
-				     + ' ' + getTime(ev) + ' | ' + ev.summary)
+	    .append(span);
 	    .click(function() {window.open(ev.htmlLink);})
 	    .appendTo('.calendar ul');
-	rectangle.appendTo(li);
+	// rectangle.prependTo(li);
 	var a = $("<a></a>", {'href': ev.htmlLink, 'target': '_blank'}).appendTo(li);
 	$('<i></i>', {'class': 'fa fa-info'}).appendTo(a);
     });
