@@ -69,7 +69,7 @@ function addEventsToDom(events, numOfResults) {
 	var span = $('<span></span>').text(date.getDate() + '. ' + (parseInt(date.getMonth()) + 1) + '. ' + date.getFullYear()
 				     + ' ' + getTime(ev) + ' | ' + ev.summary);
 	var li = $('<li></li>')
-	    .append(span);
+	    .append(span)
 	    .click(function() {window.open(ev.htmlLink);})
 	    .appendTo('.calendar ul');
 	// rectangle.prependTo(li);
