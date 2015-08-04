@@ -31,8 +31,7 @@ def get_sections(section):
     other_sections = []
     for s in Section.objects.all().filter(parent_section = main_section):
         other_sections.append({'name': s.name, 'url': s.url, 'weight': s.weight})
-    sections = get_news(main_section) + other_sections + get_columns(section) + get_statics(section)
-    sections = sorted(sections, key=lambda section: -section['weight'])
+    sections = get_news(main_section) + sorted(other_sections + get_columns(section) + get_statics(section), key=lambda section: -section['weight'])
     return sections
 
 # Tady to chce poradne promyslet a predelat
