@@ -72,7 +72,8 @@ def get_news(main_section):
 
 def get_calendars(section):
     main_section = get_object_or_404(Section, url = section)
-    return Calendar.objects.all().filter(section = main_section)
+    print(main_section.calendars.all())
+    return main_section.calendars.all()
 
 def get_sponsors():
     return Sponzor.objects.all()

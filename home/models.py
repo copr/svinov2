@@ -24,6 +24,17 @@ class Column(models.Model):
         verbose_name = "Sloupec"
         verbose_name_plural = "Sloupce"
 
+class Calendar(models.Model):
+    name = models.CharField(max_length = 255, verbose_name = "Název")
+    googleId = models.CharField(max_length = 1000)
+
+    def __str__(self):
+        return self.name
+
+    class Meta:
+        verbose_name = "Kalendář"
+        verbose_name_plural = "Kalendáře"
+
 class Section(models.Model):
     name = models.CharField(max_length = 100, verbose_name="Název sekce")
     url = models.CharField(max_length = 100, help_text=HELP_TEXT[1], blank=True, unique=True)
@@ -31,6 +42,7 @@ class Section(models.Model):
     #picaty nazev, vymyslet lepsi
     roll_column = models.ForeignKey(Column, null = True, blank = True, verbose_name="Sloupec", help_text = HELP_TEXT[2])
     weight = models.IntegerField(default=0, verbose_name="Váha", help_text=HELP_TEXT[3])
+    calendars = models.ManyToManyField(Calendar, verbose_name="Kalendáře")
 
     def __str__(self):
         return self.name
@@ -99,6 +111,7 @@ class Article(models.Model):
     date = models.DateTimeField(auto_now_add=True)
     weight = models.IntegerField(default=0, verbose_name="Váha", help_text=HELP_TEXT[3])
 
+
     def __str__(self):
         return self.name
 
@@ -154,17 +167,7 @@ class Contact(models.Model):
 
 #Tohle uz mozna presunout do vlastni appky (calendar)
 
-class Calendar(models.Model):
-    name = models.CharField(max_length = 255, verbose_name = "Název")
-    googleId = models.CharField(max_length = 1000)
-    section = models.ForeignKey(Section, verbose_name = "Sekce")
 
-    def __str__(self):
-        return self.name
-
-    class Meta:
-        verbose_name = "Kalendář"
-        verbose_name_plural = "Kalendáře"
 
 def exists_url(url, model):
     if model == 0:
