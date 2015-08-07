@@ -112,6 +112,7 @@ body {
 }
 
 .calendar {
+    position: relative;
     padding: 0;
     background: #404040;
     height: 268px;
@@ -164,10 +165,15 @@ a:focus {
     margin-bottom: 0px;
 }
 
+.calendar div.alt-calendar {
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+}
+
 .alt-calendar {
-    margin-top: 1px;
-    padding-top: 2px;
-    padding-bottom: 2px;
     text-align: center;
     background: #2F2F2F;
 }
