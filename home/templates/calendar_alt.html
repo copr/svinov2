@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block body %}
+<div class="row">
+  <div class="col-xs-12">
+    <div class="article shadow">
+      <div class="article-text alt-calendar-view">
+<iframe src="https://www.google.com/calendar/embed?height=600&amp;wkst=1&amp;bgcolor=%23FFFFFF&amp;{% for calendar in calendars %}src={{ calendar.googleId }}&amp;color=%23B1440E&amp;{% endfor %}ctz=Europe%2FPrague" style=" border-width:0 " width="800" height="600" frameborder="0" scrolling="no"></iframe>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

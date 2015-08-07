@@ -31,6 +31,16 @@ def section(request, section):
     return render(request, 'front_page.html', {'sections': sections, 'posts': posts,
                                                'current_section': cur_section, 'calendars': calendars, 'sponsors': sponsors,
                                                'contacts': contacts})
+def calendar(request, section):
+    sections = get_sections(section)
+    calendars = get_calendars(section)
+    cur_section = get_current_section(section)
+    sponsors = get_sponsors()
+    contacts = get_contacts()
+    return render(request, 'calendar_alt.html', {'sections': sections, 'current_section': cur_section, 'sponsors': sponsors, 
+                                                 'contacts': contacts, 'calendars': calendars})
+
+
 
 def static(request, section, static):
     sections = get_sections(section)

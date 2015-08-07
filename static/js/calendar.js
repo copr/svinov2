@@ -72,6 +72,7 @@ function addEventsToDom(events, numOfResults) {
 	    .append(span)
 	    .click(function() {window.open(ev.htmlLink);})
 	    .appendTo('.calendar ul');
+	$('.alt-calendar').removeClass('hidden');
 	// rectangle.prependTo(li);
 	var a = $("<a></a>", {'href': ev.htmlLink, 'target': '_blank'}).appendTo(li);
 	$('<i></i>', {'class': 'fa fa-info'}).appendTo(a);

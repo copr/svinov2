@@ -160,6 +160,22 @@ a:focus {
     outline-style: none;
 }
 
+.calendar ul {
+    margin-bottom: 0px;
+}
+
+.alt-calendar {
+    margin-top: 1px;
+    padding-top: 2px;
+    padding-bottom: 2px;
+    text-align: center;
+    background: #2F2F2F;
+}
+
+.alt-calendar-view {
+    text-align: center;
+}
+
 .calendar li:hover {
     background: rgb(128, 128, 128) !important;
 }
