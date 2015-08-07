@@ -10,9 +10,7 @@ class CalendarAdmin(admin.StackedInline):
     model = Calendar
 
 class SectionAdmin(admin.ModelAdmin):
-    inlines = [
-        CalendarAdmin,
-    ]
+    pass
 
 admin.site.register(Section, SectionAdmin)
 admin.site.register(File)
@@ -23,3 +21,4 @@ admin.site.register(Invitation, InvitationAdmin)
 admin.site.register(Sponzor)
 admin.site.register(Contact)
 admin.site.register(Column)
+admin.site.register(Calendar)
