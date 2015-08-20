@@ -42,7 +42,7 @@ class Section(models.Model):
     #picaty nazev, vymyslet lepsi
     roll_column = models.ForeignKey(Column, null = True, blank = True, verbose_name="Sloupec", help_text = HELP_TEXT[2])
     weight = models.IntegerField(default=0, verbose_name="Váha", help_text=HELP_TEXT[3])
-    calendars = models.ManyToManyField(Calendar, verbose_name="Kalendáře")
+    calendars = models.ManyToManyField(Calendar, verbose_name="Kalendáře", blank = True)
 
     def __str__(self):
         return self.name
