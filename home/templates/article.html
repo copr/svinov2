@@ -1,8 +1,8 @@
 {% extends 'base.html' %}
+{% load home_tags %}
 
 {% block facebook_title %}{{ article.name }}{% endblock %}
-{% block facebook_decription %}{{ article.text|truncatechars:200 }}{% endblock %}
-
+{% block facebook_decription %}{{ article.text|filter_html|truncatechars:200 }}{% endblock %}
 {% block body %}
 <div class="row">
   <div class="col-xs-12">
