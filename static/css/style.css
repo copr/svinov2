@@ -208,6 +208,10 @@ a:focus {
     padding-bottom: 10px;
 }
 
+.rehor-title-date h6 {
+    font-size: 10px;
+}
+
 .rehor-title h6, a {
     font-weight: 600;
     color: #eeeeee;
@@ -267,9 +271,11 @@ a:focus {
 }
 
 .h4, .h5, .h6, h4, h5, h6 { /*bootstrap override */
-  margin-top: 0px;
-  margin-bottom: 0px;
+    margin-top: 0px;
+    margin-bottom: 0px;
 }
+
+
 
 .article-title {
     color: #eeea5f;
