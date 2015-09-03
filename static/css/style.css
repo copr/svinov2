@@ -335,6 +335,10 @@ a:focus {
 	display: none;
     }
 
+    .calendar ul {
+	margin-bottom: 10px;
+    }
+
     .calendar img {
 	position: relative;
     }
@@ -355,6 +359,10 @@ a:focus {
 
     .alt-calendar {
 	display: none;
+    }
+
+    .calendar ul {
+	margin-bottom: 10px;
     }
 
     .calendar img {
