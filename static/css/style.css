@@ -320,7 +320,24 @@ a:focus {
     padding-right: 5px;
 }
 
+.alt-calendar h4 {
+    font-size: 14px;
+    font-weight: 600;
+}
+
 @media (min-width: 768px) and (max-width: 979px) {
+    
+    .calendar {
+	height: auto;
+    }
+
+    .calendar ul {
+	margin-bottom: 20px;
+    }
+
+    .calendar img {
+	position: relative;
+    }
 
     .carousel-inner {
 	height: 100%;
@@ -332,6 +349,18 @@ a:focus {
 }
 
 @media (max-width: 767px) {
+    .calendar {
+	height: auto;
+    }
+
+    .calendar ul {
+	margin-bottom: 20px;
+    }
+
+    .calendar img {
+	position: relative;
+    }
+
     .carousel-inner {
 	height: 100%;
     }
