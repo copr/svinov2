@@ -331,8 +331,8 @@ a:focus {
 	height: auto;
     }
 
-    .calendar ul {
-	margin-bottom: 20px;
+    .alt-calendar {
+	display: none;
     }
 
     .calendar img {
@@ -353,8 +353,8 @@ a:focus {
 	height: auto;
     }
 
-    .calendar ul {
-	margin-bottom: 20px;
+    .alt-calendar {
+	display: none;
     }
 
     .calendar img {
