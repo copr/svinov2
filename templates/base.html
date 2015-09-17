@@ -4,16 +4,16 @@
 <!DOCTYPE html>
 <html lang="cs">
 <head>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta charset="UTF-8" />
 <link rel="SHORTCUT ICON" href="/static/images/icon.png" />
 <title>{%block head_title %}SDH Svinov{% endblock %}</title>
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
-<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" />
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" />
 <!-- <link rel="stylesheet" href="{% static 'css/bootstrap/bootstrap.min.css' %}"> -->
 <!-- <link rel="stylesheet" href="{% static 'css/bootstrap/font-awesome.min.css' %}"> -->
-<link rel="stylesheet" href="{% static 'css/style.css' %}">
-<link rel="stylesheet" href="{% static 'css/menu.css' %}">
+<link rel="stylesheet" href="{% static 'css/style.css' %}" />
+<link rel="stylesheet" href="{% static 'css/menu.css' %}" />
 
 <!-- Facebook -->
 <meta property="og:site_name" content="Stránky SDH Svinov" />
@@ -43,11 +43,12 @@
 {% endblock %}
 </head>
 <body>
+<div class="back">
 <div class="container logo_bar">
 <a href="/"><img class="logo" src="{% static 'images/logo_web.png' %}" /></a>
 </div>
 
-<div class="back">
+
 <div class="container">
   <div class="row respo">
   <nav class="">
@@ -86,6 +87,7 @@
 	<h4 class="rehor-header"><a class="homer current" href="/{{ current_section.url }}">{{ current_section.name|upper }} </a></h4>
       </li>
       {% endif %}
+
     </ul>
   </nav>
   </div>
@@ -118,7 +120,24 @@
 	{% endautoescape %}
       </div>
     {% endfor %}
+
   </div>
+    <div id="fb-root"></div>
+    <script>(function(d, s, id) {
+      var js, fjs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id)) return;
+      js = d.createElement(s); js.id = id;
+      js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1";
+      fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));</script>
+
+    <!-- Your like button code -->
+    <div class="fb-like" 
+        data-href="http://www.your-domain.com/your-page.html" 
+        data-layout="standard" 
+        data-action="like" 
+        data-show-faces="true">
+    </div>
 </footer>
 <script src="https://apis.google.com/js/client.js?onload=handleCalendar" ></script> 
 </body>
