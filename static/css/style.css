@@ -35,22 +35,30 @@ body {
 .logo {
     width: 30%;
     padding-bottom: 20px;
-    padding-top: 20px;
+    padding-top: 50px;
 }
 .shcms_logo {
-    width: 50px;
-    height: 50px;
+    width: 35px;
+    height: 35px;
     position: absolute;
     bottom: 10px;
     right: 10px;
 }
 
 .svinov_logo {
-    width: 50px;
-    height: 50px;
+    width: 35px;
+    height: 35px;
     position: absolute;
     bottom: 10px;
-    right: 70px;
+    right: 55px;
+}
+
+.transparent_logo {
+    width: 35px;
+    height: 35px;
+    position: absolute;
+    bottom: 10px;
+    right: 100px;
 }
 
 .menu-link {
