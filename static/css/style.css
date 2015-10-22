@@ -28,6 +28,7 @@ body {
 }
 
 .logo_bar {
+    position: relative;
     text-align: center;
 }
 
@@ -35,6 +36,21 @@ body {
     width: 30%;
     padding-bottom: 20px;
     padding-top: 20px;
+}
+.shcms_logo {
+    width: 50px;
+    height: 50px;
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+}
+
+.svinov_logo {
+    width: 50px;
+    height: 50px;
+    position: absolute;
+    bottom: 10px;
+    right: 70px;
 }
 
 .menu-link {
@@ -355,6 +371,16 @@ a:focus {
     .logo {
 	width: 100%;
     }
+
+    .shcms_logo {
+	display: none;
+    }
+
+    .svinov_logo {
+	display: none;
+    }
+
+    
 }
 
 @media (max-width: 767px) {
@@ -380,5 +406,13 @@ a:focus {
 
     .logo {
 	width: 100%;
+    }
+
+    .shcms_logo {
+	display: none;
+    }
+
+    .svinov_logo {
+	display: none;
     }
 }
