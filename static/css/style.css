@@ -388,6 +388,10 @@ a:focus {
 	display: none;
     }
 
+    .transparent_logo {
+	display: none;
+    }
+
     
 }
 
@@ -421,6 +425,10 @@ a:focus {
     }
 
     .svinov_logo {
+	display: none;
+    }
+
+    .transparent_logo {
 	display: none;
     }
 }
