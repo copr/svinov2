@@ -33,9 +33,17 @@ body {
 }
 
 .logo {
-    width: 30%;
-    padding-bottom: 20px;
+    width: 370px;
     padding-top: 50px;
+}
+
+.logo_text {
+    display: block;
+    left: 0;
+    font-size: 13px;
+    font-weight: 600;
+    color: #eeeeee;
+    padding-bottom: 10px;
 }
 .shcms_logo {
     width: 35px;
