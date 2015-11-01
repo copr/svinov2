@@ -315,6 +315,7 @@ a:focus {
 .all_articles {
     text-align: center;    
     background-color: #000;
+    padding-bottom: 5px;
     margin-bottom: 5px;
     border-bottom-style: solid;
     border-bottom-color: rgb(105, 105, 105);
