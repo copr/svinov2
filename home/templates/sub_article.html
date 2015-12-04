@@ -1,9 +1,14 @@
 {% load home_tags %}
 <div class="rehor-title {% if post.date %} rehor-title-date {% endif %}">
-  <h4><a href="{% if current_section %}/{% endif %}{{ current_section.url }}/aktuality/{{ post.id }}">{{ post.name|upper }}</a></h4>
+  <h4><a href="{% if link %} {% if current_section %}/{% endif %}{{ current_section.url }}/aktuality/{{ post.id }} {% endif %}">{{ post.name|upper }}</a></h4>
   {% if post.date %}
     <h6>Přidáno {{ post.date.date.day }}.{{ post.date.date.month }}.{{ post.date.date.year }}</h6>
-  {% endif %}
+    {% endif %}
+    <!-- <div class="fb-like" data-href="http://stranky-sdhsvinov-0206.rostiapp.cz{% if current_section %}/{% endif %}{{ current_section.url }}/aktuality/{{ post.id }}" -->
+    <!--  data-layout="button_count" -->
+    <!--  data-action="like" -->
+    <!--  data-show-faces="false" -->
+    <!--  data-share="true"></div> -->
 </div>
 <div class="article-text">
 {% autoescape off %}
