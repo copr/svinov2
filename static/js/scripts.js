@@ -20,9 +20,13 @@ $(document).ready(function(){
     }
   });
 
-    $('.to-clamp').succinct({
-	size:350
-    });
+    // $('.to-clamp').succinct({
+    // 	size:350
+    // });
+    var elements = document.getElementsByClassName('to-clamp');
+    for (i=0; i < elements.length; i++) {
+	$clamp(elements[i], {clamp: 8});
+    }
 
 
   $('.menu li.section').hover(function() {

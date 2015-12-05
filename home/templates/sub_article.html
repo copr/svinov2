@@ -10,7 +10,7 @@
     <!--  data-show-faces="false" -->
     <!--  data-share="true"></div> -->
 </div>
-<div class="article-text">
+<div class="article-text {% if clamp %}to-clamp{% endif %}" >
 {% autoescape off %}
   {% if html_off %}
   {{ post.text|filter_html }}
