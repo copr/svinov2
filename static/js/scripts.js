@@ -23,14 +23,15 @@ $(document).ready(function(){
     // $('.to-clamp').succinct({
     // 	size:350
     // });
+    var elements2 = document.getElementsByClassName('to-clamp-title');
+    for (var i=0; i < elements2.length; i++) {
+    	$clamp(elements2[i], {clamp: 2});
+    }
     var elements = document.getElementsByClassName('to-clamp');
-    for (i=0; i < elements.length; i++) {
+    for (var i=0; i < elements.length; i++) {
 	$clamp(elements[i], {clamp: 8});
     }
-    var elements2 = document.getElementsByClassName('to-clamp-title');
-    for (i=0; i < elements2.length; i++) {
-	$clamp(elements[i], {clamp: 1});
-    }
+
 
 
   $('.menu li.section').hover(function() {
