@@ -27,6 +27,10 @@ $(document).ready(function(){
     for (i=0; i < elements.length; i++) {
 	$clamp(elements[i], {clamp: 8});
     }
+    var elements2 = document.getElementsByClassName('to-clamp-title');
+    for (i=0; i < elements2.length; i++) {
+	$clamp(elements[i], {clamp: 1});
+    }
 
 
   $('.menu li.section').hover(function() {
