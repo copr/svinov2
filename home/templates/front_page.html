@@ -12,7 +12,7 @@
   {% if posts.0 %}
   <div class="col-md-{% if calendars %}6{% else %}12{% endif%}" onclick="redirect('{% if current_section %}/{% endif %}{{ current_section.url }}/aktuality/{{ posts.0.id }}')">
     <div class="article article-hover main-article shadow ">
-      {% include 'sub_article.html' with post=posts.0 current_section=current_section link=1 clamp=1 %}
+      {% include 'sub_article.html' with post=posts.0 current_section=current_section html_off=1 bigClamp=1 link=1 %}
     </div>
   </div>
   {% endif %}

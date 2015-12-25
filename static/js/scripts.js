@@ -29,7 +29,12 @@ $(document).ready(function(){
     }
     var elements = document.getElementsByClassName('to-clamp');
     for (var i=0; i < elements.length; i++) {
-	$clamp(elements[i], {clamp: 8});
+	$clamp(elements[i], {clamp: 7});
+    }
+    
+    var elements = document.getElementsByClassName('to-clamp-big');
+    for (var i=0; i < elements.length; i++) {
+    	$clamp(elements[i], {clamp: 10});
     }
 
 
