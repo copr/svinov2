@@ -2,7 +2,7 @@
 <div class="article-header rehor-title {% if post.date %} rehor-title-date {% endif %}">
   <h4 >
     <a href="{% if link %} {% if current_section %}/{% endif %}{{ current_section.url }}/aktuality/{{ post.id }} {% endif %}">
-       <div class="{% if clamp %}to-clamp-title{% endif %}">{{ post.name|upper }}</div>
+       <div class="{% if clamp or bigClamp %}to-clamp-title{% endif %}">{{ post.name|upper }}</div>
     </a>
   </h4>
   {% if post.date %}
@@ -11,7 +11,7 @@
     <!-- AddToAny BEGIN -->
 
 </div>
-<div class="article-text {% if clamp %}to-clamp{% endif %}" >
+<div class="article-text {% if clamp %}to-clamp{% endif %}{% if bigClamp %}to-clamp-big{% endif %}" >
 {% autoescape off %}
   {% if html_off %}
   {{ post.text|filter_html }}
@@ -19,7 +19,7 @@
   {{ post.text }}
   {% endif %}
 {% endautoescape %}
-{% if clamp != 1 %}
+{% if clamp != 1 and bigClamp != 1 %}
   <div class="share-buttons">
     <a href="http://twitter.com/share?url=http://stranky-sdhsvinov-0206.rostiapp.cz/{{ current_section.url }}/aktuality/{{ post.id }}"
        target="_blank" class="share-btn twitter">
