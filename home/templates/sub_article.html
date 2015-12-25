@@ -1,18 +1,15 @@
 {% load home_tags %}
-<div class="rehor-title {% if post.date %} rehor-title-date {% endif %}">
+<div class="article-header rehor-title {% if post.date %} rehor-title-date {% endif %}">
   <h4 >
     <a href="{% if link %} {% if current_section %}/{% endif %}{{ current_section.url }}/aktuality/{{ post.id }} {% endif %}">
-       <div class="{% if clamp %}to-clamp-title{% endif %}">{{ post.name|upper }} </div>
+       <div class="{% if clamp %}to-clamp-title{% endif %}">{{ post.name|upper }}</div>
     </a>
   </h4>
   {% if post.date %}
     <h6>Přidáno {{ post.date.date.day }}.{{ post.date.date.month }}.{{ post.date.date.year }}</h6>
-    {% endif %}
-    <!-- <div class="fb-like" data-href="http://stranky-sdhsvinov-0206.rostiapp.cz{% if current_section %}/{% endif %}{{ current_section.url }}/aktuality/{{ post.id }}" -->
-    <!--  data-layout="button_count" -->
-    <!--  data-action="like" -->
-    <!--  data-show-faces="false" -->
-    <!--  data-share="true"></div> -->
+  {% endif %}
+    <!-- AddToAny BEGIN -->
+
 </div>
 <div class="article-text {% if clamp %}to-clamp{% endif %}" >
 {% autoescape off %}
@@ -22,5 +19,18 @@
   {{ post.text }}
   {% endif %}
 {% endautoescape %}
+{% if clamp != 1 %}
+  <div class="share-buttons">
+    <a href="http://twitter.com/share?url=http://stranky-sdhsvinov-0206.rostiapp.cz/{{ current_section.url }}/aktuality/{{ post.id }}"
+       target="_blank" class="share-btn twitter">
+      <i class="fa fa-twitter"></i>
+    </a>
+    <a href="http://www.facebook.com/sharer/sharer.php?u=http://stranky-sdhsvinov-0206.rostiapp.cz/{{ current_section.url }}/aktuality/{{ post.id }}"
+       target="_blank" class="share-btn facebook">
+      <i class="fa fa-facebook"></i>
+    </a>
+  </div>
+{% endif %}
 </div>
+
 <!--<div class="dimmer"></div>-->
