@@ -233,7 +233,7 @@
         }
 
         var clampedText;
-        if (supportsNativeClamp && opt.useNativeClamp) {
+        if (false/* supportsNativeClamp && opt.useNativeClamp */) {
             sty.overflow = 'hidden';
             sty.textOverflow = 'ellipsis';
             sty.webkitBoxOrient = 'vertical';
