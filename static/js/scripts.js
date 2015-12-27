@@ -23,21 +23,21 @@ $(document).ready(function(){
     // $('.to-clamp').succinct({
     // 	size:350
     // });
-    var elements2 = document.getElementsByClassName('to-clamp-title');
-    for (var i=0; i < elements2.length; i++) {
-    	$clamp(elements2[i], {clamp: 2});
+    var elements0 = document.getElementsByClassName('to-clamp-title');
+    var elements1 = document.getElementsByClassName('to-clamp');
+    var elements2 = document.getElementsByClassName('to-clamp-big');
+
+    for (var i=0; i < elements0.length; i++) {
+	$clamp(elements0[i], {clamp: 2});
     }
-    var elements = document.getElementsByClassName('to-clamp');
-    for (var i=0; i < elements.length; i++) {
-	$clamp(elements[i], {clamp: 7});
+
+    for (var i=0; i < elements1.length; i++) {
+	$clamp(elements1[i], {clamp: 7});
     }
     
-    var elements = document.getElementsByClassName('to-clamp-big');
-    for (var i=0; i < elements.length; i++) {
-    	$clamp(elements[i], {clamp: 10});
+    for (var i=0; i < elements2.length; i++) {
+    	$clamp(elements2[i], {clamp: 10});
     }
-
-
 
   $('.menu li.section').hover(function() {
       $(this).next().addClass("hiden");
