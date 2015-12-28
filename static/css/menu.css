@@ -52,6 +52,15 @@ li.li-ikona a.homer {
     padding: 5px 10px;
 }
 
+.menu-link {
+    text-align: center;
+}
+
+.menu-link:hover {
+    background: #a1897d;
+}
+
+
 
 .ikona {
     font-size: 1.27em;
@@ -188,6 +197,11 @@ li.li-ikona a.homer {
 .responsive-menu ul {
 
 }
+
+.menu li h4 {
+    line-height: inherit;
+}
+
 
 .responsive-menu:hover {
     text-decoration: none !important;

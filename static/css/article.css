@@ -1,0 +1,99 @@
+.article {
+    background: #404040;
+    color: white;
+    margin-bottom: 10px;
+    transition: background 1s;
+/*    line-height: 130%; */
+
+    display: block;
+}
+
+.article h6 {
+    margin-top: 2px;
+    margin-bottom: 5px;
+}
+
+.article-hover {
+    height: 210px;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.article-hover:hover {
+    background: #555555;
+}
+
+.article-hover:hover > .rehor-title {
+    background: rgb(61 ,61, 61);
+}
+
+.article-hover:hover > .rehor-title h4 a {
+    color: rgb(255, 232, 0);
+}
+
+.to-clamp-title {
+    width: 100%;
+}
+
+.article-header {
+    position: relative;
+}
+
+.share-btn {
+    display: inline-block;
+    color: #ffffff;
+    border: none;
+    padding: 0;
+    width: 2em;
+    /*box-shadow: 0 2px 0 0 rgba(0,0,0,0.2);*/
+    outline: none;
+    text-align: center;
+    border-radius: 2px;
+}
+
+.share-btn:hover {
+  color: #eeeeee;
+}
+
+.share-btn:active {
+  position: relative;
+  top: 2px;
+  box-shadow: none;
+  color: #e2e2e2;
+  outline: none;
+}
+
+.share-btn.twitter     { background: #55acee; }
+.share-btn.google-plus { background: #dd4b39; }
+.share-btn.facebook    { background: #3B5998; }
+.share-btn.linkedin    { background: #4875B4; }
+.share-btn.email       { background: #444444; }
+
+.share-buttons {
+    position: absolute;
+    right: 5px;
+    bottom: 5px;
+}
+
+.all_articles {
+    text-align: center;    
+    background-color: #000;
+    padding-bottom: 5px;
+    margin-bottom: 5px;
+    border-bottom-style: solid;
+    border-bottom-color: rgb(105, 105, 105);
+    border-bottom-width: 1px;
+}
+
+.article-text {
+    position: relative;
+    padding: 15px 15px 25px 15px;
+}
+
+.article-text, .article h6, .calendar {
+    color: #eee;
+}
+
+.main-article {
+    height: 268px;
+}

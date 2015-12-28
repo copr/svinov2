@@ -1,0 +1,17 @@
+.carousel-title {
+    position: absolute;
+    top: 0;
+    opacity: 0.9;
+}
+
+.carousel-img {
+    width: 100%;
+}
+
+.carousel-inner {
+    height: 268px;
+}
+
+#myCarousel {
+    margin-bottom: 10px;
+}
