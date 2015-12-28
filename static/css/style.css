@@ -19,6 +19,7 @@ html {overflow-y: scroll;}
 body {
     background: black;
     font-family: OpenSans, Arial !important;
+/*    line-height: 1.2em; */
 /*    background: #2E2E2E none repeat scroll 0% 0%;  */
  /*   background: linear-gradient(to bottom, #222, black); */
 }
