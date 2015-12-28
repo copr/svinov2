@@ -233,7 +233,7 @@
         }
 
         var clampedText;
-        if (false/* supportsNativeClamp && opt.useNativeClamp */) {
+        if ( false /* supportsNativeClamp && opt.useNativeClamp */ ) {
             sty.overflow = 'hidden';
             sty.textOverflow = 'ellipsis';
             sty.webkitBoxOrient = 'vertical';
@@ -245,7 +245,8 @@
             }
         }
         else {
-            var height = getMaxHeight(clampValue);
+            var height = getMaxHeight(clampValue); 
+
             if (height <= element.clientHeight) {
                 clampedText = truncate(getLastChild(element), height);
             }

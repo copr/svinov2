@@ -28,11 +28,11 @@ $(document).ready(function(){
     var elements2 = document.getElementsByClassName('to-clamp-big');
 
     for (var i=0; i < elements0.length; i++) {
-	$clamp(elements0[i], {clamp: 2});
+    	$clamp(elements0[i], {clamp: 2});
     }
 
     for (var i=0; i < elements1.length; i++) {
-	$clamp(elements1[i], {clamp: 7});
+	$clamp(elements1[i], {clamp: 8});
     }
     
     for (var i=0; i < elements2.length; i++) {
