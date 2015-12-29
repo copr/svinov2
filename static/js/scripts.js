@@ -23,13 +23,13 @@ $(document).ready(function(){
     // $('.to-clamp').succinct({
     // 	size:350
     // });
-    var elements0 = document.getElementsByClassName('to-clamp-title');
+    // var elements0 = document.getElementsByClassName('to-clamp-title');
     var elements1 = document.getElementsByClassName('to-clamp');
     var elements2 = document.getElementsByClassName('to-clamp-big');
 
-    for (var i=0; i < elements0.length; i++) {
-    	$clamp(elements0[i], {clamp: 2});
-    }
+    // for (var i=0; i < elements0.length; i++) {
+    // 	$clamp(elements0[i], {clamp: 2});
+    // }
 
     for (var i=0; i < elements1.length; i++) {
 	$clamp(elements1[i], {clamp: 8});
