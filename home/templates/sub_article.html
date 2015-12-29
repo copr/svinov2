@@ -4,7 +4,7 @@
     <a href="{% if link %} {% if current_section %}/{% endif %}{{ current_section.url }}/aktuality/{{ post.id }} {% endif %}">
       <div class="{% if clamp or bigClamp %}to-clamp-title{% endif %}">
 	{% with title=post.name|upper %}
-	  {% if clamp or bigClamp and title|length > 27 %}
+	  {% if clamp and title|length > 27 %}
             {{ title|truncatechars:27 }}
           {% else %}
 	    {{ title }}
@@ -19,7 +19,7 @@
     <!-- AddToAny BEGIN -->
 
 </div>
-<div class="article-text {% if clamp %}to-clamp{% endif %}{% if bigClamp %}to-clamp-big{% endif %}" >
+<div class="article-text {% if clamp or bigClamp %}to-clamp{% endif %}" >
 {% autoescape off %}
   {% if html_off %}
   {{ post.text|filter_html }}
