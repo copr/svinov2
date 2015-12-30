@@ -17,3 +17,7 @@ body {
 .border {
     display: none;
 }
+
+.back {
+    filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr='#2E2E2E', endColorstr='#000000');
+}
