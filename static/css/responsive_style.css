@@ -1,0 +1,78 @@
+@media (min-width: 768px) and (max-width: 979px) {
+    
+    .calendar {
+	height: auto;
+    }
+
+    .alt-calendar {
+	display: none;
+    }
+
+    .calendar ul {
+	margin-bottom: 15px;
+    }
+
+    .calendar img {
+	position: relative;
+    }
+
+    .carousel-inner {
+	height: 100%;
+    }
+
+    .logo {
+	width: 100%;
+    }
+
+    .shcms_logo {
+	display: none;
+    }
+
+    .svinov_logo {
+	display: none;
+    }
+
+    .transparent_logo {
+	display: none;
+    }
+
+    
+}
+
+@media (max-width: 767px) {
+    .calendar {
+	height: auto;
+    }
+
+    .alt-calendar {
+	display: none;
+    }
+
+    .calendar ul {
+	margin-bottom: 15px;
+    }
+
+    .calendar img {
+	position: relative;
+    }
+
+    .carousel-inner {
+	height: 100%;
+    }
+
+    .logo {
+	width: 100%;
+    }
+
+    .shcms_logo {
+	display: none;
+    }
+
+    .svinov_logo {
+	display: none;
+    }
+
+    .transparent_logo {
+	display: none;
+    }
+}
