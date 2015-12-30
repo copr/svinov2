@@ -8,6 +8,13 @@
 <meta charset="UTF-8" />
 <link rel="SHORTCUT ICON" href="/static/images/icon.png" />
 <title>{%block head_title %}SDH Svinov{% endblock %}</title>
+
+<!--[if lt IE 9]>
+    <link rel="stylesheet" href="{% static 'css/ie.css' %}" />
+    <script src="../../assets/js/html5shiv.js"></script>
+    <script src="../../assets/js/respond.min.js"></script>
+<![endif]-->
+
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" />
 <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" />
 <!-- <link rel="stylesheet" href="{% static 'css/bootstrap/bootstrap.min.css' %}"> -->
@@ -18,15 +25,8 @@
 <link rel="stylesheet" href="{% static 'css/calendar.css' %}" />
 <link rel="stylesheet" href="{% static 'css/menu.css' %}" />
 <link rel="stylesheet" href="{% static 'css/carousel.css' %}" />
+<link rel="stylesheet" href="{% static 'css/responsive_style.css' %}" />
 
-<!-- [if !IE]>  
-     <link rel="stylesheet" href="{% static 'css/responsive_style.css' %}" />
-<![endif]-->
-<!--[if lt IE 9]>
-    <link rel="stylesheet" href="{% static 'css/ie.css' %}" />
-    <script src="../../assets/js/html5shiv.js"></script>
-    <script src="../../assets/js/respond.min.js"></script>
-<![endif]-->
 
 <!-- Facebook -->
 <meta property="og:site_name" content="Stránky SDH Svinov" />
@@ -41,10 +41,6 @@
 </style>
 
 <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Open+Sans" />
-
-<!--[if lt IE 9]>
-    <script src="http://css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js"></script>
-<![endif]-->
 
 <script type="text/javascript" src="{% static 'js/clamp.js' %}" ></script>
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
