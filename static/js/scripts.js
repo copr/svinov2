@@ -52,8 +52,10 @@ $(document).ready(function(){
 
 function handleCalendar() {
     var calendar = new Calendar();
-    calendar.loadEvents(document.googleIds, 7);
-    if (!document.googleIds.length) {
+    if (typeof document.googleIds !== "undefined") {
+	calendar.loadEvents(document.googleIds, 7);
+    }
+    else {
 	$('.calendar img').remove();
     }
 }
