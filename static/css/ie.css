@@ -3,7 +3,11 @@ body {
 }
 
 .container {
-    width: 1024px;
+    width: 900px;
+}
+
+.row {
+    width: 900px;
 }
 
 .m {
