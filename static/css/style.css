@@ -14,7 +14,9 @@
     background: black;
 }
 
-html {overflow-y: scroll;}
+html {
+    overflow-y: scroll;
+}
 
 body {
     background: black;
@@ -26,7 +28,6 @@ body {
 
 .back {
     background: linear-gradient(to bottom, rgb(46,46,46), black);
-    filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr='#2E2E2E', endColorstr='#000000');
 }
 
 .dimmer {
