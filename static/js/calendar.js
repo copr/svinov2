@@ -1,5 +1,3 @@
-
-
 function Calendar() {
     gapi.client.setApiKey('AIzaSyDZVBv9Ralzvv-bbdEuWbMQCcrr4B-cYwM');
     this.events = Array();
