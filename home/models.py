@@ -54,6 +54,9 @@ class Section(models.Model):
             raise ValidationError("Zadané url už existuje, zvolte prosím jiné")
         if self.roll_column == None and self.parent_section == None and self.name != 'index':
             raise ValidationError("Sekce musí mít definovanou nadsekci nebo sloupec")
+        if self.name == 'index' and len(Section.objects.filter(name = 'index')) > 0:
+            raise ValidationError("Nemuzou byt dva indexy")
+                
 
     def save(self, *args, **kwargs):
         if self.url == '':
