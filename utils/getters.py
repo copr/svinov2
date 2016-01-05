@@ -11,7 +11,7 @@ def get_posts(section):
         news = News.objects.get(section = main_section)
         posts = Article.objects.all().filter(news = news).order_by('-weight', '-date')
     elif section == 'index':
-        posts = Article.objects.all()
+        posts = Article.objects.all().order_by('-weight', '-date')
     else:
         posts = []
     for post in posts:
