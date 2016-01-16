@@ -166,3 +166,7 @@ a:focus {
     font-weight: 600;
 }
 
+.article-text img {
+    max-width: 100% !important;
+}
+
