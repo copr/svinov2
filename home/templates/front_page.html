@@ -10,14 +10,18 @@
 {% block body %}
 <div class="row">
   {% if posts.0 %}
-  <div class="col-md-{% if calendars %}6{% else %}12{% endif%}" onclick="redirect('{% if current_section %}/{% endif %}{{ current_section.url }}/aktuality/{{ posts.0.id }}')">
+  <div class="col-md-{% if calendars or banner %}6{% else %}12{% endif%}" onclick="redirect('{% if current_section %}/{% endif %}{{ current_section.url }}/aktuality/{{ posts.0.id }}')">
     <div class="article article-hover main-article shadow ">
       {% include 'sub_article.html' with post=posts.0 current_section=current_section html_off=1 bigClamp=1 link=1 %}
     </div>
   </div>
   {% endif %}
-  <div class="{% if calendars %}col-md-6{% else %}none{% endif %}" >
-    {% include "calendar.html" %}  
+  <div class="{% if calendars or banner %}col-md-6{% else %}none{% endif %}" >
+    {% if calendars %}
+    {% include "calendar.html" %}
+    {% else %}
+    {% include "banner.html" with banner=banner %}
+    {% endif %}
   </div>
 </div>
 <div class="row">
