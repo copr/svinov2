@@ -168,8 +168,25 @@ class Contact(models.Model):
         verbose_name = "Kontakt"
         verbose_name_plural = "Kontakty"
 
-#Tohle uz mozna presunout do vlastni appky (calendar)
+class Banner(models.Model):
+    name = models.CharField(max_length = 255, verbose_name = "Název")
+    parent_section = models.ForeignKey('Section', null = False, verbose_name="Název rodičovské sekce") 
+    html = models.CharField(max_length = 500, verbose_name = "HTML Kod", null=True, blank=True)
+    img = models.ImageField(upload_to="user_uploads", verbose_name="Obrázek", null=True, blank=True)
+#    cropping = ImageRatioField('image', '430x200', verbose_name="Oříznutí")
 
+    def __str__(self):
+        return self.name
+
+    def clean(self):
+        if self.html == None and self.img == None:
+            raise ValidationError("Html kod a obrazek nemuzou byt prazdne")
+        # if self.html != None and self.img != None:
+        #     raise ValidationError("Html kod a obrazek nemuzou byt obe neprazdne")
+    
+    class Meta:
+        verbose_name = "Baner"
+        verbose_name_plural = "Banery"
 
 
 def exists_url(url, model):
