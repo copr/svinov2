@@ -28,9 +28,10 @@ def section(request, section):
     calendars = get_calendars(section)
     sponsors = get_sponsors()
     contacts = get_contacts()
+    banner = get_banner(section)
     return render(request, 'front_page.html', {'sections': sections, 'posts': posts,
                                                'current_section': cur_section, 'calendars': calendars, 'sponsors': sponsors,
-                                               'contacts': contacts})
+                                               'contacts': contacts, 'banner': banner})
 def calendar(request, section):
     sections = get_sections(section)
     calendars = get_calendars(section)

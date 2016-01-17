@@ -1,6 +1,6 @@
 from django.shortcuts import get_object_or_404
 
-from home.models import Section, Article, News, StaticArticle, Invitation, Column, Calendar, Sponzor, Contact
+from home.models import Section, Article, News, StaticArticle, Invitation, Column, Calendar, Sponzor, Contact, Banner
 
 def get_article(article_id):
     return Article.objects.get(id = article_id)
@@ -55,6 +55,14 @@ def get_statics(section):
     for s in StaticArticle.objects.all().filter(section = main_section):
         statics.append({'name': s.name, 'url': main_section.url + '/' + s.url, 'weight': s.weight})
     return statics
+
+def get_banner(section):
+    main_section = get_object_or_404(Section, url = section)
+    banners = Banner.objects.all().filter(parent_section = main_section)
+    if len(banners) != 0:
+        return banners[0]
+    else:
+        return None
 
 def get_static(static):
 #    return StaticArticle.objects.get(url=static)

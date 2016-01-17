@@ -1,0 +1,11 @@
+{% load staticfiles %}
+<div class="banner shadow" >
+{% if banner.html %}
+{% autoescape off %}
+{{ banner.html }}
+{% endautoescape %}
+{% endif %}
+{% if banner.img %}
+<img src="/media/{{ banner.img }}"></img>
+{% endif %}
+</div>
