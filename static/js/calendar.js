@@ -49,7 +49,10 @@ function handleResponse(resp, length) {
 	} else {
 	    bb = new Date(b.start.date);
 	}
-	return aa > bb;
+	if (aa > bb) {
+	    return 1
+	}
+	return -1;
     });
     $('.calendar img').remove();
     addEventsToDom(events, 7);
@@ -77,6 +80,8 @@ function addEventsToDom(events, numOfResults) {
     });
 }
 
+
+// not used :D
 Calendar.prototype.loadEventsss = function(calendarIds, maxResults) {
     if (typeof calendarIds === 'undefined') {
 	this.events.sort(function(a,b){
@@ -87,10 +92,30 @@ Calendar.prototype.loadEventsss = function(calendarIds, maxResults) {
 	    }
 	    if (typeof b.start.date === "undefined") {
 		bb = new Date(b.start.dateTime);
+		console.log(bb);
 	    } else {
 		bb = new Date(b.start.date);
+		console.log(bb);
 	    }
-	    return aa > bb;
+
+	    if (aa.getFullYear() > bb.getFullYear()) {
+		return 1;
+	    }
+
+	    if (aa.getMonth() > bb.getMonth()) {
+		return 1;
+	    }
+
+	    if (aa.getDay() > bb.getDay()) {
+		return 1;
+	    }
+	    if (aa.getHours() > bb.getHours()) {
+		return 1;
+	    }
+	    if (aa.getMinutes() > bb.getMinutes()) {
+		return 1;
+	    }
+	    return -1;
 	});
 	$('.calendar img').remove();
         this.events.forEach(function(i) {
