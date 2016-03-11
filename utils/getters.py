@@ -2,6 +2,9 @@ from django.shortcuts import get_object_or_404
 
 from home.models import Section, Article, News, StaticArticle, Invitation, Column, Calendar, Sponzor, Contact, Banner
 
+def get_article_safe(article_id):
+    return Article.objects.filter(id = article_id)
+
 def get_article(article_id):
     return Article.objects.get(id = article_id)
 
@@ -80,7 +83,6 @@ def get_news(main_section):
 
 def get_calendars(section):
     main_section = get_object_or_404(Section, url = section)
-    print(main_section.calendars.all())
     return main_section.calendars.all()
 
 def get_sponsors():
