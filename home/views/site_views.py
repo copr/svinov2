@@ -2,6 +2,7 @@
 from django.shortcuts import render
 from django.db.models import Q
 from django.http import HttpResponse
+from django.core import serializers
 
 from utils.getters import *
 
@@ -32,6 +33,7 @@ def section(request, section):
     return render(request, 'front_page.html', {'sections': sections, 'posts': posts,
                                                'current_section': cur_section, 'calendars': calendars, 'sponsors': sponsors,
                                                'contacts': contacts, 'banner': banner})
+
 def calendar(request, section):
     sections = get_sections(section)
     calendars = get_calendars(section)
@@ -40,8 +42,6 @@ def calendar(request, section):
     contacts = get_contacts()
     return render(request, 'calendar_alt.html', {'sections': sections, 'current_section': cur_section, 'sponsors': sponsors, 
                                                  'contacts': contacts, 'calendars': calendars})
-
-
 
 def static(request, section, static):
     sections = get_sections(section)
