@@ -4,8 +4,8 @@
     <a href="{% if link %} {% if current_section %}/{% endif %}{{ current_section.url }}/aktuality/{{ post.id }} {% endif %}">
       <div class="{% if clamp or bigClamp %}to-clamp-title{% endif %}">
 	{% with title=post.name|upper %}
-	  {% if clamp and title|length > 27 %}
-            {{ title|truncatechars:27 }}
+	  {% if clamp and title|length > 25 %}
+            {{ title|truncatechars:25 }}
           {% else %}
 	    {{ title }}
 	  {% endif %}
@@ -29,11 +29,11 @@
 {% endautoescape %}
 {% if clamp != 1 and bigClamp != 1 %}
   <div class="share-buttons">
-    <a href="http://twitter.com/share?url=http://stranky-sdhsvinov-0206.rostiapp.cz/{{ current_section.url }}/aktuality/{{ post.id }}"
+    <a href="http://twitter.com/share?url=http://sdhsvinov.cz/{{ current_section.url }}/aktuality/{{ post.id }}"
        target="_blank" class="share-btn twitter">
       <i class="fa fa-twitter"></i>
     </a>
-    <a href="http://www.facebook.com/sharer/sharer.php?u=http://stranky-sdhsvinov-0206.rostiapp.cz/{{ current_section.url }}/aktuality/{{ post.id }}"
+    <a href="http://www.facebook.com/sharer/sharer.php?u=http://sdhsvinov.cz/{{ current_section.url }}/aktuality/{{ post.id }}"
        target="_blank" class="share-btn facebook">
       <i class="fa fa-facebook"></i>
     </a>
