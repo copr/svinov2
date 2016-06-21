@@ -110,7 +110,8 @@ class StaticArticle(models.Model):
 class Article(models.Model):
     name = models.CharField(max_length = 100, verbose_name="Jméno článku")
     text = RichTextField()
-    news = models.ForeignKey(News, verbose_name="Aktuality")
+#    news = models.ForeignKey(News, verbose_name="Aktuality", related_name="Aktuality")
+    news = models.ManyToManyField(News, verbose_name="Aktualitys", related_name="Aktualitys")
     date = models.DateTimeField(auto_now_add=True)
     weight = models.IntegerField(default=0, verbose_name="Váha", help_text=HELP_TEXT[3])
 
@@ -138,6 +139,7 @@ class Invitation(models.Model):
     image = models.ImageField(upload_to="user_uploads", verbose_name="Obrázek pozvánky")
     cropping = ImageRatioField('image', '430x200', verbose_name="Oříznutí")
     article = models.ForeignKey(Article, verbose_name="Článek spojený s pozváním", null=True, blank=True)
+    calendars = models.ManyToManyField(Calendar, verbose_name="Kalendáře", blank = True)
 
     def __str__(self):
         return self.name
