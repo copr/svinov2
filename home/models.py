@@ -110,7 +110,8 @@ class StaticArticle(models.Model):
 class Article(models.Model):
     name = models.CharField(max_length = 100, verbose_name="Jméno článku")
     text = RichTextField()
-    news = models.ForeignKey(News, verbose_name="Aktuality")
+#    news = models.ForeignKey(News, verbose_name="Aktuality", related_name="Aktuality")
+    news = models.ManyToManyField(News, verbose_name="Aktuality", related_name="Aktualitys")
     date = models.DateTimeField(auto_now_add=True)
     weight = models.IntegerField(default=0, verbose_name="Váha", help_text=HELP_TEXT[3])
 
