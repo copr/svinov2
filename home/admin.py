@@ -12,10 +12,24 @@ class CalendarAdmin(admin.StackedInline):
 class SectionAdmin(admin.ModelAdmin):
     pass
 
+def sekce(obj):
+    news_concat = ""
+    for new in obj.news.all():
+        news_concat = news_concat + new.name + ", "
+    return news_concat
+
+class ArticleAdmin(admin.ModelAdmin):
+    list_display = ('name', 'date', sekce, 'weight')
+
+class StaticArticleAdmin(admin.ModelAdmin):
+    list_display = ('name', 'section', 'column')
+
+
+
 admin.site.register(Section, SectionAdmin)
 admin.site.register(File)
-admin.site.register(Article)
-admin.site.register(StaticArticle)
+admin.site.register(Article, ArticleAdmin)
+admin.site.register(StaticArticle, StaticArticleAdmin)
 admin.site.register(News)
 admin.site.register(Invitation, InvitationAdmin)
 admin.site.register(Sponzor)
