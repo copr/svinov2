@@ -138,7 +138,6 @@ class Invitation(models.Model):
     image = models.ImageField(upload_to="user_uploads", verbose_name="Obrázek pozvánky")
     cropping = ImageRatioField('image', '430x200', verbose_name="Oříznutí")
     article = models.ForeignKey(Article, verbose_name="Článek spojený s pozváním", null=True, blank=True)
-    calendars = models.ManyToManyField(Calendar, verbose_name="Kalendáře", blank = True)
 
     def __str__(self):
         return self.name
