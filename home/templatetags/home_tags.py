@@ -15,7 +15,9 @@ def filter_html(text):
     media_urls = k.findall(text)
     img_urls = p.findall(text)
     tags = ""
-    for url in img_urls + media_urls:
+    for url in img_urls:
         tags += "<meta property='og:image' content='" + url +  "'/>"
+    for url in media_urls:
+        tags += "<meta property='og:image' content='http://sdhsvinov.cz" + url +  "'/>"
     return text + tags
 
