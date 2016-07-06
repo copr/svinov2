@@ -16,6 +16,9 @@
   {% if post.date %}
     <h6>Přidáno {{ post.date.date.day }}.{{ post.date.date.month }}.{{ post.date.date.year }}</h6>
   {% endif %}
+  <!-- {% if post.user %} -->
+  <!--   <h6>Autor: {{ post.user.first_name }} {{ post.user.last_name }}</h6> -->
+  <!-- {% endif %} -->
     <!-- AddToAny BEGIN -->
 
 </div>
@@ -24,7 +27,7 @@
   {% if html_off %}
   {{ post.text|filter_html }}
   {% else %}
-  {{ post.text }}
+  {{ post.text|og_image }}
   {% endif %}
 {% endautoescape %}
 {% if clamp != 1 and bigClamp != 1 %}
