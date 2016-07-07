@@ -9,8 +9,6 @@ from utils.getters import *
 #TODO sections je spatny nazev pro vsechny lepsi je asi neco jako clenove menu
 #TODO to co je ted sections posilat jako nejakou strukturu ve ktere jsou zvlast jmena na zobrazeni a zvlast urls
 
-PERCENT = 100
-
 def index(request):
     sections = get_sections('index')
     invitations = get_invitations()
@@ -70,9 +68,18 @@ def news(request, section):
     return render(request, 'news.html', {'sections': sections, 'posts': posts, 'current_section': cur_section,
                                          'sponsors': sponsors, 'contacts': contacts})
 
-def article(request, section, article_id):
+def article_by_id(request, section, article_id):
     sections = get_sections(section)
-    article = get_article(article_id)
+    article = get_article_by_id(article_id)
+    cur_section = get_current_section(section) 
+    sponsors = get_sponsors()
+    contacts = get_contacts()
+    return render(request, 'article.html', {'sections': sections, 'article': article, 'current_section': cur_section, 
+                                            'sponsors': sponsors, 'contacts': contacts})
+
+def article_by_url(request, section, article_url):
+    sections = get_sections(section)
+    article = get_article_by_url(article_url)
     cur_section = get_current_section(section) 
     sponsors = get_sponsors()
     contacts = get_contacts()
@@ -91,8 +98,11 @@ def article_range(request, section, start, end):
 def article_range_from_front(request, start, end):
     return article_range(request, 'index', start, end)
     
-def article_from_front(request, article_id): 
-    return article(request, 'index', article_id)
+def article_from_front(request, article_id):
+    return article_by_id(request, 'index', article_id)
 
-def test(request):
-    return render(request, 'test.html')
+def article_from_front_by_url(request, article_url):
+    return article_by_url(request, 'index', article_url)
+
+def react(request):
+    return render(request, 'index.html')

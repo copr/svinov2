@@ -1,7 +1,7 @@
 {% load home_tags %}
 <div class="article-header rehor-title {% if post.date %} rehor-title-date {% endif %}">
   <h4 >
-    <a href="{% if link %} {% if current_section %}/{% endif %}{{ current_section.url }}/aktuality/{{ post.id }} {% endif %}">
+    <a href="{% if link %} {% if current_section %}/{% endif %}{{ current_section.url }}/aktuality/{{ post.url }} {% endif %}">
       <div class="{% if clamp or bigClamp %}to-clamp-title{% endif %}">
 	{% with title=post.name|upper %}
 	  {% if clamp and title|length > 25 %}

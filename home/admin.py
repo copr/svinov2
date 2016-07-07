@@ -19,7 +19,21 @@ def sekce(obj):
     return news_concat
 
 class ArticleAdmin(admin.ModelAdmin):
-    list_display = ('name', 'date', sekce, 'weight')
+    list_display = ('name', 'date', sekce, 'weight', 'user')
+    
+    def save_model(self, request, obj, form, change):
+        if obj.user == None:
+            obj.user = request.user
+        obj.save()
+
+    # def save_formset(self, request, form, formset, change): 
+    #     if formset.model == Comment:
+    #         instances = formset.save(commit=False)
+    #         for instance in instances:
+    #             instance.user = request.user
+    #             instance.save()
+    #     else:
+    #         formset.save()
 
 class StaticArticleAdmin(admin.ModelAdmin):
     list_display = ('name', 'section', 'column')

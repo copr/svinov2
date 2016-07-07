@@ -1,5 +1,6 @@
 from django.db import models
 from django.core.exceptions import ValidationError
+from django.contrib.auth.models import User
 
 from ckeditor.fields import RichTextField
 from image_cropping import ImageRatioField
@@ -113,7 +114,13 @@ class Article(models.Model):
     news = models.ManyToManyField(News, verbose_name="Aktuality", related_name="Aktualitys")
     date = models.DateTimeField(auto_now_add=True)
     weight = models.IntegerField(default=0, verbose_name="Váha", help_text=HELP_TEXT[3])
+    user = models.ForeignKey(User, null=True, editable=False)
+    url = models.CharField(max_length = 255, help_text=HELP_TEXT[1], blank=True)
 
+    def save(self, *args, **kwargs):
+        if self.url == '':
+            self.url = create_unique_article_url(unidecode(self.name[:100]).replace(' ', '_'))
+        super(Article, self).save(*args, **kwargs)
 
     def __str__(self):
         return self.name
@@ -189,6 +196,7 @@ class Banner(models.Model):
         verbose_name_plural = "Banery"
 
 
+# tyhle jsou pro StaticArticle
 def exists_url(url, model):
     if model == 0:
         return Section.objects.exclude(url=url).filter(url=url).exists() or StaticArticle.objects.filter(url=url).exists() 
@@ -201,8 +209,15 @@ def exists_url(url, model):
         return Section.objects.filter(url=url).exists() or StaticArticle.objects.filter(url=url).exists() 
     else:
         raise Exception('Chyba v programovani')
+
     
 def create_unique_url(url):
     if exists_url(url, 3):
         return create_unique_url(url + '1')
+    return url
+
+#pro Article
+def create_unique_article_url(url):
+    if Article.objects.filter(url=url).exists():
+        return create_unique_article_url(url + '1')
     return url

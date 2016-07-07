@@ -10,7 +10,7 @@
 {% block body %}
 <div class="row">
   {% if posts.0 %}
-  <div class="col-md-{% if calendars or banner %}6{% else %}12{% endif%}" onclick="redirect('{% if current_section %}/{% endif %}{{ current_section.url }}/aktuality/{{ posts.0.id }}')">
+  <div class="col-md-{% if calendars or banner %}6{% else %}12{% endif%}" onclick="redirect('{% if current_section %}/{% endif %}{{ current_section.url }}/aktuality/{{ posts.0.url }}')">
     <div class="article article-hover main-article shadow ">
       {% include 'sub_article.html' with post=posts.0 current_section=current_section html_off=1 bigClamp=1 link=1 %}
     </div>
@@ -26,28 +26,28 @@
 </div>
 <div class="row">
   {% if posts.1 %}
-  <div class="col-md-3" onclick="redirect('{% if current_section %}/{% endif %}{{ current_section.url }}/aktuality/{{ posts.1.id }}')">
+  <div class="col-md-3" onclick="redirect('{% if current_section %}/{% endif %}{{ current_section.url }}/aktuality/{{ posts.1.url }}')">
     <div class="article article-hover shadow ">
       {% include 'sub_article.html' with post=posts.1 current_section=current_section html_off=1 link=1 clamp=1 %}
     </div>
   </div>
   {% endif %}
   {% if posts.2 %}
-  <div class="col-md-3" onclick="redirect('{% if current_section %}/{% endif %}{{ current_section.url }}/aktuality/{{ posts.2.id }}')"> 
+  <div class="col-md-3" onclick="redirect('{% if current_section %}/{% endif %}{{ current_section.url }}/aktuality/{{ posts.2.url }}')"> 
     <div class="article article-hover shadow ">
       {% include 'sub_article.html' with post=posts.2 current_section=current_section html_off=1 link=1 clamp=1 %}
     </div>
   </div>
   {% endif %}
   {% if posts.3 %}
-  <div class="col-md-3" onclick="redirect('{% if current_section %}/{% endif %}{{ current_section.url }}/aktuality/{{ posts.3.id }}')">
+  <div class="col-md-3" onclick="redirect('{% if current_section %}/{% endif %}{{ current_section.url }}/aktuality/{{ posts.3.url }}')">
     <div class="article article-hover shadow ">
       {% include 'sub_article.html' with post=posts.3 current_section=current_section html_off=1 link=1 clamp=1 %}
     </div>
   </div>
   {% endif %}
   {% if posts.4 %}
-  <div class="col-md-3" onclick="redirect('{% if current_section %}/{% endif %}{{ current_section.url }}/aktuality/{{ posts.4.id }}')">
+  <div class="col-md-3" onclick="redirect('{% if current_section %}/{% endif %}{{ current_section.url }}/aktuality/{{ posts.4.url }}')">
     <div class="article article-hover shadow ">
       {% include 'sub_article.html' with post=posts.4 current_section=current_section html_off=1 link=1 clamp=1 %}
     </div>

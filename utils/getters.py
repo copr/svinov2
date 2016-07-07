@@ -5,8 +5,11 @@ from home.models import Section, Article, News, StaticArticle, Invitation, Colum
 def get_article_safe(article_id):
     return Article.objects.filter(id = article_id)
 
-def get_article(article_id):
-    return Article.objects.get(id = article_id)
+def get_article_by_id(article_id):
+    return get_object_or_404(Article, id = article_id)
+
+def get_article_by_url(article_url):
+    return get_object_or_404(Article, url = article_url)
 
 def get_posts(section):
     main_section = Section.objects.get(url = section)
