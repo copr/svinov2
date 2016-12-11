@@ -95,6 +95,30 @@ def article_range(request, section, start, end):
     return render(request, 'news.html', {'sections': sections, 'posts': posts, 'current_section': cur_section,
                                          'sponsors': sponsors, 'contacts': contacts})
 
+# kdyz se pripoji na url ve tvaru /<identifier>, tak se tim muze myslet bud sekce
+# a nebo url, proto se musim rozhodnout, co z toho pouzit
+# melo by to fungovat tak ze url se nikdy nebude shodovat s nazvem sekce, to
+# osetrim v generovani a ukladani url
+def article_by_id_or_section(request, identifier):
+    section = list(Section.objects.filter(name=identifier))
+    if section != []:
+        sections = get_sections(identifier)
+        posts = get_posts(identifier)
+        cur_section = get_current_section(identifier)
+        calendars = get_calendars(identifier)
+        sponsors = get_sponsors()
+        contacts = get_contacts()
+        banner = get_banner(identifier)
+        return render(request, 'front_page.html', {'sections': sections,
+                                                   'posts': posts,
+                                                   'current_section': cur_section,
+                                                   'calendars': calendars,
+                                                   'sponsors': sponsors,
+                                                   'contacts': contacts,
+                                                   'banner': banner})
+    else:
+        return article_from_front_by_url(request, identifier)
+
 def article_range_from_front(request, start, end):
     return article_range(request, 'index', start, end)
     

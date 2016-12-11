@@ -117,9 +117,15 @@ class Article(models.Model):
     user = models.ForeignKey(User, null=True, editable=False)
     url = models.CharField(max_length = 255, help_text=HELP_TEXT[1], blank=True)
 
+    # no uz je to pekne nechutne napsane :D
     def save(self, *args, **kwargs):
         if self.url == '':
-            self.url = create_unique_article_url(unidecode(self.name[:100]).replace(' ', '_'))
+            url = unidecode(self.name[:100]).replace(' ', '_')
+        else:
+            url = self.url.replace(' ', '_')
+        self.url = url
+        if Article.objects.filter(url=url).exists() or Section.objects.filter(name=url).exists():
+            self.url = create_unique_article_url(url)
         super(Article, self).save(*args, **kwargs)
 
     def __str__(self):
@@ -218,6 +224,6 @@ def create_unique_url(url):
 
 #pro Article
 def create_unique_article_url(url):
-    if Article.objects.filter(url=url).exists():
+    if Article.objects.filter(url=url).exists() or Section.objects.filter(name=url).exists():
         return create_unique_article_url(url + '1')
     return url
