@@ -16,9 +16,13 @@ def index(request):
     calendars = get_calendars('index')
     sponsors = get_sponsors()
     contacts = get_contacts()
-    return render(request, 'pozvanky.html', {'sections': sections, 'posts': posts,
-                                             'current_section': '', 'invitations': invitations, 'calendars': calendars,
-                                             'sponsors': sponsors, 'contacts': contacts})
+    return render(request, 'pozvanky.html', {'sections': sections,
+                                             'posts': posts,
+                                             'current_section': '',
+                                             'invitations': invitations,
+                                             'calendars': calendars,
+                                             'sponsors': sponsors,
+                                             'contacts': contacts})
 
 def section(request, section):
     sections = get_sections(section)
@@ -28,9 +32,13 @@ def section(request, section):
     sponsors = get_sponsors()
     contacts = get_contacts()
     banner = get_banner(section)
-    return render(request, 'front_page.html', {'sections': sections, 'posts': posts,
-                                               'current_section': cur_section, 'calendars': calendars, 'sponsors': sponsors,
-                                               'contacts': contacts, 'banner': banner})
+    return render(request, 'front_page.html', {'sections': sections,
+                                               'posts': posts,
+                                               'current_section': cur_section,
+                                               'calendars': calendars,
+                                               'sponsors': sponsors,
+                                               'contacts': contacts,
+                                               'banner': banner})
 
 def calendar(request, section):
     sections = get_sections(section)
@@ -38,8 +46,11 @@ def calendar(request, section):
     cur_section = get_current_section(section)
     sponsors = get_sponsors()
     contacts = get_contacts()
-    return render(request, 'calendar_alt.html', {'sections': sections, 'current_section': cur_section, 'sponsors': sponsors, 
-                                                 'contacts': contacts, 'calendars': calendars})
+    return render(request, 'calendar_alt.html', {'sections': sections,
+                                                 'current_section': cur_section,
+                                                 'sponsors': sponsors, 
+                                                 'contacts': contacts,
+                                                 'calendars': calendars})
 
 def static(request, section, static):
     sections = get_sections(section)
@@ -47,8 +58,11 @@ def static(request, section, static):
     cur_section = get_current_section(section)
     sponsors = get_sponsors()
     contacts = get_contacts()
-    return render(request, 'article.html', {'sections': sections, 'article': static,
-                                           'current_section': cur_section, 'sponsors': sponsors, 'contacts': contacts})
+    return render(request, 'article.html', {'sections': sections,
+                                            'article': static,
+                                            'current_section': cur_section,
+                                            'sponsors': sponsors,
+                                            'contacts': contacts})
 
 def news_from_front(request):
     sections = get_sections('index')
@@ -56,8 +70,11 @@ def news_from_front(request):
     cur_section = get_current_section('index')
     sponsors = get_sponsors()
     contacts = get_contacts()
-    return render(request, 'news.html', {'sections': sections, 'posts': posts,
-                                         'current_section': cur_section, 'sponsors': sponsors, 'contacts': contacts})
+    return render(request, 'news.html', {'sections': sections,
+                                         'posts': posts,
+                                         'current_section': cur_section,
+                                         'sponsors': sponsors,
+                                         'contacts': contacts})
 
 def news(request, section):
     sections = get_sections(section)
@@ -65,8 +82,11 @@ def news(request, section):
     cur_section = get_current_section(section)
     sponsors = get_sponsors()
     contacts = get_contacts()
-    return render(request, 'news.html', {'sections': sections, 'posts': posts, 'current_section': cur_section,
-                                         'sponsors': sponsors, 'contacts': contacts})
+    return render(request, 'news.html', {'sections': sections,
+                                         'posts': posts,
+                                         'current_section': cur_section,
+                                         'sponsors': sponsors,
+                                         'contacts': contacts})
 
 def article_by_id(request, section, article_id):
     sections = get_sections(section)
@@ -74,8 +94,11 @@ def article_by_id(request, section, article_id):
     cur_section = get_current_section(section) 
     sponsors = get_sponsors()
     contacts = get_contacts()
-    return render(request, 'article.html', {'sections': sections, 'article': article, 'current_section': cur_section, 
-                                            'sponsors': sponsors, 'contacts': contacts})
+    return render(request, 'article.html', {'sections': sections,
+                                            'article': article,
+                                            'current_section': cur_section, 
+                                            'sponsors': sponsors,
+                                            'contacts': contacts})
 
 def article_by_url(request, section, article_url):
     sections = get_sections(section)
@@ -83,8 +106,11 @@ def article_by_url(request, section, article_url):
     cur_section = get_current_section(section) 
     sponsors = get_sponsors()
     contacts = get_contacts()
-    return render(request, 'article.html', {'sections': sections, 'article': article, 'current_section': cur_section, 
-                                            'sponsors': sponsors, 'contacts': contacts})
+    return render(request, 'article.html', {'sections': sections,
+                                            'article': article,
+                                            'current_section': cur_section, 
+                                            'sponsors': sponsors,
+                                            'contacts': contacts})
 
 def article_range(request, section, start, end):
     sections = get_sections(section)
@@ -92,13 +118,16 @@ def article_range(request, section, start, end):
     cur_section = get_current_section(section)
     sponsors = get_sponsors()
     contacts = get_contacts()
-    return render(request, 'news.html', {'sections': sections, 'posts': posts, 'current_section': cur_section,
-                                         'sponsors': sponsors, 'contacts': contacts})
+    return render(request, 'news.html', {'sections': sections,
+                                         'posts': posts,
+                                         'current_section': cur_section,
+                                         'sponsors': sponsors,
+                                         'contacts': contacts})
 
 # kdyz se pripoji na url ve tvaru /<identifier>, tak se tim muze myslet bud sekce
 # a nebo url, proto se musim rozhodnout, co z toho pouzit
 # melo by to fungovat tak ze url se nikdy nebude shodovat s nazvem sekce, to
-# osetrim v generovani a ukladani url
+# osetrimje osetreno v generovani a ukladani url
 def article_by_id_or_section(request, identifier):
     section = list(Section.objects.filter(url=identifier))
     if section != []:
