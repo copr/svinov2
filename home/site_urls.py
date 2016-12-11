@@ -6,6 +6,7 @@ urlpatterns = [
     url(r'^$', views.index),
     url(r'^index/$', views.index),
     url(r'^aktuality/$', views.news_from_front),
+    url(r'^(?P<article_url>[\w!.?]+)/$', views.article_from_front_by_url),
     url(r'^aktuality/(?P<article_id>\d+)/$', views.article_from_front),
     url(r'^aktuality/(?P<start>\d+)-(?P<end>\d+)/$', views.article_range_from_front),
     url(r'^aktuality/(?P<article_url>[\w!.?]+)/$', views.article_from_front_by_url),
