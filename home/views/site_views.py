@@ -100,7 +100,7 @@ def article_range(request, section, start, end):
 # melo by to fungovat tak ze url se nikdy nebude shodovat s nazvem sekce, to
 # osetrim v generovani a ukladani url
 def article_by_id_or_section(request, identifier):
-    section = list(Section.objects.filter(name=identifier))
+    section = list(Section.objects.filter(url=identifier))
     if section != []:
         sections = get_sections(identifier)
         posts = get_posts(identifier)
