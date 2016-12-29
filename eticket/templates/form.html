@@ -3,9 +3,12 @@
 {% block body %}
 <div class="row">
   <div class="col-xs-12">
-    <div id="content" class="article shadow article-text">ahoj:)</div>
+    <div id="content" class="article shadow article-text col-xs-12">ahoj:)</div>
   </div>
 </div>
-<script>var data = {{ event }};</script>
-<script src="{% static 'js/test32.js' %}"></script>
+<script>
+	var event = {{ event }};
+	var eventField = {{event_fields}};
+</script>
+<script src="{% static 'js/bundle.js' %}"></script>
 {% endblock %}
