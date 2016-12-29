@@ -1,46 +1,41 @@
-{% extends "base.html" %}
-{% block head_title %}SDH Svinov{% endblock %}
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta charset="UTF-8" />
+<link rel="shortcut icon" href="/static/images/logo_web5.png" />
 
-{%block body %}
+<!-- <link rel="stylesheet" href="{% static 'css/style.css' %}" /> -->
+<!-- <link rel="stylesheet" href="{% static 'css/logo.css' %}" /> -->
+<!-- <link rel="stylesheet" href="{% static 'css/article.css' %}" /> -->
+<!-- <link rel="stylesheet" href="{% static 'css/calendar.css' %}" /> -->
+<!-- <link rel="stylesheet" href="{% static 'css/menu.css' %}" /> -->
+<!-- <link rel="stylesheet" href="{% static 'css/carousel.css' %}" /> -->
+<!-- <link rel="stylesheet" href="{% static 'css/responsive_style.css' %}" /> -->
 
-<div class="row">
-  <div class="col-md-6 col-xs-12">
-    <div class="article">
-<iframe src="http://www.rajce.net/a11320590/mini?bgcolor=&photoNameVisible=0" name="rajce-net" width="356" height="356" frameborder="0" scrolling="no" allowtransparency="false"></iframe>
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris nec arcu maximus, dapibus leo et, rutrum augue. In sed diam quis purus bibendum elementum. Nullam lobortis urna risus, eget sagittis ipsum consectetur id. Mauris sed tristique eros. Sed pharetra a nulla ac blandit. Nulla hendrerit erat lectus, quis venenatis lacus congue ac. Praesent ligula nisi, placerat quis justo et, eleifend feugiat nibh. Praesent posuere ipsum at velit posuere posuere. Donec aliquam tristique scelerisque. Quisque luctus tempus erat eu condimentum. In posuere est ornare libero elementum maximus. Donec consequat metus sit amet nulla placerat, vitae tristique quam viverra. Nulla euismod lobortis lectus, non tempus dui fringilla eu. Donec pharetra, erat ac molestie dignissim, augue dui mattis urna, sed sagittis quam tellus eu tellus. Ut quam orci, hendrerit fringilla fermentum at, accumsan eget sem.
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react/0.14.7/react.js">
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react/0.14.7/react-dom.js">
+</script>
+<script
+   src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.6.15/browser.js">
+</script>
+<script
+   src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.0/jquery.min.js">
+</script>
+<script
+   src="https://cdnjs.cloudflare.com/ajax/libs/marked/0.3.5/marked.min.js">
+</script>
+<script src="https://npmcdn.com/react-router/umd/ReactRouter.min.js"></script>
 
-In ac diam gravida risus auctor malesuada. Aenean fermentum est tortor. Quisque sollicitudin purus leo. Etiam tincidunt molestie risus, sit amet fringilla ante laoreet eget. Integer congue tempus tempor. Cras at purus ut libero viverra sollicitudin. Suspendisse nec scelerisque nunc, sit amet ultricies sem. Integer placerat, augue nec consectetur faucibus, est odio dignissim lacus, vitae facilisis erat velit vitae nisi. Nullam aliquam tristique sem sed tincidunt. Fusce ac facilisis massa. Praesent nunc ex, imperdiet ac sodales id, placerat id magna. Mauris et diam in elit laoreet vehicula sit amet vel libero.
 
-Integer suscipit quam lacus, id maximus tellus mattis tempus. Nulla facilisi. Interdum et malesuada fames ac ante ipsum primis in faucibus. Ut in consequat sem. Etiam eu ligula at felis elementum pulvinar vitae quis odio. Aenean elementum mi ac feugiat sagittis. Ut ut ultricies tortor. Quisque elementum efficitur ultricies. Maecenas ultrices egestas urna, quis euismod dui semper id. Nunc dapibus ultrices vestibulum. Nam vel posuere libero, non tempor tortor.
 
-Interdum et malesuada fames ac ante ipsum primis in faucibus. Fusce ut laoreet ligula, vel interdum urna. Curabitur eget diam eget nisl consequat eleifend. Nullam vel urna quis arcu tincidunt hendrerit. Donec velit ante, ullamcorper non quam at, varius lacinia dui. Aliquam venenatis mi sapien, at fringilla lacus accumsan eu. Sed dapibus aliquam est sit amet tempus. In efficitur imperdiet fringilla. Integer tincidunt est nibh, at ornare massa suscipit sit amet. Praesent sodales nibh quis mi mattis laoreet. Nullam lobortis tempor est, pulvinar bibendum magna. Vivamus in consectetur velit. Nam dapibus, purus vel condimentum faucibus, purus est dapibus nulla, eget ornare mi dolor vitae ligula.
-
-Praesent sit amet quam erat. Suspendisse facilisis erat eu vestibulum semper. Vivamus vel iaculis leo, quis auctor felis. Aliquam a scelerisque tellus. Nulla vel tristique metus, nec tempor nunc. Donec sollicitudin sapien arcu, ornare aliquam lectus laoreet sit amet. Etiam consequat mi quam, nec maximus urna interdum eget. Quisque tempus posuere lacus. Phasellus justo tortor, porttitor non laoreet vitae, tempus id dui. Fusce purus augue, tempor in nulla ut, pulvinar convallis augue. Nunc commodo ultrices tellus. Sed luctus arcu sed urna porta, non pharetra metus dictum. 
-    </div>
+</head>
+<body>
+  <div id="content">
   </div>
-  <div class="col-md-6 col-xs-12">
-    <div class="article">
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris nec arcu maximus, dapibus leo et, rutrum augue. In sed diam quis purus bibendum elementum. Nullam lobortis urna risus, eget sagittis ipsum consectetur id. Mauris sed tristique eros. Sed pharetra a nulla ac blandit. Nulla hendrerit erat lectus, quis venenatis lacus congue ac. Praesent ligula nisi, placerat quis justo et, eleifend feugiat nibh. Praesent posuere ipsum at velit posuere posuere. Donec aliquam tristique scelerisque. Quisque luctus tempus erat eu condimentum. In posuere est ornare libero elementum maximus. Donec consequat metus sit amet nulla placerat, vitae tristique quam viverra. Nulla euismod lobortis lectus, non tempus dui fringilla eu. Donec pharetra, erat ac molestie dignissim, augue dui mattis urna, sed sagittis quam tellus eu tellus. Ut quam orci, hendrerit fringilla fermentum at, accumsan eget sem.
-
-In ac diam gravida risus auctor malesuada. Aenean fermentum est tortor. Quisque sollicitudin purus leo. Etiam tincidunt molestie risus, sit amet fringilla ante laoreet eget. Integer congue tempus tempor. Cras at purus ut libero viverra sollicitudin. Suspendisse nec scelerisque nunc, sit amet ultricies sem. Integer placerat, augue nec consectetur faucibus, est odio dignissim lacus, vitae facilisis erat velit vitae nisi. Nullam aliquam tristique sem sed tincidunt. Fusce ac facilisis massa. Praesent nunc ex, imperdiet ac sodales id, placerat id magna. Mauris et diam in elit laoreet vehicula sit amet vel libero.
-
-Integer suscipit quam lacus, id maximus tellus mattis tempus. Nulla facilisi. Interdum et malesuada fames ac ante ipsum primis in faucibus. Ut in consequat sem. Etiam eu ligula at felis elementum pulvinar vitae quis odio. Aenean elementum mi ac feugiat sagittis. Ut ut ultricies tortor. Quisque elementum efficitur ultricies. Maecenas ultrices egestas urna, quis euismod dui semper id. Nunc dapibus ultrices vestibulum. Nam vel posuere libero, non tempor tortor.
-
-Interdum et malesuada fames ac ante ipsum primis in faucibus. Fusce ut laoreet ligula, vel interdum urna. Curabitur eget diam eget nisl consequat eleifend. Nullam vel urna quis arcu tincidunt hendrerit. Donec velit ante, ullamcorper non quam at, varius lacinia dui. Aliquam venenatis mi sapien, at fringilla lacus accumsan eu. Sed dapibus aliquam est sit amet tempus. In efficitur imperdiet fringilla. Integer tincidunt est nibh, at ornare massa suscipit sit amet. Praesent sodales nibh quis mi mattis laoreet. Nullam lobortis tempor est, pulvinar bibendum magna. Vivamus in consectetur velit. Nam dapibus, purus vel condimentum faucibus, purus est dapibus nulla, eget ornare mi dolor vitae ligula.
-
-Praesent sit amet quam erat. Suspendisse facilisis erat eu vestibulum semper. Vivamus vel iaculis leo, quis auctor felis. Aliquam a scelerisque tellus. Nulla vel tristique metus, nec tempor nunc. Donec sollicitudin sapien arcu, ornare aliquam lectus laoreet sit amet. Etiam consequat mi quam, nec maximus urna interdum eget. Quisque tempus posuere lacus. Phasellus justo tortor, porttitor non laoreet vitae, tempus id dui. Fusce purus augue, tempor in nulla ut, pulvinar convallis augue. Nunc commodo ultrices tellus. Sed luctus arcu sed urna porta, non pharetra metus dictum.   
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris nec arcu maximus, dapibus leo et, rutrum augue. In sed diam quis purus bibendum elementum. Nullam lobortis urna risus, eget sagittis ipsum consectetur id. Mauris sed tristique eros. Sed pharetra a nulla ac blandit. Nulla hendrerit erat lectus, quis venenatis lacus congue ac. Praesent ligula nisi, placerat quis justo et, eleifend feugiat nibh. Praesent posuere ipsum at velit posuere posuere. Donec aliquam tristique scelerisque. Quisque luctus tempus erat eu condimentum. In posuere est ornare libero elementum maximus. Donec consequat metus sit amet nulla placerat, vitae tristique quam viverra. Nulla euismod lobortis lectus, non tempus dui fringilla eu. Donec pharetra, erat ac molestie dignissim, augue dui mattis urna, sed sagittis quam tellus eu tellus. Ut quam orci, hendrerit fringilla fermentum at, accumsan eget sem.
-
-In ac diam gravida risus auctor malesuada. Aenean fermentum est tortor. Quisque sollicitudin purus leo. Etiam tincidunt molestie risus, sit amet fringilla ante laoreet eget. Integer congue tempus tempor. Cras at purus ut libero viverra sollicitudin. Suspendisse nec scelerisque nunc, sit amet ultricies sem. Integer placerat, augue nec consectetur faucibus, est odio dignissim lacus, vitae facilisis erat velit vitae nisi. Nullam aliquam tristique sem sed tincidunt. Fusce ac facilisis massa. Praesent nunc ex, imperdiet ac sodales id, placerat id magna. Mauris et diam in elit laoreet vehicula sit amet vel libero.
-
-Integer suscipit quam lacus, id maximus tellus mattis tempus. Nulla facilisi. Interdum et malesuada fames ac ante ipsum primis in faucibus. Ut in consequat sem. Etiam eu ligula at felis elementum pulvinar vitae quis odio. Aenean elementum mi ac feugiat sagittis. Ut ut ultricies tortor. Quisque elementum efficitur ultricies. Maecenas ultrices egestas urna, quis euismod dui semper id. Nunc dapibus ultrices vestibulum. Nam vel posuere libero, non tempor tortor.
-
-Interdum et malesuada fames ac ante ipsum primis in faucibus. Fusce ut laoreet ligula, vel interdum urna. Curabitur eget diam eget nisl consequat eleifend. Nullam vel urna quis arcu tincidunt hendrerit. Donec velit ante, ullamcorper non quam at, varius lacinia dui. Aliquam venenatis mi sapien, at fringilla lacus accumsan eu. Sed dapibus aliquam est sit amet tempus. In efficitur imperdiet fringilla. Integer tincidunt est nibh, at ornare massa suscipit sit amet. Praesent sodales nibh quis mi mattis laoreet. Nullam lobortis tempor est, pulvinar bibendum magna. Vivamus in consectetur velit. Nam dapibus, purus vel condimentum faucibus, purus est dapibus nulla, eget ornare mi dolor vitae ligula.
-
-Praesent sit amet quam erat. Suspendisse facilisis erat eu vestibulum semper. Vivamus vel iaculis leo, quis auctor felis. Aliquam a scelerisque tellus. Nulla vel tristique metus, nec tempor nunc. Donec sollicitudin sapien arcu, ornare aliquam lectus laoreet sit amet. Etiam consequat mi quam, nec maximus urna interdum eget. Quisque tempus posuere lacus. Phasellus justo tortor, porttitor non laoreet vitae, tempus id dui. Fusce purus augue, tempor in nulla ut, pulvinar convallis augue. Nunc commodo ultrices tellus. Sed luctus arcu sed urna porta, non pharetra metus dictum.     
-    </div>
-  </div>
-</div>
-{% endblock %}
-
+  <script type="text/babel" src="/static/js/react.js"></script>
+</body>
+</html>
 

@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html lang="cs">
+  <head>
+    <ul>
+      <li>{{ ticket.name }}</li>
+      <li>{{ ticket.surname }}</li>
+      {% for field in organizer_fields %}
+      <li>{{ field.text }}</li>
+      {% endfor %}
+  </head>
+  <body>
+  </body>
+</html>

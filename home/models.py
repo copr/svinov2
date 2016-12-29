@@ -49,8 +49,11 @@ class Section(models.Model):
         return self.name
 
     def clean(self):
+        proposed_url = create_unique_url(unidecode(self.name).replace(' ', '_'))
         if self.roll_column != None and self.parent_section != None :
             raise ValidationError("Sloupec a rodicovska sekce nemuzou byt obe nenulove")
+        if Article.objects.filter(url=proposed_url).exists():
+            raise ValidationError("Stejne jméno už má nějaký článek")
         if exists_url(self.url, 0):
             raise ValidationError("Zadané url už existuje, zvolte prosím jiné")
         if self.roll_column == None and self.parent_section == None and self.name != 'index':
@@ -60,8 +63,9 @@ class Section(models.Model):
                 
 
     def save(self, *args, **kwargs):
+        proposed_url = create_unique_url(unidecode(self.name).replace(' ', '_'))
         if self.url == '':
-            self.url = create_unique_url(unidecode(self.name).replace(' ', '_'))
+            self.url = proposed_url
         super(Section, self).save(*args, **kwargs)
 
     class Meta:
@@ -117,14 +121,12 @@ class Article(models.Model):
     user = models.ForeignKey(User, null=True, editable=False)
     url = models.CharField(max_length = 255, help_text=HELP_TEXT[1], blank=True)
 
-    # no uz je to pekne nechutne napsane :D
+    def clean(self, *args, **kwargs):
+        if Article.objects.filter(url=self.url).exists() or Section.objects.filter(url=url).exists():
+            raise ValidationError("Zadané url už existuje")
+
     def save(self, *args, **kwargs):
-        if self.url == '':
-            url = unidecode(self.name[:100]).replace(' ', '_')
-        else:
-            url = self.url.replace(' ', '_')
-        self.url = url
-        if Article.objects.filter(url=url).exists() or Section.objects.filter(name=url).exists():
+        if self.url == ' ':
             self.url = create_unique_article_url(url)
         super(Article, self).save(*args, **kwargs)
 
@@ -205,7 +207,7 @@ class Banner(models.Model):
 # tyhle jsou pro StaticArticle
 def exists_url(url, model):
     if model == 0:
-        return Section.objects.exclude(url=url).filter(url=url).exists() or StaticArticle.objects.filter(url=url).exists() 
+        return Section.objects.exclude(url=url).filter(url=url).exists() or StaticArticle.objects.filter(url=url).exists() or Article.objects.filter(url=url).exists()
     elif model == 1:
         raise Exception('tohle uz by se nemlo zavolat')
         return Section.objects.filter(url=url).exists() or StaticArticle.objects.filter(url=url).exists()
@@ -224,6 +226,6 @@ def create_unique_url(url):
 
 #pro Article
 def create_unique_article_url(url):
-    if Article.objects.filter(url=url).exists() or Section.objects.filter(name=url).exists():
+    if Article.objects.filter(url=url).exists() or Section.objects.filter(url=url).exists():
         return create_unique_article_url(url + '1')
     return url

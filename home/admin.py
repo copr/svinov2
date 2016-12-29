@@ -1,7 +1,9 @@
 from django.contrib import admin
 from image_cropping import ImageCroppingMixin
 
-from home.models import Section, File, Article, StaticArticle, News, Invitation, Column, Calendar, Sponzor, Contact, Banner
+from home.models import *
+
+
 
 class InvitationAdmin(ImageCroppingMixin, admin.ModelAdmin):
     pass
@@ -51,3 +53,5 @@ admin.site.register(Contact)
 admin.site.register(Column)
 admin.site.register(Calendar)
 admin.site.register(Banner)
+
+#admin.site.register(EventField, EventFieldAdmin)
