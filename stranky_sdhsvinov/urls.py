@@ -20,10 +20,12 @@ from django.conf.urls.static import static
 from django.conf import settings
 
 from home import urls as home_urls
+from eticket import urls as eticket_urls
 
 urlpatterns = [
     url(r'^ckeditor/', include('ckeditor.urls')),
     url(r'^admin/', include(admin.site.urls)),
-    url(r'^', include(home_urls))
+    url(r'^', include(eticket_urls)),
+    url(r'^', include(home_urls)),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
