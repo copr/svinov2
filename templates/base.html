@@ -1,146 +1,145 @@
-{% load staticfiles %}
+﻿{% load staticfiles %}
 {% load l10n %}
 {% load home_tags %}
 <!DOCTYPE html>
 <html lang="cs">
 <head>
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<meta charset="UTF-8" />
-<link rel="shortcut icon" href="/static/images/logo_web5.png" />
-<title>{%block head_title %}SDH Svinov{% endblock %}</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<meta charset="UTF-8" />
+	<link rel="shortcut icon" href="/static/images/logo_web5.png" />
+	<title>{%block head_title %}SDH Svinov{% endblock %}</title>
 
-<!--[if lt IE 9]>
-    <link rel="stylesheet" href="{% static 'css/ie.css' %}" />
-    <script src="../../assets/js/html5shiv.js"></script>
-    <script src="../../assets/js/respond.min.js"></script>
-<![endif]-->
+	<!--[if lt IE 9]>
+		<link rel="stylesheet" href="{% static 'css/ie.css' %}" />
+		<script src="../../assets/js/html5shiv.js"></script>
+		<script src="../../assets/js/respond.min.js"></script>
+	<![endif]-->
 
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" />
-<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" />
-<!-- <link rel="stylesheet" href="{% static 'css/bootstrap/bootstrap.min.css' %}"> -->
-<!-- <link rel="stylesheet" href="{% static 'css/bootstrap/font-awesome.min.css' %}"> -->
-<link rel="stylesheet" href="{% static 'css/style.css' %}" />
-<link rel="stylesheet" href="{% static 'css/logo.css' %}" />
-<link rel="stylesheet" href="{% static 'css/article.css' %}" />
-<link rel="stylesheet" href="{% static 'css/calendar.css' %}" />
-<link rel="stylesheet" href="{% static 'css/menu.css' %}" />
-<link rel="stylesheet" href="{% static 'css/carousel.css' %}" />
-<link rel="stylesheet" href="{% static 'css/responsive_style.css' %}" />
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" />
+	<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" />
+	<!-- <link rel="stylesheet" href="{% static 'css/bootstrap/bootstrap.min.css' %}"> -->
+	<!-- <link rel="stylesheet" href="{% static 'css/bootstrap/font-awesome.min.css' %}"> -->
+	<link rel="stylesheet" href="{% static 'css/style.css' %}" />
+	<link rel="stylesheet" href="{% static 'css/logo.css' %}" />
+	<link rel="stylesheet" href="{% static 'css/article.css' %}" />
+	<link rel="stylesheet" href="{% static 'css/calendar.css' %}" />
+	<link rel="stylesheet" href="{% static 'css/menu.css' %}" />
+	<link rel="stylesheet" href="{% static 'css/carousel.css' %}" />
+	<link rel="stylesheet" href="{% static 'css/responsive_style.css' %}" />
 
-<!-- Google analytics -->
-<script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+	<!-- Google analytics -->
+	<script>
+		(function (i, s, o, g, r, a, m) {
+			i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+				(i[r].q = i[r].q || []).push(arguments)
+			}, i[r].l = 1 * new Date(); a = s.createElement(o),
+			m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+		})(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
 
-  ga('create', 'UA-38700494-1', 'auto');
-  ga('send', 'pageview');
+		ga('create', 'UA-38700494-1', 'auto');
+		ga('send', 'pageview');
 
-</script>
-<!-- /Google analytics -->
+	</script>
+	<!-- /Google analytics -->
+	<!-- Facebook -->
+	<meta property="og:site_name" content="Stránky SDH Svinov" />
+	<meta property="og:title" content="{% block facebook_title %}SDH Svinov{% endblock %}" />
+	<meta property="og:description" content="{% block facebook_decription %}Stránky věnované činnosti sboru dobrovolných hasičů ze Svinova{% endblock %}" />
+	<meta property="article:publisher" content="{% block facebook_publisher %}https://www.facebook.com/pages/SDH-Svinov/132712463768{% endblock %}" />
+	<meta property="article:author" content="{% block facebook_author %}{% endblock %}" />
+	<meta property="og:image" content="{% block facebook_image %}http://stranky-sdhsvinov-0206.rostiapp.cz{% static 'images/facebook_img.jpg' %}{% endblock %}" />
+	<!-- /Facebook -->
 
+	<style>
+	</style>
 
-
-<!-- Facebook -->
-<meta property="og:site_name" content="Stránky SDH Svinov" />
-<meta property="og:title" content="{% block facebook_title %}SDH Svinov{% endblock %}" />
-<meta property="og:description" content="{% block facebook_decription %}Stránky věnované činnosti sboru dobrovolných hasičů ze Svinova{% endblock %}" />
-<meta property="article:publisher" content="{% block facebook_publisher %}https://www.facebook.com/pages/SDH-Svinov/132712463768{% endblock %}" />
-<meta property="article:author" content="{% block facebook_author %}{% endblock %}" />
-<meta property="og:image" content="{% block facebook_image %}http://stranky-sdhsvinov-0206.rostiapp.cz{% static 'images/facebook_img.jpg' %}{% endblock %}" />
-<!-- /Facebook -->
-
-<style>
-</style>
-
-<link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Open+Sans" />
-
-
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Clamp.js/0.5.1/clamp.min.js" ></script>
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-<script src="http://cdn.jsdelivr.net/modernizr/2.8.3/modernizr.min.js"></script>
-<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
-<script type="text/javascript" src="//static.addtoany.com/menu/page.js"></script>
+	<link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Open+Sans" />
 
 
-<script src="{% static 'js/ie.js' %}"></script>
-<script src="{% static 'js/calendar.js' %}"></script>
-<script src="{% static 'js/scripts.js' %}"></script>
-<script src="https://apis.google.com/js/client.js?onload=handleCalendar" ></script>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Clamp.js/0.5.1/clamp.min.js"></script>
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+	<script src="http://cdn.jsdelivr.net/modernizr/2.8.3/modernizr.min.js"></script>
+	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="//static.addtoany.com/menu/page.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/react/0.14.7/react.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/react/0.14.7/react-dom.js"></script>
 
-<!-- <script type="text/javascript" src="{% static 'js/clamp.min.js' %}" ></script> -->
-<!-- <script type="text/javascript" src="http://cdn.rawgit.com/micjamking/succinct/master/jQuery.succinct.min.js"></script> -->
-<!-- <script src="{% static 'js/jquery/jquery.min.js' %}"></script> -->
-<!-- <script src="{% static 'js/bootstrap/bootstrap.min.js' %}"></script> -->
-<!-- <script src="{% static 'js/jquery/jQuery.succinct.min.js' %}"></script> -->
-<!-- <script src="{% static 'js/jquery/modernizr.min.js' %}"></script> -->
+	<script src="{% static 'js/ie.js' %}"></script>
+	<script src="{% static 'js/calendar.js' %}"></script>
+	<script src="{% static 'js/scripts.js' %}"></script>
+	<script src="https://apis.google.com/js/client.js?onload=handleCalendar"></script>
 
-{% block head %}
-{% endblock %}
+	<!-- <script type="text/javascript" src="{% static 'js/clamp.min.js' %}" ></script> -->
+	<!-- <script type="text/javascript" src="http://cdn.rawgit.com/micjamking/succinct/master/jQuery.succinct.min.js"></script> -->
+	<!-- <script src="{% static 'js/jquery/jquery.min.js' %}"></script> -->
+	<!-- <script src="{% static 'js/bootstrap/bootstrap.min.js' %}"></script> -->
+	<!-- <script src="{% static 'js/jquery/jQuery.succinct.min.js' %}"></script> -->
+	<!-- <script src="{% static 'js/jquery/modernizr.min.js' %}"></script> -->
+	{% block head %}
+	{% endblock %}
 </head>
 <body>
-  <div id="fb-root"></div>
-  <script>
-    (function(d, s, id) {
-    var js, fjs = d.getElementsByTagName(s)[0];
-    if (d.getElementById(id)) return;
-    js = d.createElement(s); js.id = id;
-    js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.5";
-    fjs.parentNode.insertBefore(js, fjs);
-    }(document, 'script', 'facebook-jssdk'));
-  </script>
-  
-<div class="back">
-<div class="container logo_bar">
-  <a href="/"><img class="logo" src="{% static 'images/logo_web2.png' %}" /></a>
-  <span class="logo_text">SBOR DOBROVOLNÝCH HASIČŮ OSTRAVA-SVINOV</span>
-  <a href="https://www.dh.cz/"><img class="shcms_logo" src="{% static 'images/schms_logo2.png' %}" /></a>
-  <a href="https://svinov.ostrava.cz/cs/"><img class="svinov_logo" src="{% static 'images/svinov_znak_transparent2.png' %}" /></a>
-  <a href="http://www.oshov.cz/"><img class="transparent_logo" src="{% static 'images/transparetn2.png' %}" /></a>
-</div>
+	<div id="fb-root"></div>
+	<script>
+		(function (d, s, id) {
+			var js, fjs = d.getElementsByTagName(s)[0];
+			if (d.getElementById(id)) return;
+			js = d.createElement(s); js.id = id;
+			js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.5";
+			fjs.parentNode.insertBefore(js, fjs);
+		}(document, 'script', 'facebook-jssdk'));
+	</script>
+
+	<div class="back">
+		<div class="container logo_bar">
+			<a href="/"><img class="logo" src="{% static 'images/logo_web2.png' %}" /></a>
+			<span class="logo_text">SBOR DOBROVOLNÝCH HASIČŮ OSTRAVA-SVINOV</span>
+			<a href="https://www.dh.cz/"><img class="shcms_logo" src="{% static 'images/schms_logo2.png' %}" /></a>
+			<a href="https://svinov.ostrava.cz/cs/"><img class="svinov_logo" src="{% static 'images/svinov_znak_transparent2.png' %}" /></a>
+			<a href="http://www.oshov.cz/"><img class="transparent_logo" src="{% static 'images/transparetn2.png' %}" /></a>
+		</div>
 
 
-<div class="container m">
-  {% include "menu.html" with sections=sections current_section=current_section %}
-</div>
+		<div class="container m">
+			{% include "menu.html" with sections=sections current_section=current_section %}
+		</div>
 
-<div class="container text-part">
-  {%block body %} {% endblock %}
-</div>
-</div>
-<footer class="footer">
-  <div class="fluid-container">
-    <div class="footer-text">
-    {% for contact in contacts %}
-      <div class="contact">
-	{% autoescape off %}
-         {{ contact.text }}
-	{% endautoescape %}
-      </div>
-    {% endfor %}
-    </div>
-  </div>
-</footer>
+		<div class="container text-part">
+			{%block body %} {% endblock %}
+		</div>
+	</div>
+	<footer class="footer">
+		<div class="fluid-container">
+			<div class="footer-text">
+				{% for contact in contacts %}
+				<div class="contact">
+					{% autoescape off %}
+					{{ contact.text }}
+					{% endautoescape %}
+				</div>
+				{% endfor %}
+			</div>
+		</div>
+	</footer>
 
-<footer class="static-footer">
-  <div class="container">
-    {% for sponsor in sponsors %}
-      <div class="sponsor">
-	{% autoescape off %}
-         {{ sponsor.text }}
-	{% endautoescape %}
-      </div>
-    {% endfor %}
+	<footer class="static-footer">
+		<div class="container">
+			{% for sponsor in sponsors %}
+			<div class="sponsor">
+				{% autoescape off %}
+				{{ sponsor.text }}
+				{% endautoescape %}
+			</div>
+			{% endfor %}
 
-  </div>
-
-
-
-    <!-- Your like button code -->
+		</div>
 
 
-</footer>
+
+		<!-- Your like button code -->
+
+
+	</footer>
 
 </body>
 </html>
