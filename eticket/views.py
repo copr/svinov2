@@ -3,9 +3,14 @@ from django.core import serializers
 from django.utils.safestring import mark_safe
 import json
 
-from eticket.models import Event
+from eticket.models import Event, EventField
 
 def form(request):
-    results = [Event.objects.all()[0]]
-    js_data = mark_safe(serializers.serialize("json",results))
-    return render(request, 'form.html', {'event': js_data})
+    event = Event.objects.all()[0]
+    event_fields = EventField.objects.filter(event=event)
+    # d['event'] = event
+    # d['event_fields'] = event_fields
+    js_event = mark_safe(serializers.serialize("json", [event]))
+    js_event_fields = mark_safe(serializers.serialize("json", event_fields))
+    return render(request, 'form.html', {'event': js_event,
+                                         'event_fields': js_event_fields})
