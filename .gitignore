@@ -12,3 +12,4 @@ static/user_uploads
 stranky_sdhsvinov/settings.py
 migrations
 *.sh
+node_modules
