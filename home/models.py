@@ -60,9 +60,13 @@ class Section(models.Model):
                 
 
     def save(self, *args, **kwargs):
-        if self.url == '':
-            self.url = create_unique_url(unidecode(self.name).replace(' ', '_'))
+        self.url = self.create_unique_url(self.url)
         super(Section, self).save(*args, **kwargs)
+
+    def create_unique_url(self, url):
+        if url == '' or Section.objects.filter(url=url).exclude(id=self.id).exists() or Article.objects.filter(url=url).exists():
+            return self.create_unique_url(url+'1')
+        return url
 
     class Meta:
         verbose_name = "Sekce"
@@ -124,7 +128,7 @@ class Article(models.Model):
         else:
             url = self.url.replace(' ', '_')
         self.url = url
-        if Article.objects.filter(url=url).exists() or Section.objects.filter(name=url).exists():
+        if Article.objects.filter(url=url).exclude(id=self.id).exists() or Section.objects.filter(name=url).exists():
             self.url = create_unique_article_url(url)
         super(Article, self).save(*args, **kwargs)
 
