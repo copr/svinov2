@@ -35,11 +35,10 @@ def send_summary_mail(to, organizer_mail, ticket):
     text = ('Shrnutí objednávky:\n'
             'Jméno a příjmení: ' + ticket.name + ' ' + ticket.surname + '\n'
             'Počet lístků: ' + str(ticket.number_of_tickets) + '\n'
-            '\n\n'
             'Pokyny pro platbu:\n'
             'Číslo účtu: 1646512309/0800\n'
             'Variabilní symbol: ' + str(ticket.id) + '\n'
-            'Cena: ' + str(ticket.number_of_tickets * ticket.event.price) + ''
+            'Cena: ' + str(int(ticket.number_of_tickets) * ticket.event.price) + ' Kč\n'
             'Samotný lístek obdržít alespoń tří dny před začátkem akce.')
     msg = MIMEText(text)
     recipients = [organizer_mail, 'organizatori@sdhsvinov.cz']
