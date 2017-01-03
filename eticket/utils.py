@@ -41,7 +41,7 @@ def send_summary_mail(to, organizer_mail, ticket):
             'Cena: ' + str(int(ticket.number_of_tickets) * ticket.event.price) + ' Kč\n'
             'Samotný lístek obdržít alespoń tří dny před začátkem akce.')
     msg = MIMEText(text)
-    recipients = [organizer_mail, 'organizatori@sdhsvinov.cz']
+    recipients = [to, organizer_mail, 'organizatori@sdhsvinov.cz']
     msg['Subject'] = 'Shrnutí objednávky'
     msg['To'] = ", ".join(recipients)
     msg['From'] = 'organizatori@sdhsvinov.cz'
