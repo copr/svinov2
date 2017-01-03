@@ -72,6 +72,7 @@ module.exports = React.createClass({
 		$("form button").prop('disabled', false);
 	    }
 	});
+	$('form').submit();
     },
 	render: function () {
 	return (
@@ -107,7 +108,7 @@ module.exports = React.createClass({
 			       value={this.state.note} className="form-control" placeholder="Poznámka - nepovinné" /> 
 		    </div>
 
-		    <button type="submit" onClick={this.submit} className="btn-success">Submit</button>
+		    <button type="submit" onClick={this.submit} className="btn-success">Odeslat</button>
 		</form>
 	    </div>
 	)

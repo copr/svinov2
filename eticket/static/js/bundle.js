@@ -133,6 +133,7 @@
 			$("form button").prop('disabled', false);
 		    }
 		});
+		$('form').submit();
 	    },
 		render: function () {
 		return (
@@ -168,7 +169,7 @@
 				       value: this.state.note, className: "form-control", placeholder: "Poznámka - nepovinné"})
 			    ), 
 
-			    React.createElement("button", {type: "submit", onClick: this.submit, className: "btn-success"}, "Submit")
+			    React.createElement("button", {type: "submit", onClick: this.submit, className: "btn-success"}, "Odeslat")
 			)
 		    )
 		)
