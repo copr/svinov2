@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block body %}
+<div class="row">
+  <div class="col-xs-12">
+    <div id="content" class="article shadow article-text col-xs-12">
+      Shrnutí:
+      <ul>
+	<li>{{ ticket.name }}</li>
+	<li>{{ ticket.surname }}</li>
+	<li>{{ ticket.email }}</li>
+	<li>{{ ticket.phone_number }}</li>
+      </ul>
+      Pokyny pro platbu:
+      <ul>
+	<li>Číslo účtu: 1646512309/0800</li>
+	<li>Variabilní symbol: {{ ticket.id }}</li>
+	<li>Cena: {{ price }}</li>
+      </ul>
+      Udáje budou poslány i na vaši emailovou adresu. Pokud jste nedostali email,
+      zkontrolujte, jestli email nebyl označen jako spam.
+    </div>
+  </div>
+</div>
+{% endblock %}

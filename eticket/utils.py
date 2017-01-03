@@ -37,7 +37,7 @@ def send_summary_mail(to, organizer_mail, ticket):
             'Počet lístků: ' + str(ticket.number_of_tickets) + '\n'
             '\n\n'
             'Pokyny pro platbu:\n'
-            'Číslo účtu: blablabla\n'
+            'Číslo účtu: 1646512309/0800\n'
             'Variabilní symbol: ' + str(ticket.id) + '\n'
             'Cena: ' + str(ticket.number_of_tickets * ticket.event.price) + ''
             'Samotný lístek obdržít alespoń tří dny před začátkem akce.')
