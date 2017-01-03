@@ -40,13 +40,16 @@ module.exports = React.createClass({
 		}
 	},
 	validate: function (e) {
-		var val = e.target.value;
-		e.target.parentElement.classList.remove('has-success', 'has-error','empty');
-		if (val) {
-			e.target.parentElement.classList.add('has-success')
-		} else {
-			e.target.parentElement.classList.add('has-error','empty');
-		}
+	    var val = e.target.value;
+	    // 	e.target.parentElement.classList.remove('has-success', 'has-error','empty'); nefachci v IE
+	    $(e.target.parentElement).removeClass("has-success has-error empty");
+	    if (val) {
+		$(e.target.parentElement).addClass("has-success");
+		// e.target.parentElement.classList.add('has-success')
+	    } else {
+		$(e.target.parentElement).addClass("has-error empty");
+		// e.target.parentElement.classList.add('has-error','empty');
+	    }
 	},
     submit: function (e) {
 	// je to hlavne kvuli resubmitu kdyz to nekdo zmackne rychle
@@ -61,7 +64,8 @@ module.exports = React.createClass({
 	}
 	// kdyz je nejaky prazdny tak se musi povolit submit znovu
 	k = true;
-	$("div.empty").each(function () {
+	$("div.empty").each(function (i) {
+	    console.log($("div.empty"));
 	    e.preventDefault();
 	    alert("Vyplňte všechna povinná pole!");
 	    $("form button").prop('disabled', false);
@@ -91,7 +95,7 @@ module.exports = React.createClass({
 		<form action={ window.location.href } method="post" className="col-xs-6 col-xs-offset-3" id="idecko">
 		    <div className="form-group empty">
 			<input onChange={this.nameChange} onBlur={this.validate} name="name"
-			       value={this.state.name} type="text" className="form-control" placeholder="Jmeno" required />
+			       value={this.state.name} type="text" className="form-control" placeholder="Jmeno" />
 			<Error field={this.state.empty} />
 		    </div>
 		    <div className="form-group empty">

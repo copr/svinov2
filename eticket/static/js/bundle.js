@@ -101,13 +101,16 @@
 			}
 		},
 		validate: function (e) {
-			var val = e.target.value;
-			e.target.parentElement.classList.remove('has-success', 'has-error','empty');
-			if (val) {
-				e.target.parentElement.classList.add('has-success')
-			} else {
-				e.target.parentElement.classList.add('has-error','empty');
-			}
+		    var val = e.target.value;
+		    // 	e.target.parentElement.classList.remove('has-success', 'has-error','empty'); nefachci v IE
+		    $(e.target.parentElement).removeClass("has-success has-error empty");
+		    if (val) {
+			$(e.target.parentElement).addClass("has-success");
+			// e.target.parentElement.classList.add('has-success')
+		    } else {
+			$(e.target.parentElement).addClass("has-error empty");
+			// e.target.parentElement.classList.add('has-error','empty');
+		    }
 		},
 	    submit: function (e) {
 		// je to hlavne kvuli resubmitu kdyz to nekdo zmackne rychle
@@ -122,7 +125,8 @@
 		}
 		// kdyz je nejaky prazdny tak se musi povolit submit znovu
 		k = true;
-		$("div.empty").each(function () {
+		$("div.empty").each(function (i) {
+		    console.log($("div.empty"));
 		    e.preventDefault();
 		    alert("Vyplňte všechna povinná pole!");
 		    $("form button").prop('disabled', false);
@@ -152,7 +156,7 @@
 			React.createElement("form", {action:  window.location.href, method: "post", className: "col-xs-6 col-xs-offset-3", id: "idecko"}, 
 			    React.createElement("div", {className: "form-group empty"}, 
 				React.createElement("input", {onChange: this.nameChange, onBlur: this.validate, name: "name", 
-				       value: this.state.name, type: "text", className: "form-control", placeholder: "Jmeno", required: true}), 
+				       value: this.state.name, type: "text", className: "form-control", placeholder: "Jmeno"}), 
 				React.createElement(Error, {field: this.state.empty})
 			    ), 
 			    React.createElement("div", {className: "form-group empty"}, 
