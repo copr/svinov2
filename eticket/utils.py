@@ -27,6 +27,28 @@ def create_pdf(template_src, context_dict):
     pdf = pisa.pisaDocument(io.BytesIO(html.encode("ISO-8859-1")), result)
     return result
 
+def send_summary_mail(to, organizer_mail, ticket):
+    s = smtplib.SMTP('mail.rosti.cz')
+    s.starttls()
+    s.ehlo()
+    s.login('organizatori@sdhsvinov.cz', 'kotalikovna')
+    text = ('Shrnutí objednávky:\n'
+            'Jméno a příjmení: ' + ticket.name + ' ' + ticket.surname + '\n'
+            'Počet lístků: ' + str(ticket.number_of_tickets) + '\n'
+            '\n\n'
+            'Pokyny pro platbu:\n'
+            'Číslo účtu: blablabla\n'
+            'Variabilní symbol: ' + str(ticket.id) + '\n'
+            'Cena: ' + str(ticket.number_of_tickets * ticket.event.price) + ''
+            'Samotný lístek obdržít alespoń tří dny před začátkem akce.')
+    msg = MIMEText(text)
+    recipients = [organizer_mail, 'organizatori@sdhsvinov.cz']
+    msg['Subject'] = 'Shrnutí objednávky'
+    msg['To'] = ", ".join(recipients)
+    msg['From'] = 'organizatori@sdhsvinov.cz'
+    s.send_message(msg)
+    s.quit()
+
 def send_mail(fromm, to, subject, message, attachment=0):
     s = smtplib.SMTP('mail.rosti.cz')
     s.starttls()

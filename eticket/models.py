@@ -1,15 +1,22 @@
 from django.db import models
 from django.core.exceptions import ValidationError
+from unidecode import unidecode
 
 class Event(models.Model):
     ''' model co by mel reprezentovat, kazdou akci na kterou se budou prodavat vstupenky'''
     name = models.CharField(max_length = 100, verbose_name="Název")
     price = models.IntegerField(verbose_name="Základní cena")
     organizer_mail = models.EmailField(verbose_name="Mail organizátora")
+    url = models.CharField(max_length = 100, verbose_name="Url", blank=True)
 
     def __str__(self):
         return self.name
 
+    def save(self, *args, **kwargs):
+        if self.url == '':
+            self.url = unidecode(self.name).replace(' ', '_')
+        super(Event, self).save(*args, **kwargs)
+    
     class Meta:
         verbose_name = "Akce"
         verbose_name_plural = "Akce"
@@ -22,6 +29,11 @@ class EventField(models.Model):
     name = models.CharField(max_length = 100, verbose_name="Název")
     price = models.IntegerField(verbose_name="Cena")
     event = models.ForeignKey(Event)
+
+    class Meta:
+        verbose_name = "Další info"
+        verbose_name_plural = "Další info"
+
 
 class Ticket(models.Model):
     '''
@@ -47,10 +59,10 @@ class Ticket(models.Model):
     number_of_tickets = models.IntegerField(verbose_name='Počet lístků')
     payment_method = models.IntegerField(choices=PAYMENT_METHODS,
                                          verbose_name='Platební metoda')
-    note = models.TextField(verbose_name='Poznámka')
+    note = models.TextField(verbose_name='Poznámka', blank=True, null=True)
     state_of_payment = models.IntegerField(default=0, choices=STATES_OF_PAYMENT,
                                            verbose_name='Stav platby')
-    pdf = models.FileField(blank=True,null=True, verbose_name="pdf")
+    pdf = models.FileField(null=True, blank=True, verbose_name="pdf")
     ticket_sent = models.BooleanField(default=False, verbose_name='Lístek odeslán')
     event = models.ForeignKey(Event, verbose_name='Událost')
 
@@ -106,6 +118,10 @@ class TicketField(models.Model):
         self.count_check()
         super(TicketField, self).save(*args, **kwargs)
 
+    class Meta:
+        verbose_name = "Další položky na lístku"
+        verbose_name_plural = "Další položky na lístku"
+
    
 
 class OrganizerTicketField(models.Model):
@@ -115,5 +131,9 @@ class OrganizerTicketField(models.Model):
     '''
     text = models.CharField(max_length = 100)
     ticket = models.ForeignKey(Ticket)
+
+    class Meta:
+        verbose_name = "Poznámky organizátora"
+        verbose_name_plural = "Poznámky organizátora"
 
 

@@ -10,7 +10,8 @@ module.exports = React.createClass({
 			name: "",
 			empty: false,
 			ticketNumber: 1,
-			errors: [],
+		    errors: [],
+		    note:"",
 		}
 	},
 	nameChange: function (e) {
@@ -27,6 +28,9 @@ module.exports = React.createClass({
 	emailChange: function (e) {
 		this.setState({ email: e.target.value });
 	},
+    noteChange: function (e) {
+	this.setState({ note: e.target.value });
+    },
 	ticketChange: function (e) {
 		if (e.target.value < 1 || e.target.value === "") {
 			this.setState({ ticketNumber: 1 })
@@ -43,42 +47,69 @@ module.exports = React.createClass({
 			e.target.parentElement.classList.add('has-error','empty');
 		}
 	},
-	submit: function (e) {
-		$("div.empty").each(function () {
-			e.preventDefault();
-			alert("Vypl� vsechna pole!");
-			return false;
-		});
-
-},
+    submit: function (e) {
+	// je to hlavne kvuli resubmitu kdyz to nekdo zmackne rychle
+	// tak by se to vickrat poslalo
+	$("form button").prop('disabled', true);
+	if (this.state.phone.replace(' ', '').length < 13) {
+	    console.log(this.state.phone);
+	    e.preventDefault();
+	    alert('Špatně zadané číslo');
+	    $("form button").prop('disabled', false);
+	    return false;
+	}
+	// kdyz je nejaky prazdny tak se musi povolit submit znovu
+	$("div.empty").each(function () {
+	    e.preventDefault();
+	    alert("Vyplňte všechna povinná pole!");
+	    $("form button").prop('disabled', false);
+	    return false;
+	});
+	// kdyz je nejaky nevalidni tak se musi povolit submit znovu
+	$("input").each(function(i) {
+	    console.log(i);
+	    if (!$("input")[i].validity.valid) {
+		$("form button").prop('disabled', false);
+	    }
+	});
+    },
 	render: function () {
 	return (
+	    <div>
 		<div>
-			<div>
-				<h3>Udalost: { Udalost[0].fields.name}</h3>
-				<h3>Cena: {this.state.ticketNumber * Udalost[0].fields.price} Kc</h3>
-			</div>
-			<form action="https://google.com" method="post" className="col-xs-6 col-xs-offset-3">
-				<div className="form-group empty">
-					<input onChange={this.nameChange} onBlur={this.validate} value={this.state.name} type="text" className="form-control" placeholder="Jmeno" />
-					<Error field={this.state.empty} />
-				</div>
-				<div className="form-group empty">
-					<input onChange={this.surnameChange} isValid="false" onBlur={this.validate} value={this.state.surname} type="text" className="form-control" placeholder="Prijmeni" />
-				</div>
-				<div className="form-group empty">
-					<input onChange={this.phoneChange} isValid="false" onBlur={this.validate} type="tel" value={this.state.phoneNumber} className="form-control bfh-phone" data-format="+420 ddd ddd ddd" placeholder="Telefon" />
-				</div>
-				<div className="form-group empty">
-					<input onChange={this.emailChange} isValid="false" onBlur={this.validate} type="email" value={this.state.email} className="form-control" placeholder="Email" />
-				</div>
-				<div className="form-group empty">
-					<input onChange={this.ticketChange} isValid="false" onBlur={this.validate} type="number" value={this.state.ticketNumber} className="form-control" placeholder="Pocet listku" />
-				</div>
-
-				<button type="submit" onClick={this.submit} className="btn-success">Submit</button>
-			</form>
+		    <h3>Událost: { Udalost[0].fields.name}</h3>
+		    <h3>Cena: {this.state.ticketNumber * Udalost[0].fields.price} Kc</h3>
 		</div>
-		)
-}
+		<form action={ window.location.href } method="post" className="col-xs-6 col-xs-offset-3" id="idecko">
+		    <div className="form-group empty">
+			<input onChange={this.nameChange} onBlur={this.validate} name="name"
+			       value={this.state.name} type="text" className="form-control" placeholder="Jmeno" required />
+			<Error field={this.state.empty} />
+		    </div>
+		    <div className="form-group empty">
+			<input onChange={this.surnameChange} isValid="false" onBlur={this.validate} name="surname"
+			       value={this.state.surname} type="text" className="form-control" placeholder="Prijmeni" />
+		    </div>
+		    <div className="form-group empty">
+			<input onChange={this.phoneChange} isValid="false" onBlur={this.validate} type="tel" name="phone_number"
+			       value={this.state.phoneNumber} className="form-control bfh-phone" data-format="+420 ddd ddd ddd" placeholder="Telefon" />
+		    </div>
+		    <div className="form-group empty">
+			<input onChange={this.emailChange} isValid="false" onBlur={this.validate} type="email" name="email"
+			       value={this.state.email} className="form-control" placeholder="Email" />
+		    </div>
+		    <div className="form-group">
+			<input onChange={this.ticketChange} isValid="false" onBlur={this.validate} type="number" name="number_of_tickets"
+			       value={this.state.ticketNumber} className="form-control" placeholder="Pocet listku" />
+		    </div>
+		    <div className="form-group"> 
+			<textarea form="idecko" onChange={this.noteChange} isValid="true" name="note"
+			       value={this.state.note} className="form-control" placeholder="Poznámka - nepovinné" /> 
+		    </div>
+
+		    <button type="submit" onClick={this.submit} className="btn-success">Submit</button>
+		</form>
+	    </div>
+	)
+	}
 });

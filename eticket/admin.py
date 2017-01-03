@@ -68,14 +68,15 @@ class TicketAdmin(admin.ModelAdmin):
         return custom_urls + urls
 
     def send_mail(self, obj):
-        disabled = ""
+        disabled = "disabled"
         if obj.ticket_sent:
             disabled = "disabled"
         return format_html(
             '<a class="button" href="{}" {}>Poslat lístek</a>&nbsp' +
-            '<a class="button" href="{}" >Vytvořit lupen</a>&nbsp;',
-            reverse('admin:send-mail', args=[obj.pk]), disabled,
-            reverse('admin:create-ticket', args=[obj.pk])
+            '<a class="button" href="{}" {}>Vytvořit lupen</a>&nbsp;',
+            '', disabled, '', disabled
+            #reverse('admin:send-mail', args=[obj.pk]), disabled,
+            #reverse('admin:create-ticket', args=[obj.pk]), disabled
         )
     send_mail.short_description = 'Poslat maila'
     send_mail.allow_tags = True

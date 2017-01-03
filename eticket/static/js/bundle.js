@@ -71,7 +71,8 @@
 				name: "",
 				empty: false,
 				ticketNumber: 1,
-				errors: [],
+			    errors: [],
+			    note:"",
 			}
 		},
 		nameChange: function (e) {
@@ -88,6 +89,9 @@
 		emailChange: function (e) {
 			this.setState({ email: e.target.value });
 		},
+	    noteChange: function (e) {
+		this.setState({ note: e.target.value });
+	    },
 		ticketChange: function (e) {
 			if (e.target.value < 1 || e.target.value === "") {
 				this.setState({ ticketNumber: 1 })
@@ -104,45 +108,73 @@
 				e.target.parentElement.classList.add('has-error','empty');
 			}
 		},
-		submit: function (e) {
-			$("div.empty").each(function () {
-				e.preventDefault();
-				alert("Vypl� vsechna pole!");
-				return false;
-			});
-
-	},
+	    submit: function (e) {
+		// je to hlavne kvuli resubmitu kdyz to nekdo zmackne rychle
+		// tak by se to vickrat poslalo
+		$("form button").prop('disabled', true);
+		if (this.state.phone.replace(' ', '').length < 13) {
+		    console.log(this.state.phone);
+		    e.preventDefault();
+		    alert('Špatně zadané číslo');
+		    $("form button").prop('disabled', false);
+		    return false;
+		}
+		// kdyz je nejaky prazdny tak se musi povolit submit znovu
+		$("div.empty").each(function () {
+		    e.preventDefault();
+		    alert("Vyplňte všechna povinná pole!");
+		    $("form button").prop('disabled', false);
+		    return false;
+		});
+		// kdyz je nejaky nevalidni tak se musi povolit submit znovu
+		$("input").each(function(i) {
+		    console.log(i);
+		    if (!$("input")[i].validity.valid) {
+			$("form button").prop('disabled', false);
+		    }
+		});
+	    },
 		render: function () {
 		return (
+		    React.createElement("div", null, 
 			React.createElement("div", null, 
-				React.createElement("div", null, 
-					React.createElement("h3", null, "Udalost: ",  Udalost[0].fields.name), 
-					React.createElement("h3", null, "Cena: ", this.state.ticketNumber * Udalost[0].fields.price, " Kc")
-				), 
-				React.createElement("form", {action: "https://google.com", method: "post", className: "col-xs-6 col-xs-offset-3"}, 
-					React.createElement("div", {className: "form-group empty"}, 
-						React.createElement("input", {onChange: this.nameChange, onBlur: this.validate, value: this.state.name, type: "text", className: "form-control", placeholder: "Jmeno"}), 
-						React.createElement(Error, {field: this.state.empty})
-					), 
-					React.createElement("div", {className: "form-group empty"}, 
-						React.createElement("input", {onChange: this.surnameChange, isValid: "false", onBlur: this.validate, value: this.state.surname, type: "text", className: "form-control", placeholder: "Prijmeni"})
-					), 
-					React.createElement("div", {className: "form-group empty"}, 
-						React.createElement("input", {onChange: this.phoneChange, isValid: "false", onBlur: this.validate, type: "tel", value: this.state.phoneNumber, className: "form-control bfh-phone", "data-format": "+420 ddd ddd ddd", placeholder: "Telefon"})
-					), 
-					React.createElement("div", {className: "form-group empty"}, 
-						React.createElement("input", {onChange: this.emailChange, isValid: "false", onBlur: this.validate, type: "email", value: this.state.email, className: "form-control", placeholder: "Email"})
-					), 
-					React.createElement("div", {className: "form-group empty"}, 
-						React.createElement("input", {onChange: this.ticketChange, isValid: "false", onBlur: this.validate, type: "number", value: this.state.ticketNumber, className: "form-control", placeholder: "Pocet listku"})
-					), 
+			    React.createElement("h3", null, "Událost: ",  Udalost[0].fields.name), 
+			    React.createElement("h3", null, "Cena: ", this.state.ticketNumber * Udalost[0].fields.price, " Kc")
+			), 
+			React.createElement("form", {action:  window.location.href, method: "post", className: "col-xs-6 col-xs-offset-3", id: "idecko"}, 
+			    React.createElement("div", {className: "form-group empty"}, 
+				React.createElement("input", {onChange: this.nameChange, onBlur: this.validate, name: "name", 
+				       value: this.state.name, type: "text", className: "form-control", placeholder: "Jmeno", required: true}), 
+				React.createElement(Error, {field: this.state.empty})
+			    ), 
+			    React.createElement("div", {className: "form-group empty"}, 
+				React.createElement("input", {onChange: this.surnameChange, isValid: "false", onBlur: this.validate, name: "surname", 
+				       value: this.state.surname, type: "text", className: "form-control", placeholder: "Prijmeni"})
+			    ), 
+			    React.createElement("div", {className: "form-group empty"}, 
+				React.createElement("input", {onChange: this.phoneChange, isValid: "false", onBlur: this.validate, type: "tel", name: "phone_number", 
+				       value: this.state.phoneNumber, className: "form-control bfh-phone", "data-format": "+420 ddd ddd ddd", placeholder: "Telefon"})
+			    ), 
+			    React.createElement("div", {className: "form-group empty"}, 
+				React.createElement("input", {onChange: this.emailChange, isValid: "false", onBlur: this.validate, type: "email", name: "email", 
+				       value: this.state.email, className: "form-control", placeholder: "Email"})
+			    ), 
+			    React.createElement("div", {className: "form-group"}, 
+				React.createElement("input", {onChange: this.ticketChange, isValid: "false", onBlur: this.validate, type: "number", name: "number_of_tickets", 
+				       value: this.state.ticketNumber, className: "form-control", placeholder: "Pocet listku"})
+			    ), 
+			    React.createElement("div", {className: "form-group"}, 
+				React.createElement("textarea", {form: "idecko", onChange: this.noteChange, isValid: "true", name: "note", 
+				       value: this.state.note, className: "form-control", placeholder: "Poznámka - nepovinné"})
+			    ), 
 
-					React.createElement("button", {type: "submit", onClick: this.submit, className: "btn-success"}, "Submit")
-				)
+			    React.createElement("button", {type: "submit", onClick: this.submit, className: "btn-success"}, "Submit")
 			)
-			)
-	}
+		    )
+		)
+		}
 	});
+
 
 /***/ },
 /* 2 */
