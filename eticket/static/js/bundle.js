@@ -70,7 +70,8 @@
 			return {
 				name: "",
 				empty: false,
-				ticketNumber: 1,
+			    ticketNumber: 1,
+			    phone: "",
 			    errors: [],
 			    note:"",
 			}
@@ -120,17 +121,23 @@
 		    return false;
 		}
 		// kdyz je nejaky prazdny tak se musi povolit submit znovu
+		k = true;
 		$("div.empty").each(function () {
 		    e.preventDefault();
 		    alert("Vyplňte všechna povinná pole!");
 		    $("form button").prop('disabled', false);
+		    k = false;
 		    return false;
 		});
+		if (!k) {
+		    return;
+		}
 		// kdyz je nejaky nevalidni tak se musi povolit submit znovu
 		$("input").each(function(i) {
 		    console.log(i);
 		    if (!$("input")[i].validity.valid) {
 			$("form button").prop('disabled', false);
+			return false;
 		    }
 		});
 		$('form').submit();
