@@ -86,11 +86,15 @@ class TicketAdmin(admin.ModelAdmin):
     send_mail.short_description = 'Poslat maila'
     send_mail.allow_tags = True
 
+class EventEmailAdmin(admin.TabularInline):
+    model = EventEmail
+
 class EventFieldAdmin(admin.TabularInline):
     model = EventField
     
 class EventAdmin(admin.ModelAdmin):
     inlines = [
+        EventEmailAdmin,
         EventFieldAdmin,
     ]
 

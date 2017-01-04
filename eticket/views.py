@@ -4,7 +4,7 @@ from django.utils.safestring import mark_safe
 from django.http import HttpResponseRedirect
 import json
 
-from eticket.models import Event, EventField, Ticket
+from eticket.models import Event, EventField, EventEmail, Ticket
 from utils.getters import *
 from eticket.utils import send_summary_mail
 
@@ -33,7 +33,8 @@ def form(request, event):
                         ticket_sent = False,
                         event=event)
         ticket.save()
-        send_summary_mail(ticket.email, event.organizer_mail, ticket)
+        organizer_mails = EventEmail.objects.filter(event=ticket.event).values_list('mail', flat=True)
+        send_summary_mail(ticket.email, list(organizer_mails), ticket)
         print(ticket)
         price = int(ticket.number_of_tickets)*event.price
         return render(request, 'summary.html', {'sections': sections,

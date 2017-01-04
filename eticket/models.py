@@ -6,7 +6,6 @@ class Event(models.Model):
     ''' model co by mel reprezentovat, kazdou akci na kterou se budou prodavat vstupenky'''
     name = models.CharField(max_length = 100, verbose_name="Název")
     price = models.IntegerField(verbose_name="Základní cena")
-    organizer_mail = models.EmailField(verbose_name="Mail organizátora")
     url = models.CharField(max_length = 100, verbose_name="Url", blank=True)
 
     def __str__(self):
@@ -20,6 +19,14 @@ class Event(models.Model):
     class Meta:
         verbose_name = "Akce"
         verbose_name_plural = "Akce"
+
+class EventEmail(models.Model):
+    mail = models.EmailField(verbose_name="Mail organizátora")
+    event = models.ForeignKey(Event)
+
+    class Meta:
+        verbose_name = "Maily Organizátorů"
+        verbose_name_plural = "Maily Organizátorů"
 
 class EventField(models.Model):
     ''' 
