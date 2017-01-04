@@ -28,7 +28,7 @@ def create_pdf(template_src, context_dict):
     return result
 
 def send_summary_mail(to, organizer_mail, ticket):
-    s = smtplib.SMTP('mail.rosti.cz')
+    s = smtplib.SMTP('smtp.rosti.cz')
     s.starttls()
     s.ehlo()
     s.login('organizatori@sdhsvinov.cz', 'kotalikovna')
@@ -45,6 +45,7 @@ def send_summary_mail(to, organizer_mail, ticket):
     msg['Subject'] = 'Shrnutí objednávky'
     msg['To'] = ", ".join(recipients)
     msg['From'] = 'organizatori@sdhsvinov.cz'
+    print(msg['to'])
     s.send_message(msg)
     s.quit()
 
