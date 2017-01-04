@@ -5,6 +5,7 @@ from django.conf.urls import include, url
 from django.utils.html import format_html
 from django.core.urlresolvers import reverse
 from django.shortcuts import redirect
+from django.db.models import Sum
 
 from eticket.models import *
 from eticket.utils import render_to_pdf
@@ -18,11 +19,15 @@ class OrganizerTicketFieldAdmin(admin.TabularInline):
 class TicketAdmin(admin.ModelAdmin):
     list_display = ('id', 'name', 'surname', 'email', 'number_of_tickets',
                     'payment_method', 'reserved_from', 'state_of_payment',
-                    'event', 'ticket_sent', 'send_mail',)
+                    'event', 'ticket_sent', 'send_mail','total_count')
     exclude = ['ticket_sent']
     inlines = [
         TicketFieldAdmin, OrganizerTicketFieldAdmin,
     ]
+
+    def total_count(self, request):
+        count = Ticket.objects.all().aggregate(Sum('number_of_tickets'))
+        return "Celkový počet lístků: " + str(count['number_of_tickets__sum'])
 
     def process_send_mail(self, request, ticket_id):
         ticket = Ticket.objects.get(id=ticket_id)
