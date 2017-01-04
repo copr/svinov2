@@ -44,13 +44,21 @@ class Ticket(models.Model):
     PARTPAID = 1
     PAID = 2
     MONEYTRANSFER = 0
+    CASH = 1
+    INPERSON = 0
+    OVERTHEINTERNET = 1
     PAYMENT_METHODS = (
         (MONEYTRANSFER, 'Převodem na účet'),
+        (CASH, 'Hotově'),
     )
     STATES_OF_PAYMENT = (
         (NOTPAID, 'Neuhrazeno'),
         (PARTPAID, 'Částečne uhrazeno'),
         (PAID, 'Uhrazeno'),
+    )
+    RESERVED_FROM = (
+        (INPERSON, 'Osobně'),
+        (OVERTHEINTERNET, 'Přes internet'),
     )
     name = models.CharField(max_length = 100, verbose_name='Jméno')
     surname = models.CharField(max_length = 100, verbose_name='Příjmení')
@@ -62,6 +70,8 @@ class Ticket(models.Model):
     note = models.TextField(verbose_name='Poznámka', blank=True, null=True)
     state_of_payment = models.IntegerField(default=0, choices=STATES_OF_PAYMENT,
                                            verbose_name='Stav platby')
+    reserved_from = models.IntegerField(default=1, choices=RESERVED_FROM,
+                                           verbose_name='Způsob rezervace')
     pdf = models.FileField(null=True, blank=True, verbose_name="pdf")
     ticket_sent = models.BooleanField(default=False, verbose_name='Lístek odeslán')
     event = models.ForeignKey(Event, verbose_name='Událost')

@@ -16,9 +16,9 @@ class OrganizerTicketFieldAdmin(admin.TabularInline):
     model = OrganizerTicketField
     
 class TicketAdmin(admin.ModelAdmin):
-    list_display = ('name', 'surname', 'email', 'number_of_tickets',
-                    'state_of_payment', 'event', 'ticket_sent',
-                    'send_mail',)
+    list_display = ('id', 'name', 'surname', 'email', 'number_of_tickets',
+                    'payment_method', 'reserved_from', 'state_of_payment',
+                    'event', 'ticket_sent', 'send_mail',)
     exclude = ['ticket_sent']
     inlines = [
         TicketFieldAdmin, OrganizerTicketFieldAdmin,
