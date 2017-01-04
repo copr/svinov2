@@ -122,7 +122,7 @@ class Article(models.Model):
     url = models.CharField(max_length = 255, help_text=HELP_TEXT[1], blank=True)
 
     def clean(self, *args, **kwargs):
-        if Article.objects.filter(url=self.url).exists() or Section.objects.filter(url=self.url).exists():
+        if Article.objects.filter(url=self.url).exclude(id=self.id).exists() or Section.objects.filter(url=self.url).exists():
             raise ValidationError("Zadané url už existuje")
 
     def save(self, *args, **kwargs):
