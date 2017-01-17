@@ -66,55 +66,69 @@
 
 
 	module.exports = React.createClass({displayName: "module.exports",
-		getInitialState: function () {
-			return {
-				name: "",
-				empty: false,
-			    ticketNumber: 1,
-			    phone: "",
-			    errors: [],
-			    note:"",
-			}
-		},
-		nameChange: function (e) {
+	    getInitialState: function () {
+		return {
+		    name: "",
+		    empty: false,
+		    ticketNumber: "",
+		    phone: "",
+		    errors: [],
+		    note:"",
+		    conditions: false,
+		}
+	    },
+	    nameChange: function (e) {
 
-			this.setState({ name: e.target.value });
+		this.setState({ name: e.target.value });
 
-		},
-		surnameChange: function (e) {
-			this.setState({ surname: e.target.value });
-		},
-		phoneChange: function (e) {
-			this.setState({ phone: e.target.value });
-		},
-		emailChange: function (e) {
-			this.setState({ email: e.target.value });
-		},
+	    },
+	    surnameChange: function (e) {
+		this.setState({ surname: e.target.value });
+	    },
+	    phoneChange: function (e) {
+		this.setState({ phone: e.target.value });
+	    },
+	    emailChange: function (e) {
+		this.setState({ email: e.target.value });
+	    },
 	    noteChange: function (e) {
 		this.setState({ note: e.target.value });
 	    },
-		ticketChange: function (e) {
-			if (e.target.value < 1 || e.target.value === "") {
-				this.setState({ ticketNumber: 1 })
-			} else {
-				this.setState({ ticketNumber: e.target.value });
-			}
-		},
-		validate: function (e) {
-		    var val = e.target.value;
-		    // 	e.target.parentElement.classList.remove('has-success', 'has-error','empty'); nefachci v IE
-		    $(e.target.parentElement).removeClass("has-success has-error empty");
-		    if (val) {
-			$(e.target.parentElement).addClass("has-success");
-			// e.target.parentElement.classList.add('has-success')
-		    } else {
-			$(e.target.parentElement).addClass("has-error empty");
-			// e.target.parentElement.classList.add('has-error','empty');
-		    }
-		},
+	    conditionsChange: function(e) {
+		if (this.state.conditions) {
+		    this.setState({ conditions: false });
+		} else {
+		    this.setState({ conditions: true });
+		}
+	    },
+	    ticketChange: function (e) {
+		if (e.target.value < 1 || e.target.value === "") {
+		    this.setState({ ticketNumber: 1 })
+		} else {
+		    this.setState({ ticketNumber: e.target.value });
+		}
+	    },
+	    validate: function (e) {
+		var val = e.target.value;
+		//  classList neni podporovany v IE 
+		// 	e.target.parentElement.classList.remove('has-success', 'has-error','empty'); nefachci v IE
+		$(e.target.parentElement).removeClass("has-success has-error empty");
+		if (val) {
+		    $(e.target.parentElement).addClass("has-success");
+		    // e.target.parentElement.classList.add('has-success')
+		} else {
+		    $(e.target.parentElement).addClass("has-error empty");
+		    // e.target.parentElement.classList.add('has-error','empty');
+		}
+	    },
 	    submit: function (e) {
 		// je to hlavne kvuli resubmitu kdyz to nekdo zmackne rychle
 		// tak by se to vickrat poslalo
+		if (!$("input:checkbox").prop('checked')) {
+		    e.preventDefault();
+		    alert('Musíte souhlasit s obchodníma podmínkama');
+		    return false;
+		}
 		$("form button").prop('disabled', true);
 		if (this.state.phone.replace(' ', '').length < 13) {
 		    console.log(this.state.phone);
@@ -146,7 +160,8 @@
 		});
 		$('form').submit();
 	    },
-		render: function () {
+	    render: function () {
+		// proc onBlur?
 		return (
 		    React.createElement("div", null, 
 			React.createElement("div", null, 
@@ -177,14 +192,20 @@
 			    ), 
 			    React.createElement("div", {className: "form-group"}, 
 				React.createElement("textarea", {form: "idecko", onChange: this.noteChange, isValid: "true", name: "note", 
-				       value: this.state.note, className: "form-control", placeholder: "Poznámka - nepovinné"})
+					  value: this.state.note, className: "form-control", placeholder: "Poznámka - nepovinné"})
+			    ), 
+			    React.createElement("div", {className: "form-group"}, 
+				React.createElement("input", {form: "idecko", onChange: this.conditionsChange, type: "checkbox", isValid: "false", name: "conditions", 
+				       value: "conditions", checked: this.state.conditions}, 
+				    React.createElement("a", {href: "http://www.sdhsvinov.cz/Sbor/VOPeTicket/"}, "Přečetl jsem si a souhlasím se všeobecnýma obchodníma podmínka")
+				)
 			    ), 
 
 			    React.createElement("button", {type: "submit", onClick: this.submit, className: "btn-success"}, "Odeslat")
 			)
 		    )
 		)
-		}
+	    }
 	});
 
 
