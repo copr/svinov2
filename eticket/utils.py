@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 import io
 import smtplib
 from xhtml2pdf import pisa
@@ -15,7 +16,7 @@ def render_to_pdf(template_src, context_dict, name):
     context = Context(context_dict)
     html  = template.render(context)
     result = io.BytesIO()
-    pdf = pisa.pisaDocument(io.BytesIO(html.encode("ISO-8859-1")), result)
+    pdf = pisa.pisaDocument(io.BytesIO(html.encode("utf-8")), result)
     with io.open(name, 'wb') as f:
         f.write(result.getvalue())
 
@@ -24,7 +25,7 @@ def create_pdf(template_src, context_dict):
     context = Context(context_dict)
     html  = template.render(context)
     result = io.BytesIO()
-    pdf = pisa.pisaDocument(io.BytesIO(html.encode("ISO-8859-1")), result)
+    pdf = pisa.pisaDocument(io.BytesIO(html.encode("utf-8")), result)
     return result
 
 def send_summary_mail(to, organizer_mails, ticket):

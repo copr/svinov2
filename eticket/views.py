@@ -1,7 +1,9 @@
+# -*- coding: utf-8 -*-
 from django.shortcuts import render
 from django.core import serializers
 from django.utils.safestring import mark_safe
 from django.http import HttpResponseRedirect
+from django.http import Http404
 import json
 
 from eticket.models import Event, EventField, EventEmail, Ticket
@@ -10,6 +12,8 @@ from eticket.utils import send_summary_mail
 
 def form(request, event):
     event = Event.objects.get(url=event)
+    if event.sold_out:
+        raise Http404()
     sections = get_sections('index')
     invitations = get_invitations()
     posts = get_all_posts()

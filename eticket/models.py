@@ -7,6 +7,7 @@ class Event(models.Model):
     name = models.CharField(max_length = 100, verbose_name="Název")
     price = models.IntegerField(verbose_name="Základní cena")
     url = models.CharField(max_length = 100, verbose_name="Url", blank=True)
+    sold_out = models.BooleanField(default=False, verbose_name='Vyprodáno')
 
     def __str__(self):
         return self.name

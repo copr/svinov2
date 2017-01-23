@@ -10,5 +10,7 @@
 	var event = {{ event }};
 	var eventField = {{event_fields}};
 </script>
+{% if event.sold_out == false %}
 <script src="{% static 'js/bundle.js' %}"></script>
+{% endif %}
 {% endblock %}
