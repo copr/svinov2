@@ -136,7 +136,7 @@ module.exports = React.createClass({
 		    <div className="form-group">
 			<input form="idecko" onChange={this.conditionsChange} type="checkbox" isValid="false" name="conditions"
 			       value="conditions" checked={this.state.conditions}>
-			    <a href="http://www.sdhsvinov.cz/Sbor/VOPeTicket/">Přečetl jsem si a souhlasím se všeobecnýma obchodníma podmínka</a>
+			    <a href="http://www.sdhsvinov.cz/Sbor/VOPeTicket/">Přečetl jsem si a Souhlasím s všeobecnými obchodními podmínkami</a>
 			</input>
 		    </div>
 

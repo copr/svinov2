@@ -197,7 +197,7 @@
 			    React.createElement("div", {className: "form-group"}, 
 				React.createElement("input", {form: "idecko", onChange: this.conditionsChange, type: "checkbox", isValid: "false", name: "conditions", 
 				       value: "conditions", checked: this.state.conditions}, 
-				    React.createElement("a", {href: "http://www.sdhsvinov.cz/Sbor/VOPeTicket/"}, "Přečetl jsem si a souhlasím se všeobecnýma obchodníma podmínka")
+				    React.createElement("a", {href: "http://www.sdhsvinov.cz/Sbor/VOPeTicket/"}, "Přečetl jsem si a Souhlasím s všeobecnými obchodními podmínkami")
 				)
 			    ), 
 
