@@ -40,7 +40,7 @@ def send_summary_mail(to, organizer_mails, ticket):
             'Číslo účtu: 1646512309/0800 \n'
             'Variabilní symbol: ' + str(ticket.id) + '\n'
             'Cena: ' + str(int(ticket.number_of_tickets) * ticket.event.price) + ' Kč\n'
-            'Samotný lístek obdržít alespoń tří dny před začátkem akce.')
+            'Samotný lístek obdržíte alespoň tři dny před začátkem akce.')
     msg = MIMEText(text)
     recipients = organizer_mails
     recipients.append(to)
