@@ -9,7 +9,10 @@ from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 from email.mime.application import MIMEApplication
 
+from stranky_sdhsvinov.secret import EMAIL_PASSWORD
 
+email = 'organizatori@sdhsvinov.cz'
+smtp_server = 'smtp.gmail.com'
 
 def render_to_pdf(template_src, context_dict, name):
     template = get_template(template_src)
@@ -29,10 +32,10 @@ def create_pdf(template_src, context_dict):
     return result
 
 def send_summary_mail(to, organizer_mails, ticket):
-    s = smtplib.SMTP('smtp.rosti.cz')
+    s = smtplib.SMTP(smtp_server)
     s.starttls()
     s.ehlo()
-    s.login('organizatori@sdhsvinov.cz', 'kotalikovna')
+    s.login(email, EMAIL_PASSWORD)
     text = ('Shrnutí objednávky:\n'
             'Jméno a příjmení: ' + ticket.name + ' ' + ticket.surname + '\n'
             'Počet lístků: ' + str(ticket.number_of_tickets) + '\n'
@@ -44,19 +47,19 @@ def send_summary_mail(to, organizer_mails, ticket):
     msg = MIMEText(text)
     recipients = organizer_mails
     recipients.append(to)
-    recipients.append('organizatori@sdhsvinov.cz')
+    recipients.append(email)
     msg['Subject'] = 'Shrnutí objednávky'
     msg['To'] = ", ".join(recipients)
-    msg['From'] = 'organizatori@sdhsvinov.cz'
+    msg['From'] = email
     print(msg['to'])
     s.send_message(msg)
     s.quit()
 
 def send_mail(fromm, to, subject, message, attachment=0):
-    s = smtplib.SMTP('mail.rosti.cz')
+    s = smtplib.SMTP(smtp_server)
     s.starttls()
     s.ehlo()
-    s.login('organizatori@sdhsvinov.cz', 'kotalikovna')
+    s.login(mail, EMAIL_PASSWORD)
     msg = MIMEMultipart()
     msg.attach(MIMEText(message))
     if attachment:
