@@ -23,7 +23,7 @@ from home import urls as home_urls
 from eticket import urls as eticket_urls
 
 urlpatterns = [
-    url(r'^ckeditor/', include('ckeditor.urls')),
+    url(r'^ckeditor/', include('ckeditor_uploader.urls')),
     url(r'^admin/', include(admin.site.urls)),
     url(r'^', include(eticket_urls)),
     url(r'^', include(home_urls)),

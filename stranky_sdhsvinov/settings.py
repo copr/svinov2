@@ -18,7 +18,6 @@ from stranky_sdhsvinov.secret import SECRET_KEY
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.8/howto/deployment/checklist/
 
@@ -26,7 +25,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ADMINS = (('copr', 'martinkobersky@gmail.com'),)
 MANAGERS = (('copr', 'martinkobersky@gmail.com'),)
@@ -52,7 +51,7 @@ INSTALLED_APPS = (
 MIDDLEWARE_CLASSES = (
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
-    #'django.middleware.csrf.CsrfViewMiddleware',
+    # 'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
@@ -82,7 +81,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'stranky_sdhsvinov.wsgi.application'
 
-
 # Database
 # https://docs.djangoproject.com/en/1.8/ref/settings/#databases
 
@@ -92,7 +90,6 @@ DATABASES = {
         'NAME': 'db.sqlite3',
     }
 }
-
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.8/topics/i18n/
@@ -107,12 +104,10 @@ USE_L10N = True
 
 USE_TZ = True
 
-
 STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.FileSystemFinder',
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
 )
-
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.8/howto/static-files/
@@ -142,17 +137,18 @@ CKEDITOR_CONFIGS = {
         'removePlugins': 'contextmenu,liststyle,tabletools',
         'toolbar': 'Custom',
         'toolbar_Custom': [
-            ['Styles', 'Format', 'Link', 'Unlink', 'Image', 'File', 'Flash', 'NumberedList', 'BulletedList', 'Source', 'Table','HorizontalRule','Smiley','SpecialChar',
-             'Bold','Italic','Strike','-','RemoveFormat', 'Iframe', 'TextColor', 'BGColor'],
+            ['Styles', 'Format', 'Link', 'Unlink', 'Image', 'File', 'Flash', 'NumberedList', 'BulletedList', 'Source',
+             'Table', 'HorizontalRule', 'Smiley', 'SpecialChar',
+             'Bold', 'Italic', 'Strike', '-', 'RemoveFormat', 'Iframe', 'TextColor', 'BGColor'],
         ],
         'extraAllowedContent': 'iframe[*]',
         'extraPlugins': '',
-     },
+    },
 }
 
 THUMBNAIL_PROCESSORS = (
-    'image_cropping.thumbnail_processors.crop_corners',
-) + thumbnail_settings.THUMBNAIL_PROCESSORS
+                           'image_cropping.thumbnail_processors.crop_corners',
+                       ) + thumbnail_settings.THUMBNAIL_PROCESSORS
 
 LOGGING = {
     'version': 1,
@@ -163,7 +159,7 @@ LOGGING = {
         'mail_admins': {
             'class': 'django.utils.log.AdminEmailHandler',
             'level': 'ERROR',
-             # But the emails are plain text by default - HTML is nicer
+            # But the emails are plain text by default - HTML is nicer
             'include_html': True,
         },
         # Log to a text file that can be rotated by logrotate
@@ -188,7 +184,7 @@ LOGGING = {
         # Your own app - this assumes all your logger names start with "myapp."
         'myapp': {
             'handlers': ['logfile'],
-            'level': 'WARNING', # Or maybe INFO or DEBUG
+            'level': 'WARNING',  # Or maybe INFO or DEBUG
             'propagate': False
         },
     },
